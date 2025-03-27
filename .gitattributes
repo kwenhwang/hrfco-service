@@ -1,0 +1,5 @@
+* text=auto
+*.py text eol=lf
+*.toml text eol=lf
+.gitignore text eol=lf
+.python-version text eol=lf

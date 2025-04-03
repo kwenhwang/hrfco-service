@@ -1,7 +1,13 @@
 [project]
 name = "hrfco-service"
-version = "0.1.0"
-description = "Add your description here"
+version = "0.2.0" # 필요하다면 버전 업데이트 고려
+description = "MCP server for HRFCO hydrological data" # 설명 추가 권장
 readme = "README.md"
-requires-python = ">=3.13"
-dependencies = []
+requires-python = ">=3.13" # 사용하는 파이썬 버전 확인
+dependencies = [
+    "fastmcp",          # FastMCP 라이브러리 
+    "httpx",            # 비동기 HTTP 요청
+    "python-dotenv",    # .env 파일 로드
+    "python-dateutil"   # 상대 날짜 계산용 (이번에 추가됨)
+    # 필요하다면 다른 의존성도 추가 (예: asyncio는 표준 라이브러리)
+]

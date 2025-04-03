@@ -15,7 +15,7 @@
 ## Installation
 1. Install the package:
    ```bash
-   git clone https://github.com/kwenhwang/hrfco_service.git
+   git clone https://github.com/kwenhwang/hrfco-service.git
    cd hrfco_service
    pip install -e .
    ```

@@ -2,3 +2,4 @@ httpx
 python-dotenv
 mcp
 fastmcp
+python-dateutil

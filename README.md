@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/kwenhwang-hrfco-service-badge.png)](https://mseep.ai/app/kwenhwang-hrfco-service)
+
 # HRFCO Service
 
 실시간 수문정보 조회 서비스(MCP Server)

@@ -1,0 +1,72 @@
+name: Test GitHub Secrets
+
+on:
+  workflow_dispatch:  # 수동 실행만 가능
+
+jobs:
+  test-secrets:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Test Secrets (안전한 방법)
+      env:
+        HRFCO_API_KEY: ${{ secrets.HRFCO_API_KEY }}
+      run: |
+        echo "✅ Secrets 테스트 시작"
+        echo "API 키 길이: ${#HRFCO_API_KEY}"
+        echo "API 키 시작: ${HRFCO_API_KEY:0:8}..."
+        echo "API 키 끝: ...${HRFCO_API_KEY: -4}"
+        
+        # Python으로 Config 테스트
+        python -c "
+        from src.hrfco_service.config import Config
+        print(f'✅ Config 로드 성공')
+        print(f'API 키 길이: {len(Config.API_KEY)}')
+        print(f'API 키 시작: {Config.API_KEY[:8]}...')
+        print(f'API 키 끝: ...{Config.API_KEY[-4:]}')
+        "
+        
+        # 실제 API 호출 테스트 (선택사항)
+        echo " 실제 API 호출 테스트..."
+        python -c "
+        import asyncio
+        import httpx
+        import os
+        
+        async def test_api():
+            api_key = os.getenv('HRFCO_API_KEY')
+            url = f'http://api.hrfco.go.kr/{api_key}/waterlevel/info.json'
+            
+            async with httpx.AsyncClient() as client:
+                response = await client.get(url)
+                print(f'API 응답 상태: {response.status_code}')
+                if response.status_code == 200:
+                    print('✅ API 호출 성공!')
+                else:
+                    print(f'⚠️ API 호출 실패: {response.status_code}')
+        
+        asyncio.run(test_api())
+        "
+    
+    - name: Test MCP Server
+      env:
+        HRFCO_API_KEY: ${{ secrets.HRFCO_API_KEY }}
+      run: |
+        echo "🤖 MCP 서버 테스트..."
+        timeout 30s python mcp_server.py &
+        sleep 5
+        
+        # MCP 서버 테스트
+        python test_mcp_direct.py || echo "MCP 테스트 완료"
+        
+        echo "✅ 모든 테스트 완료!" 

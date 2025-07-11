@@ -36,6 +36,7 @@ ENV/
 
 # Logs
 *.log
+hrfco_server.log
 
 # Local development settings
 instance/
@@ -45,3 +46,8 @@ instance/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# API Keys and sensitive data
+*.key
+*.pem
+secrets/

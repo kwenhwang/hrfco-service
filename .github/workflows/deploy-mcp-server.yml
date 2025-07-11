@@ -1,0 +1,53 @@
+name: Deploy MCP Server
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Build Docker image
+      env:
+        HRFCO_API_KEY: ${{ secrets.HRFCO_API_KEY }}
+      run: |
+        docker build --build-arg HRFCO_API_KEY=$HRFCO_API_KEY -t hrfco-service .
+    
+    - name: Deploy to Docker Hub
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        docker tag hrfco-service $DOCKER_USERNAME/hrfco-service:latest
+        docker push $DOCKER_USERNAME/hrfco-service:latest
+    
+    - name: Deploy to cloud service
+      env:
+        HRFCO_API_KEY: ${{ secrets.HRFCO_API_KEY }}
+        CLOUD_API_KEY: ${{ secrets.CLOUD_API_KEY }}
+      run: |
+        # 클라우드 서비스 배포 (예: Heroku, Railway, Render 등)
+        # API 키는 환경변수로 주입되어 사용자에게는 노출되지 않음
+        echo "Deploying to cloud service with API key..."
+        
+        # 예시: Railway 배포
+        # curl -X POST \
+        #   -H "Authorization: Bearer $CLOUD_API_KEY" \
+        #   -H "Content-Type: application/json" \
+        #   -d '{"environment": {"HRFCO_API_KEY": "'$HRFCO_API_KEY'"}}' \
+        #   https://api.railway.app/v1/services/deploy 

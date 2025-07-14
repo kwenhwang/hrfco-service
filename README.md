@@ -248,6 +248,94 @@ docker run -p 8080:8080 kwenhwang/hrfco-service:latest
 docker-compose up -d
 ```
 
+## 🚀 Glama MCP 서버 배포
+
+### 자동 배포 스크립트 사용
+
+#### Linux/Mac
+```bash
+# API 키와 함께 배포
+./scripts/deploy-to-glama.sh YOUR_API_KEY
+
+# 실행 권한 부여 (필요시)
+chmod +x scripts/deploy-to-glama.sh
+```
+
+#### Windows PowerShell
+```powershell
+# API 키와 함께 배포
+.\scripts\deploy-to-glama.ps1 YOUR_API_KEY
+```
+
+### 수동 배포
+
+#### 1. Docker 이미지 빌드
+```bash
+# API 키와 함께 이미지 빌드
+docker build --build-arg HRFCO_API_KEY=YOUR_API_KEY -t hrfco-service:latest .
+```
+
+#### 2. Glama 설정 파일 생성
+```bash
+# Linux/Mac
+mkdir -p ~/.config/glama
+
+# Windows
+mkdir -p "$env:APPDATA\glama"
+```
+
+`~/.config/glama/mcp-servers.json` (Linux/Mac) 또는 `%APPDATA%\glama\mcp-servers.json` (Windows) 파일 생성:
+
+```json
+{
+  "mcpServers": {
+    "hrfco-service": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-p", "8000:8000",
+        "-e", "HRFCO_API_KEY=YOUR_API_KEY",
+        "--name", "hrfco-mcp-server",
+        "hrfco-service:latest"
+      ]
+    }
+  }
+}
+```
+
+#### 3. Kubernetes 배포 (선택사항)
+```bash
+# Secret 생성
+echo -n "YOUR_API_KEY" | base64
+
+# 배포
+kubectl apply -f glama-deployment.yaml
+```
+
+### 배포 확인
+
+```bash
+# 컨테이너 상태 확인
+docker ps | grep hrfco-mcp-server
+
+# 헬스체크
+curl http://localhost:8000/health
+
+# 로그 확인
+docker logs hrfco-mcp-server
+```
+
+### Glama에서 사용
+
+1. **Glama 웹사이트**: https://glama.ai/mcp/servers/@kwenhwang/hrfco-service
+2. **서버 활성화** 후 바로 질문:
+   - "부산 지역 수위 상황 알려줘"
+   - "영천댐의 방류량이 얼마나 되나요?"
+   - "최근 24시간 강수량 현황은?"
+
+자세한 배포 가이드는 [GLAMA_SETUP.md](GLAMA_SETUP.md)를 참조하세요.
+
 ## 🔧 개발자용 (API 키 필요)
 
 ### 로컬 개발 환경

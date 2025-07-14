@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-HRFCO Service Dockerfile
-"""
+# HRFCO Service Dockerfile
 FROM python:3.11-slim
 
 # 개발자가 미리 설정한 API 키 (빌드 시 주입, 옵션)

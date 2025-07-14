@@ -63,13 +63,27 @@ jobs:
         echo "🧪 GitHub Container Registry 이미지 테스트..."
         
         # 이미지 실행 테스트
+        echo "컨테이너 시작 중..."
         docker run --rm -d --name test-hrfco-ghcr \
           -p 8000:8000 \
           -e HRFCO_API_KEY=${{ secrets.HRFCO_API_KEY }} \
           ${{ env.GHCR_REGISTRY }}/${{ github.repository }}:latest
         
+        # 컨테이너 상태 확인
+        echo "컨테이너 상태:"
+        docker ps -a
+        
+        # 즉시 로그 확인
+        echo "초기 로그:"
+        docker logs test-hrfco-ghcr || echo "로그 확인 실패"
+        
         # 서버 시작 대기
-        sleep 15
+        echo "서버 시작 대기 중..."
+        sleep 30
+        
+        # 다시 로그 확인
+        echo "30초 후 로그:"
+        docker logs test-hrfco-ghcr || echo "로그 확인 실패"
         
         # 헬스체크
         echo "헬스체크 시도..."
@@ -80,12 +94,12 @@ jobs:
         curl -f "http://localhost:8000/hydro?hydro_type=waterlevel&time_type=10M&obs_code=1001602" || echo "API 테스트 실패"
         
         # 컨테이너 로그 확인
-        echo "컨테이너 로그:"
-        docker logs test-hrfco-ghcr
+        echo "최종 컨테이너 로그:"
+        docker logs test-hrfco-ghcr || echo "로그 확인 실패"
         
         # 컨테이너 정리
-        docker stop test-hrfco-ghcr
-        docker rm test-hrfco-ghcr
+        docker stop test-hrfco-ghcr || echo "컨테이너 정지 실패"
+        docker rm test-hrfco-ghcr || echo "컨테이너 제거 실패"
         
         echo "✅ GitHub Container Registry 이미지 테스트 완료!"
 

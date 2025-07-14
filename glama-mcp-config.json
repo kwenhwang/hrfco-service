@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "hrfco-service": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-p", "8000:8000",
+        "-e", "HRFCO_API_KEY=${HRFCO_API_KEY}",
+        "-e", "LOG_LEVEL=INFO",
+        "-e", "CACHE_TTL_SECONDS=300",
+        "-e", "MAX_CONCURRENT_REQUESTS=5",
+        "--name", "hrfco-mcp-server",
+        "hrfco-service:latest"
+      ],
+      "env": {
+        "HRFCO_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+} 

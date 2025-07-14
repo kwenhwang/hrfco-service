@@ -92,7 +92,7 @@ jobs:
   # Docker Hub 배포 (선택사항 - 나중에 활성화)
   build-and-push-dockerhub:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && secrets.DOCKER_USERNAME != ''
+    if: github.ref == 'refs/heads/main'
     needs: build-and-push-ghcr
     
     steps:
@@ -108,10 +108,23 @@ jobs:
         registry: ${{ env.DOCKER_REGISTRY }}
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+      continue-on-error: true
+    
+    - name: Check Docker Hub login
+      id: docker-login-check
+      run: |
+        if [ "${{ secrets.DOCKER_USERNAME }}" != "" ] && [ "${{ secrets.DOCKER_PASSWORD }}" != "" ]; then
+          echo "docker_hub_available=true" >> $GITHUB_OUTPUT
+          echo "✅ Docker Hub credentials available"
+        else
+          echo "docker_hub_available=false" >> $GITHUB_OUTPUT
+          echo "⚠️ Docker Hub credentials not available, skipping Docker Hub deployment"
+        fi
     
     - name: Extract metadata for Docker Hub
       id: meta-dockerhub
       uses: docker/metadata-action@v5
+      if: steps.docker-login-check.outputs.docker_hub_available == 'true'
       with:
         images: ${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}
         tags: |
@@ -124,6 +137,7 @@ jobs:
     
     - name: Build and push to Docker Hub
       uses: docker/build-push-action@v5
+      if: steps.docker-login-check.outputs.docker_hub_available == 'true'
       with:
         context: .
         push: true
@@ -135,6 +149,7 @@ jobs:
         cache-to: type=gha,mode=max
     
     - name: Test Docker Hub image
+      if: steps.docker-login-check.outputs.docker_hub_available == 'true'
       run: |
         echo "🧪 Docker Hub 이미지 테스트..."
         
@@ -156,6 +171,13 @@ jobs:
         docker rm test-hrfco-dockerhub
         
         echo "✅ Docker Hub 이미지 테스트 완료!"
+    
+    - name: Skip Docker Hub deployment
+      if: steps.docker-login-check.outputs.docker_hub_available != 'true'
+      run: |
+        echo "⚠️ Docker Hub credentials not configured"
+        echo "Skipping Docker Hub deployment"
+        echo "To enable Docker Hub deployment, add DOCKER_USERNAME and DOCKER_PASSWORD secrets"
 
   deploy-to-glama:
     needs: build-and-push-ghcr
@@ -192,13 +214,11 @@ jobs:
       run: |
         echo "🎉 배포 성공!"
         echo "GitHub Container Registry: ${{ env.GHCR_REGISTRY }}/${{ github.repository }}:latest"
-        if [ "${{ secrets.DOCKER_USERNAME }}" != "" ]; then
-          echo "Docker Hub: ${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
-        fi
         echo "Glama에서 사용 가능합니다."
         echo ""
         echo "사용 방법:"
         echo "1. GitHub Container Registry: docker pull ${{ env.GHCR_REGISTRY }}/${{ github.repository }}:latest"
-        if [ "${{ secrets.DOCKER_USERNAME }}" != "" ]; then
-          echo "2. Docker Hub: docker pull ${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
-        fi 
+        echo ""
+        echo "Docker Hub 배포를 활성화하려면:"
+        echo "1. GitHub Secrets에 DOCKER_USERNAME과 DOCKER_PASSWORD 추가"
+        echo "2. 워크플로우를 다시 실행" 

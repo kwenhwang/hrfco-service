@@ -33,4 +33,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD python -c "import requests; requests.get('http://localhost:8000/health')" || exit 1
 
 # HTTP 서버 실행 (사용자가 API 키 없이 접근 가능)
-CMD ["python", "src/hrfco_service/server.py"] 
+CMD ["python", "src/hrfco_service/http_server.py"] 

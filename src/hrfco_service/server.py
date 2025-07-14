@@ -63,7 +63,7 @@ async def load_observatory_info() -> None:
                 observatory_manager.update(hydro_type, result["content"])
             elif isinstance(result, list):
                 observatory_manager.update(hydro_type, result)
-            else:
+    else:
                 logger.warning(f"Unexpected response format for {hydro_type} observatory info")
         except Exception as e:
             logger.error(f"Failed to load observatory info for {hydro_type}: {e}")
@@ -233,7 +233,7 @@ async def search_observatory(
         per_page: 페이지당 결과 수
     """
     try:
-        await ensure_info_loaded()
+    await ensure_info_loaded()
 
         # 검색 수행
         results = observatory_manager.search_observatories(
@@ -244,25 +244,25 @@ async def search_observatory(
         
         # 페이지네이션
         total_count = len(results)
-        start_idx = (page - 1) * per_page
-        end_idx = start_idx + per_page
-        paginated_results = results[start_idx:end_idx]
+    start_idx = (page - 1) * per_page
+    end_idx = start_idx + per_page
+    paginated_results = results[start_idx:end_idx]
 
-        response = {
-            "query": query,
+    response = {
+        "query": query,
             "hydro_type": hydro_type,
             "results": paginated_results,
             "pagination": {
                 "page": page,
-                "per_page": per_page,
+        "per_page": per_page,
                 "total_count": total_count,
                 "total_pages": (total_count + per_page - 1) // per_page,
                 "has_next": end_idx < total_count,
                 "has_prev": page > 1
             }
-        }
+    }
 
-        return [TextContent(text=json.dumps(response, ensure_ascii=False, indent=2))]
+    return [TextContent(text=json.dumps(response, ensure_ascii=False, indent=2))]
         
     except Exception as e:
         error_info = handle_api_error(e, "searching observatory")
@@ -292,7 +292,7 @@ async def get_batch_hydro_data(requests: List[Dict]) -> List[TextContent]:
                     continue # Added continue here
 
                 # 파라미터 검증
-                normalized_type = validate_hydro_type(hydro_type)
+        normalized_type = validate_hydro_type(hydro_type)
                 validate_time_type(request.get("time_type", "1H"))
                 
                 # 날짜 범위 검증
@@ -305,10 +305,10 @@ async def get_batch_hydro_data(requests: List[Dict]) -> List[TextContent]:
                 
                 # API 호출
                 data = await api_client.fetch_observatory_data(
-                    hydro_type=normalized_type,
-                    obs_code=obs_code,
-                    start_date=start_date,
-                    end_date=end_date,
+            hydro_type=normalized_type,
+            obs_code=obs_code,
+            start_date=start_date,
+            end_date=end_date,
                     time_type=time_type
                 )
                 
@@ -350,10 +350,10 @@ async def get_recent_data(
         fields: 반환할 필드 목록
     """
     try:
-        await ensure_info_loaded()
+    await ensure_info_loaded()
 
         # 파라미터 검증
-        normalized_type = validate_hydro_type(hydro_type)
+    normalized_type = validate_hydro_type(hydro_type)
         validate_time_type(time_type)
         
         # 관측소 코드 확인
@@ -376,31 +376,31 @@ async def get_recent_data(
             return [TextContent(text="오류: API 응답 형식이 올바르지 않습니다.")]
 
         content = data.get("content", [])
-        if not isinstance(content, list):
-            content = []
+    if not isinstance(content, list):
+        content = []
 
-        # 최신순 정렬 및 개수 제한
-        content.sort(key=lambda x: x.get("ymdhm", ""), reverse=True)
-        limited_content = content[:count]
+    # 최신순 정렬 및 개수 제한
+    content.sort(key=lambda x: x.get("ymdhm", ""), reverse=True)
+    limited_content = content[:count]
 
         # 데이터 처리
         processed_data = _prepare_data_for_response(
             limited_content, normalized_type, fields, thresholds
         )
         
-        response = {
-            "query_info": {
-                "hydro_type": normalized_type,
+    response = {
+        "query_info": {
+            "hydro_type": normalized_type,
                 "obs_code": actual_obs_code,
-                "time_type": time_type,
-                "requested_count": count,
+            "time_type": time_type,
+            "requested_count": count,
                 "returned_count": len(processed_data),
-                "requested_fields": fields
-            },
+            "requested_fields": fields
+        },
             "recent_data": processed_data
-        }
+    }
 
-        return [TextContent(text=json.dumps(response, ensure_ascii=False, indent=2))]
+    return [TextContent(text=json.dumps(response, ensure_ascii=False, indent=2))]
 
     except Exception as e:
         error_info = handle_api_error(e, "fetching recent data")
@@ -418,14 +418,14 @@ async def analyze_regional_hydro_status(
         interest: 관심 주제 (선택사항)
     """
     try:
-        await ensure_info_loaded()
+    await ensure_info_loaded()
         
         # 지역 관련 관측소 검색
         relevant_stations = {}
         search_results_text = []
         
-        for hydro_type in ["waterlevel", "rainfall", "dam", "bo"]:
-            try:
+    for hydro_type in ["waterlevel", "rainfall", "dam", "bo"]:
+        try:
                 search_response = await search_observatory(
                     query=region_name, 
                     hydro_type=hydro_type, 
@@ -433,113 +433,113 @@ async def analyze_regional_hydro_status(
                 )
                 search_result = json.loads(search_response[0].text)
 
-                if search_result and search_result.get("results"):
-                    found_stations = search_result["results"]
-                    relevant_stations[hydro_type] = found_stations
+            if search_result and search_result.get("results"):
+                found_stations = search_result["results"]
+                relevant_stations[hydro_type] = found_stations
                     search_results_text.append(
                         f"- {hydro_type}: {len(found_stations)}개 관측소 발견"
                     )
-                else:
-                    search_results_text.append(f"- {hydro_type}: 관련 관측소 없음")
+            else:
+                 search_results_text.append(f"- {hydro_type}: 관련 관측소 없음")
 
-            except Exception as e:
-                logger.error(f"Error searching for {hydro_type} stations in {region_name}: {e}")
-                search_results_text.append(f"- {hydro_type}: 검색 중 오류 발생")
+        except Exception as e:
+            logger.error(f"Error searching for {hydro_type} stations in {region_name}: {e}")
+            search_results_text.append(f"- {hydro_type}: 검색 중 오류 발생")
 
-        if not any(relevant_stations.values()):
-            return [TextContent(text=f"오류: '{region_name}' 지역과 관련된 수문 관측소를 찾을 수 없습니다.")]
+    if not any(relevant_stations.values()):
+        return [TextContent(text=f"오류: '{region_name}' 지역과 관련된 수문 관측소를 찾을 수 없습니다.")]
 
         # 주요 관측소 데이터 조회
         latest_data = {}
-        data_fetch_tasks = []
+    data_fetch_tasks = []
         station_details = {}
 
-        for hydro_type in ["waterlevel", "rainfall"]:
-            if hydro_type in relevant_stations:
-                for station in relevant_stations[hydro_type]:
+    for hydro_type in ["waterlevel", "rainfall"]:
+        if hydro_type in relevant_stations:
+            for station in relevant_stations[hydro_type]:
                     station_code = station.get("obs_code")
-                    if station_code:
+                if station_code:
                         station_details[station_code] = station
-                        task = asyncio.create_task(
+                    task = asyncio.create_task(
                             get_recent_data(
                                 hydro_type=hydro_type, 
                                 obs_code=station_code, 
                                 count=1, 
                                 time_type="1H"
                             ),
-                            name=f"fetch_{hydro_type}_{station_code}"
-                        )
-                        data_fetch_tasks.append((hydro_type, station_code, task))
+                        name=f"fetch_{hydro_type}_{station_code}"
+                    )
+                    data_fetch_tasks.append((hydro_type, station_code, task))
 
-        # 데이터 병렬 조회
+    # 데이터 병렬 조회
         results = await asyncio.gather(*[task for _, _, task in data_fetch_tasks], return_exceptions=True)
 
-        # 조회 결과 처리
-        for i, result in enumerate(results):
-            hydro_type, station_code, _ = data_fetch_tasks[i]
-            if isinstance(result, Exception):
-                logger.error(f"Error fetching recent data for {station_code} ({hydro_type}): {result}")
-            elif isinstance(result, list) and result and isinstance(result[0], TextContent):
-                try:
-                    data_dict = json.loads(result[0].text)
-                    recent_data_list = data_dict.get("recent_data", [])
-                    if recent_data_list:
+    # 조회 결과 처리
+    for i, result in enumerate(results):
+        hydro_type, station_code, _ = data_fetch_tasks[i]
+        if isinstance(result, Exception):
+            logger.error(f"Error fetching recent data for {station_code} ({hydro_type}): {result}")
+        elif isinstance(result, list) and result and isinstance(result[0], TextContent):
+             try:
+                 data_dict = json.loads(result[0].text)
+                 recent_data_list = data_dict.get("recent_data", [])
+                 if recent_data_list:
                         if hydro_type not in latest_data:
                             latest_data[hydro_type] = {}
                         latest_data[hydro_type][station_code] = recent_data_list[0]
-                except json.JSONDecodeError as e:
-                    logger.error(f"Failed to parse JSON from get_recent_data for {station_code}: {e}")
+             except json.JSONDecodeError as e:
+                 logger.error(f"Failed to parse JSON from get_recent_data for {station_code}: {e}")
 
         # 결과 분석 및 요약
-        summary_lines = [f"'{region_name}' 지역 수문 상태 분석 결과:"]
-        analysis_performed = False
+    summary_lines = [f"'{region_name}' 지역 수문 상태 분석 결과:"]
+    analysis_performed = False
 
-        # 수위 분석
-        if "waterlevel" in latest_data and latest_data["waterlevel"]:
-            analysis_performed = True
-            summary_lines.append("\n[주요 수위 관측소 현황]")
-            for station_code, data in latest_data["waterlevel"].items():
+    # 수위 분석
+    if "waterlevel" in latest_data and latest_data["waterlevel"]:
+        analysis_performed = True
+        summary_lines.append("\n[주요 수위 관측소 현황]")
+        for station_code, data in latest_data["waterlevel"].items():
                 station_name = station_details.get(station_code, {}).get("obsnm", station_code)
-                current_wl = data.get("wl")
-                obs_time = data.get("ymdhm", "시간 정보 없음")
+            current_wl = data.get("wl")
+            obs_time = data.get("ymdhm", "시간 정보 없음")
                 alert_status = data.get("alert_status", "")
 
                 status_text = f" ({alert_status})" if alert_status else ""
                 summary_lines.append(f"- {station_name}: 현재 수위 {current_wl}m{status_text} ({obs_time})")
 
-        # 강수량 분석
-        if "rainfall" in latest_data and latest_data["rainfall"]:
-            analysis_performed = True
-            summary_lines.append("\n[주요 강수량 관측소 현황]")
-            for station_code, data in latest_data["rainfall"].items():
+    # 강수량 분석
+    if "rainfall" in latest_data and latest_data["rainfall"]:
+        analysis_performed = True
+        summary_lines.append("\n[주요 강수량 관측소 현황]")
+        for station_code, data in latest_data["rainfall"].items():
                 station_name = station_details.get(station_code, {}).get("obsnm", station_code)
-                current_rf = data.get("rf")
-                obs_time = data.get("ymdhm", "시간 정보 없음")
-                summary_lines.append(f"- {station_name}: 최근 1시간 강수량 {current_rf}mm ({obs_time})")
+            current_rf = data.get("rf")
+            obs_time = data.get("ymdhm", "시간 정보 없음")
+            summary_lines.append(f"- {station_name}: 최근 1시간 강수량 {current_rf}mm ({obs_time})")
 
-        if not analysis_performed:
-            summary_lines.append("\n분석할 최신 데이터가 부족합니다.")
+    if not analysis_performed:
+         summary_lines.append("\n분석할 최신 데이터가 부족합니다.")
 
         # 종합 판단
         flood_risk = "판단 불가"
-        if analysis_performed:
-            high_risk_found = False
-            for hydro_type, stations_data in latest_data.items():
-                if hydro_type == "waterlevel":
-                    for station_code, data in stations_data.items():
+    if analysis_performed:
+        high_risk_found = False
+        for hydro_type, stations_data in latest_data.items():
+            if hydro_type == "waterlevel":
+                for station_code, data in stations_data.items():
                         alert_status = data.get("alert_status", "")
                         if alert_status in ["alert", "serious"]:
-                            high_risk_found = True
-                            break
+                        high_risk_found = True
+                        break
                         if high_risk_found:
                             break
 
             flood_risk = "높음" if high_risk_found else "낮음 또는 보통"
 
-        summary_lines.append(f"\n종합 판단: 현재 '{region_name}' 지역의 홍수 위험도는 **{flood_risk}** 수준으로 보입니다.")
-        summary_lines.append("(주의: 이 분석은 제한된 데이터 기반의 예비 평가이며, 실제 상황과 다를 수 있습니다.)")
+    summary_lines.append(f"\n종합 판단: 현재 '{region_name}' 지역의 홍수 위험도는 **{flood_risk}** 수준으로 보입니다.")
+    summary_lines.append("(주의: 이 분석은 제한된 데이터 기반의 예비 평가이며, 실제 상황과 다를 수 있습니다.)")
 
-        return [TextContent(text="\n".join(summary_lines))]
+    return [TextContent(text="\n".join(summary_lines))]
 
     except Exception as e:
         error_info = handle_api_error(e, "analyzing regional hydro status")

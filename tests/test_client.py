@@ -18,24 +18,24 @@ requests = [
 python_executable = sys.executable
 
 try:
-    process = subprocess.Popen(
+process = subprocess.Popen(
         [python_executable, "-m", "hrfco_service"],
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
+    stdin=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE,
         cwd=str(src_path),
-        text=True,
-        encoding="utf-8"
-    )
+    text=True,
+    encoding="utf-8"
+)
 
-    for req in requests:
-        process.stdin.write(req + "\n")
-        process.stdin.flush()
-        time.sleep(0.5)  # 초기화 대기
+for req in requests:
+    process.stdin.write(req + "\n")
+    process.stdin.flush()
+    time.sleep(0.5)  # 초기화 대기
 
-    stdout, stderr = process.communicate()
-    print("출력:", stdout)
-    print("오류:", stderr if stderr else "없음")
+stdout, stderr = process.communicate()
+print("출력:", stdout)
+print("오류:", stderr if stderr else "없음")
     
 except Exception as e:
     print(f"테스트 실행 중 오류 발생: {e}")

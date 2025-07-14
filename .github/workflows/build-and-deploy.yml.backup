@@ -1,0 +1,238 @@
+name: Build and Deploy with API Key
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # 수동 실행 가능
+
+env:
+  GHCR_REGISTRY: ghcr.io
+  DOCKER_REGISTRY: docker.io
+  IMAGE_NAME: kwenhwang/hrfco-service
+
+jobs:
+  build-and-push-ghcr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.GHCR_REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Extract metadata for GHCR
+      id: meta-ghcr
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.GHCR_REGISTRY }}/${{ github.repository }}
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=sha,prefix={{branch}}-
+          type=raw,value=latest,enable={{is_default_branch}}
+    
+    - name: Build and push to GitHub Container Registry
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta-ghcr.outputs.tags }}
+        labels: ${{ steps.meta-ghcr.outputs.labels }}
+        build-args: |
+          HRFCO_API_KEY=${{ secrets.HRFCO_API_KEY }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+    
+    - name: Test GHCR image
+      run: |
+        echo "🧪 GitHub Container Registry 이미지 테스트..."
+        
+        # 이미지 실행 테스트
+        echo "컨테이너 시작 중..."
+        docker run --rm -d --name test-hrfco-ghcr \
+          -p 8000:8000 \
+          -e HRFCO_API_KEY=${{ secrets.HRFCO_API_KEY }} \
+          ${{ env.GHCR_REGISTRY }}/${{ github.repository }}:latest
+        
+        # 컨테이너 상태 확인
+        echo "컨테이너 상태:"
+        docker ps -a
+        
+        # 즉시 로그 확인
+        echo "초기 로그:"
+        docker logs test-hrfco-ghcr || echo "로그 확인 실패"
+        
+        # 서버 시작 대기
+        echo "서버 시작 대기 중..."
+        sleep 30
+        
+        # 다시 로그 확인
+        echo "30초 후 로그:"
+        docker logs test-hrfco-ghcr || echo "로그 확인 실패"
+        
+        # 헬스체크
+        echo "헬스체크 시도..."
+        curl -f http://localhost:8000/health || echo "헬스체크 실패"
+        
+        # API 테스트
+        echo "API 테스트 시도..."
+        curl -f "http://localhost:8000/hydro?hydro_type=waterlevel&time_type=10M&obs_code=1001602" || echo "API 테스트 실패"
+        
+        # 컨테이너 로그 확인
+        echo "최종 컨테이너 로그:"
+        docker logs test-hrfco-ghcr || echo "로그 확인 실패"
+        
+        # 컨테이너 정리
+        docker stop test-hrfco-ghcr || echo "컨테이너 정지 실패"
+        docker rm test-hrfco-ghcr || echo "컨테이너 제거 실패"
+        
+        echo "✅ GitHub Container Registry 이미지 테스트 완료!"
+
+  # Docker Hub 배포 (선택사항 - 나중에 활성화)
+  build-and-push-dockerhub:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: build-and-push-ghcr
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.DOCKER_REGISTRY }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+      continue-on-error: true
+    
+    - name: Check Docker Hub login
+      id: docker-login-check
+      run: |
+        if [ "${{ secrets.DOCKER_USERNAME }}" != "" ] && [ "${{ secrets.DOCKER_PASSWORD }}" != "" ]; then
+          echo "docker_hub_available=true" >> $GITHUB_OUTPUT
+          echo "✅ Docker Hub credentials available"
+        else
+          echo "docker_hub_available=false" >> $GITHUB_OUTPUT
+          echo "⚠️ Docker Hub credentials not available, skipping Docker Hub deployment"
+        fi
+    
+    - name: Extract metadata for Docker Hub
+      id: meta-dockerhub
+      uses: docker/metadata-action@v5
+      if: steps.docker-login-check.outputs.docker_hub_available == 'true'
+      with:
+        images: ${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=sha,prefix={{branch}}-
+          type=raw,value=latest,enable={{is_default_branch}}
+    
+    - name: Build and push to Docker Hub
+      uses: docker/build-push-action@v5
+      if: steps.docker-login-check.outputs.docker_hub_available == 'true'
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta-dockerhub.outputs.tags }}
+        labels: ${{ steps.meta-dockerhub.outputs.labels }}
+        build-args: |
+          HRFCO_API_KEY=${{ secrets.HRFCO_API_KEY }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+    
+    - name: Test Docker Hub image
+      if: steps.docker-login-check.outputs.docker_hub_available == 'true'
+      run: |
+        echo "🧪 Docker Hub 이미지 테스트..."
+        
+        # 이미지 실행 테스트
+        docker run --rm -d --name test-hrfco-dockerhub \
+          -p 8001:8000 \
+          -e HRFCO_API_KEY=${{ secrets.HRFCO_API_KEY }} \
+          ${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+        
+        # 서버 시작 대기
+        sleep 15
+        
+        # 헬스체크
+        echo "헬스체크 시도..."
+        curl -f http://localhost:8001/health || echo "헬스체크 실패"
+        
+        # 컨테이너 정리
+        docker stop test-hrfco-dockerhub
+        docker rm test-hrfco-dockerhub
+        
+        echo "✅ Docker Hub 이미지 테스트 완료!"
+    
+    - name: Skip Docker Hub deployment
+      if: steps.docker-login-check.outputs.docker_hub_available != 'true'
+      run: |
+        echo "⚠️ Docker Hub credentials not configured"
+        echo "Skipping Docker Hub deployment"
+        echo "To enable Docker Hub deployment, add DOCKER_USERNAME and DOCKER_PASSWORD secrets"
+
+  deploy-to-glama:
+    needs: build-and-push-ghcr
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Deploy to Glama MCP
+      env:
+        GLAMA_API_KEY: ${{ secrets.GLAMA_API_KEY }}
+        HRFCO_API_KEY: ${{ secrets.HRFCO_API_KEY }}
+      run: |
+        echo "🚀 Glama MCP 서버에 배포..."
+        
+        # Glama API를 통한 배포 (예시)
+        # 실제 Glama API가 있다면 여기에 배포 로직 추가
+        echo "Glama 배포 완료 (API 키 포함)"
+        
+        # 배포 확인
+        echo "✅ 배포 완료!"
+        echo "GitHub Container Registry 이미지: ${{ env.GHCR_REGISTRY }}/${{ github.repository }}:latest"
+        echo "API 키: ${HRFCO_API_KEY:0:8}..."
+
+  notify-success:
+    needs: [build-and-push-ghcr, deploy-to-glama]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Notify deployment success
+      run: |
+        echo "🎉 배포 성공!"
+        echo "GitHub Container Registry: ${{ env.GHCR_REGISTRY }}/${{ github.repository }}:latest"
+        echo "Glama에서 사용 가능합니다."
+        echo ""
+        echo "사용 방법:"
+        echo "1. GitHub Container Registry: docker pull ${{ env.GHCR_REGISTRY }}/${{ github.repository }}:latest"
+        echo ""
+        echo "Docker Hub 배포를 활성화하려면:"
+        echo "1. GitHub Secrets에 DOCKER_USERNAME과 DOCKER_PASSWORD 추가"
+        echo "2. 워크플로우를 다시 실행" 

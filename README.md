@@ -75,17 +75,28 @@ AI: "부산 지역에는 18개의 수위 관측소가 있습니다.
 
 ## 🚀 빠른 시작 (사용자 타입별)
 
-### 👤 일반 사용자 (가장 간단)
+### 👤 일반 사용자 (가장 간단) - API 키 불필요
 1. **Glama 웹사이트**: https://glama.ai/mcp/servers/@kwenhwang/hrfco-service
    - 회원가입 → 서버 활성화 → 바로 질문
    - 예시: "대전 지역 수위 상황 알려줘"
 
-### 🤖 AI 챗봇 사용자 (Claude Desktop)
+### 🐳 Docker 사용자 - API 키 불필요
+```bash
+# API 키 없이 바로 실행
+docker pull kwenhwang/hrfco-service:latest
+docker run -p 8000:8000 kwenhwang/hrfco-service:latest
+
+# 또는 스크립트 사용
+./run-without-api-key.sh  # Linux/Mac
+.\run-without-api-key.ps1 # Windows
+```
+
+### 🤖 AI 챗봇 사용자 (Claude Desktop) - API 키 불필요
 1. **Docker 설치** 후 아래 명령어 실행
 2. **Claude Desktop 설정** 파일 수정
 
 ```bash
-# Docker 실행
+# Docker 실행 (API 키 불필요)
 docker run -p 8080:8080 kwenhwang/hrfco-service:latest
 
 # Claude Desktop 설정
@@ -99,12 +110,29 @@ docker run -p 8080:8080 kwenhwang/hrfco-service:latest
 }
 ```
 
-### 👨‍💻 개발자 (HTTP API)
+### 👨‍💻 개발자 (HTTP API) - API 키 불필요
 1. **Docker 실행**: `docker run -p 8080:8080 kwenhwang/hrfco-service:latest`
 2. **API 호출**: `curl "http://localhost:8000/health"`
 3. **테스트**: `curl "http://localhost:8000/hydro?hydro_type=waterlevel&time_type=10M&obs_code=1001602"`
 
-### 🐳 Docker 사용자
+### 🔧 개발자용 (API 키 필요 - 고급 기능)
+
+### 방법 1: GitHub Secrets 사용 (권장)
+1. **GitHub Secrets 설정**: [GITHUB_SECRETS_SETUP.md](GITHUB_SECRETS_SETUP.md) 참조
+2. **자동 배포**: main 브랜치에 push하면 자동으로 API 키가 포함된 이미지 빌드
+3. **사용**: `docker pull kwenhwang/hrfco-service:latest`
+
+### 방법 2: 로컬 빌드
+```bash
+# API 키와 함께 빌드
+docker build --build-arg HRFCO_API_KEY=YOUR_API_KEY -t hrfco-service:latest .
+
+# 또는 환경변수로 설정
+export HRFCO_API_KEY=YOUR_API_KEY
+docker run -p 8000:8000 -e HRFCO_API_KEY=YOUR_API_KEY hrfco-service:latest
+```
+
+### 🐳 Docker 사용자 - API 키 불필요
 ```bash
 # Linux/Mac
 ./run-without-api-key.sh

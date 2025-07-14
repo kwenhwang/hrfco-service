@@ -7,6 +7,9 @@ import logging
 from typing import Dict, Any
 from dotenv import load_dotenv
 
+# 로거 설정
+logger = logging.getLogger(__name__)
+
 # 환경 변수 로드
 load_dotenv()
 
@@ -40,9 +43,11 @@ class Config:
     
     @classmethod
     def validate(cls) -> None:
-        """필수 설정값 검증 - API 키가 항상 설정되어 있으므로 검증 통과"""
-        if not cls.API_KEY:
-            raise ValueError("API 키가 설정되지 않았습니다")
+        """필수 설정값 검증 - API 키가 없어도 기본 동작 가능"""
+        if not cls.API_KEY or cls.API_KEY == "your-api-key-here":
+            logger.warning("API 키가 설정되지 않았습니다. 일부 기능이 제한될 수 있습니다.")
+            # API 키가 없어도 서버는 시작되도록 함
+            return
     
     @classmethod
     def get_logging_config(cls) -> Dict[str, Any]:

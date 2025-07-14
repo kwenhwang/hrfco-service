@@ -4,8 +4,8 @@ HRFCO Service Dockerfile
 """
 FROM python:3.11-slim
 
-# 개발자가 미리 설정한 API 키 (빌드 시 주입)
-ARG HRFCO_API_KEY
+# 개발자가 미리 설정한 API 키 (빌드 시 주입, 옵션)
+ARG HRFCO_API_KEY=""
 ENV HRFCO_API_KEY=$HRFCO_API_KEY
 
 # 작업 디렉토리 설정

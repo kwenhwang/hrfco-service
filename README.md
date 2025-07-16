@@ -1,6 +1,6 @@
 # HRFCO MCP Server
 
-한국수자원공사(HRFCO) API를 Claude Desktop과 연동하는 MCP(Model Context Protocol) 서버입니다.
+대한민국 수문 데이터터 API를 Claude Desktop과 연동하는 MCP(Model Context Protocol) 서버입니다.
 
 ## 🎉 현재 상태
 

@@ -1,13 +1,14 @@
 {
   "mcpServers": {
-    "hrfco-flood-control": {
+    "hrfco-service": {
       "command": "python",
       "args": [
-        "mcp_server.py"
+        "C:\\Users\\20172483\\web\\hrfco-service\\mcp_server.py"
       ],
       "env": {
-        "PYTHONPATH": "src"
+        "PYTHONPATH": "C:\\Users\\20172483\\web\\hrfco-service\\src",
+        "HRFCO_API_KEY": "your-api-key-here"
       }
     }
   }
-} 
+}

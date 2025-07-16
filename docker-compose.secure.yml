@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  hrfco-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        HRFCO_API_KEY: ${HRFCO_API_KEY}
+    container_name: hrfco-service-secure
+    ports:
+      - "8000:8000"
+    environment:
+      - HRFCO_API_KEY=${HRFCO_API_KEY}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - hrfco-network
+
+networks:
+  hrfco-network:
+    driver: bridge
+
+volumes:
+  logs: 

@@ -20,44 +20,14 @@ async def fetch_observatory_info(hydro_type: str, document_type: str = "json"):
     hydro_type: waterlevel, dam, rainfall 등
     document_type: json 또는 xml
     """
-    # API 키가 없으면 공개 API 시도
+    # API 키가 없으면 데모 데이터 반환
     if not Config.API_KEY or Config.API_KEY == "your-api-key-here":
-        try:
-            # 공개 API 엔드포인트 시도 (API 키 없이 접근 가능한 URL)
-            public_urls = [
-                f"http://api.hrfco.go.kr/public/{hydro_type}/info.{document_type}",
-                f"http://api.hrfco.go.kr/open/{hydro_type}/info.{document_type}",
-                f"http://api.hrfco.go.kr/data/{hydro_type}/info.{document_type}",
-                f"http://api.hrfco.go.kr/v1/{hydro_type}/info.{document_type}"
-            ]
-            
-            for url in public_urls:
-                try:
-                    logger.info(f"공개 API 시도: {url}")
-                    async with httpx.AsyncClient(timeout=10) as client:
-                        resp = await client.get(url)
-                        if resp.status_code == 200:
-                            logger.info(f"공개 API 성공: {url}")
-                            return resp.json() if document_type == "json" else resp.text
-                except Exception as e:
-                    logger.debug(f"공개 API 실패: {url} - {e}")
-                    continue
-            
-            # 공개 API가 없으면 데모 데이터 반환
-            return {
-                "message": "API 키가 설정되지 않았습니다. 실제 데이터를 조회하려면 API 키를 설정해주세요.",
-                "hydro_type": hydro_type,
-                "demo_mode": True,
-                "note": "이것은 데모 모드입니다. 실제 데이터를 보려면 HRFCO_API_KEY 환경변수를 설정하세요."
-            }
-        except Exception as e:
-            logger.warning(f"공개 API 시도 중 오류: {e}")
-            return {
-                "message": "API 키가 설정되지 않았습니다. 실제 데이터를 조회하려면 API 키를 설정해주세요.",
-                "hydro_type": hydro_type,
-                "demo_mode": True,
-                "note": "이것은 데모 모드입니다. 실제 데이터를 보려면 HRFCO_API_KEY 환경변수를 설정하세요."
-            }
+        return {
+            "message": "API 키가 설정되지 않았습니다. 실제 데이터를 조회하려면 API 키를 설정해주세요.",
+            "hydro_type": hydro_type,
+            "demo_mode": True,
+            "note": "이것은 데모 모드입니다. 실제 데이터를 보려면 HRFCO_API_KEY 환경변수를 설정하세요."
+        }
     
     url = f"{Config.BASE_URL}/{Config.API_KEY}/{hydro_type}/info.{document_type}"
     logger.info(f"Fetching observatory info: {url}")

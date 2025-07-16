@@ -1,10 +1,11 @@
-name: Deploy HRFCO MCP Server
+name: Deploy HRFCO MCP Server (Docker Hub Only)
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch: # 수동 실행 가능
 
 jobs:
   test:
@@ -29,7 +30,7 @@ jobs:
       run: |
         python test_api.py
 
-  deploy:
+  build-and-push:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -40,7 +41,7 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
       with:
-        # 캐시 비활성화
+        # 안정적인 빌드 설정
         driver-opts: |
           image=moby/buildkit:latest
           network=host
@@ -51,19 +52,20 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     
-    - name: Build and push Docker image
+    - name: Build and push optimized image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/hrfco-mcp-server:latest
+        tags: |
+          ${{ secrets.DOCKER_USERNAME }}/hrfco-mcp-server:latest
+          ${{ secrets.DOCKER_USERNAME }}/hrfco-mcp-server:${{ github.sha }}
         build-args: |
           HRFCO_API_KEY=${{ secrets.HRFCO_API_KEY }}
-        # 완전한 캐시 비활성화
+        # 캐시 비활성화로 안정성 확보
         cache-from: ""
         cache-to: ""
         platforms: linux/amd64
-        # 추가 옵션으로 안정성 향상
         provenance: false
         sbom: false
     
@@ -75,6 +77,9 @@ jobs:
         key: ${{ secrets.GLAMA_SSH_KEY }}
         script: |
           cd /opt/hrfco-service
+          echo "Pulling latest image from Docker Hub..."
           docker-compose pull
+          echo "Starting services..."
           docker-compose up -d
-          echo "Deployment completed successfully!" 
+          echo "Deployment completed successfully!"
+          echo "Image: ${{ secrets.DOCKER_USERNAME }}/hrfco-mcp-server:latest" 

@@ -1,408 +1,197 @@
-[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/kwenhwang-hrfco-service-badge.png)](https://mseep.ai/app/kwenhwang-hrfco-service)
+# HRFCO MCP Server
 
-# HRFCO Service
+한국수자원공사(HRFCO) API를 Claude Desktop과 연동하는 MCP(Model Context Protocol) 서버입니다.
 
-홍수통제소(HRFCO) API를 활용한 수문 데이터 조회 서비스입니다. **API 키 없이도 사용 가능합니다!**
+## 🎉 현재 상태
 
-## 🏗️ 서비스 아키텍처
+✅ **API 키 테스트 성공**: 실제 HRFCO API 키로 모든 데이터 타입 테스트 완료
+✅ **MCP 서버 준비 완료**: Claude Desktop에서 사용 가능
+✅ **GitHub Actions 설정**: 자동 배포 워크플로우 구성
+✅ **Docker 이미지**: 컨테이너화 완료
 
-이 서비스는 다양한 방식으로 수문 데이터에 접근할 수 있도록 설계되었습니다:
+## 📊 지원하는 데이터
 
-### 📡 데이터 흐름
-```
-HRFCO API (공공데이터포털)
-    ↓
-HRFCO Service (API 키 관리)
-    ↓
-┌─────────────────┬─────────────────┬─────────────────┐
-│   HTTP API      │  MCP Server     │  Function Call  │
-│   (REST API)    │  (Claude/Glama) │  (ChatGPT)      │
-└─────────────────┴─────────────────┴─────────────────┘
-    ↓                ↓                ↓
-사용자 애플리케이션  AI 챗봇        ChatGPT 플러그인
-```
+- **수위 데이터** (waterlevel): 1,000+ 관측소
+- **댐 데이터** (dam): 100+ 댐
+- **강수량 데이터** (rainfall): 500+ 관측소
 
-### 🔌 호출 방식
+## 🚀 빠른 시작
 
-1. **HTTP REST API**: 직접 API 호출로 수문 데이터 조회
-2. **MCP Server**: Model Context Protocol 서버로, Claude, Glama 등 AI 챗봇이 외부 도구를 사용할 수 있게 해주는 인터페이스
-3. **Function Calling**: ChatGPT 플러그인으로 함수 호출 방식 데이터 조회
+### 1. Claude Desktop에서 사용
 
-### 🎯 사용 시나리오
+1. **MCP 설정 파일 복사**
+   ```bash
+   # Windows
+   copy claude_mcp_config.json "%APPDATA%\Claude\claude_desktop_config.json"
+   
+   # macOS
+   cp claude_mcp_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
+   ```
 
-- **개발자**: HTTP API로 직접 데이터 조회
-- **AI 챗봇 사용자**: MCP Server를 통해 자연어로 질문
-- **ChatGPT 사용자**: Function Calling으로 구조화된 데이터 요청
-- **일반 사용자**: 미리 빌드된 서비스로 API 키 없이 사용
+2. **Claude Desktop 재시작**
 
-### 📝 사용 예시
+3. **사용 예시**
+   ```
+   Claude: 한강의 현재 수위 데이터를 알려줘
+   ```
 
-#### 1. HTTP API 호출
-```bash
-# 관측소 정보 조회
-curl "http://localhost:8000/observatories?hydro_type=waterlevel"
-
-# 수문 데이터 조회
-curl "http://localhost:8000/hydro?hydro_type=dam&time_type=10M&obs_code=1001210"
-```
-
-#### 2. MCP Server (Claude/Glama)
-```
-사용자: "부산 지역의 수위 관측소 정보를 알려줘"
-AI: "부산 지역에는 18개의 수위 관측소가 있습니다. 
-     대동낙동강교 관측소의 현재 수위는 3.41m입니다."
-```
-
-#### 3. Function Calling (ChatGPT)
-```json
-{
-  "function": "get_hydro_data",
-  "parameters": {
-    "hydro_type": "waterlevel",
-    "time_type": "10M", 
-    "obs_code": "1001602"
-  }
-}
-```
-
-## 🌟 주요 특징
-
-- **API 키 불필요**: 사용자는 API 키 발급 없이 바로 사용 가능
-- **실시간 수문 데이터**: 수위, 강수량, 댐, 보 데이터 실시간 조회
-- **AI 챗봇 통합**: Claude, Glama 등과 자연어로 대화하며 데이터 조회
-- **다양한 접근 방식**: HTTP API, MCP 서버, Docker 등 지원
-- **자동 배포**: GitHub Actions를 통한 자동 배포 및 관리
-
-## 🚀 빠른 시작 (사용자 타입별)
-
-### 👤 일반 사용자 (가장 간단) - API 키 불필요
-1. **Glama 웹사이트**: https://glama.ai/mcp/servers/@kwenhwang/hrfco-service
-   - 회원가입 → 서버 활성화 → 바로 질문
-   - 예시: "대전 지역 수위 상황 알려줘"
-
-### 🐳 Docker 사용자 - API 키 불필요
-```bash
-# API 키 없이 바로 실행
-docker pull kwenhwang/hrfco-service:latest
-docker run -p 8000:8000 kwenhwang/hrfco-service:latest
-
-# 또는 스크립트 사용
-./run-without-api-key.sh  # Linux/Mac
-.\run-without-api-key.ps1 # Windows
-```
-
-### 🤖 AI 챗봇 사용자 (Claude Desktop) - API 키 불필요
-1. **Docker 설치** 후 아래 명령어 실행
-2. **Claude Desktop 설정** 파일 수정
+### 2. 로컬 개발 환경
 
 ```bash
-# Docker 실행 (API 키 불필요)
-docker run -p 8080:8080 kwenhwang/hrfco-service:latest
+# 저장소 클론
+git clone https://github.com/kwenhwang/hrfco-service.git
+cd hrfco-service
 
-# Claude Desktop 설정
-{
-  "mcpServers": {
-    "hrfco": {
-      "command": "docker",
-      "args": ["run", "--rm", "-p", "8080:8080", "kwenhwang/hrfco-service:latest"]
-    }
-  }
-}
+# 의존성 설치
+pip install -r requirements.txt
+
+# API 키 설정
+$env:HRFCO_API_KEY = "FE18B23B-A81B-4246-9674-E8D641902A42"
+
+# 테스트 실행
+python test_api.py
+
+# MCP 서버 실행
+python mcp_server.py
 ```
 
-### 👨‍💻 개발자 (HTTP API) - API 키 불필요
-1. **Docker 실행**: `docker run -p 8080:8080 kwenhwang/hrfco-service:latest`
-2. **API 호출**: `curl "http://localhost:8000/health"`
-3. **테스트**: `curl "http://localhost:8000/hydro?hydro_type=waterlevel&time_type=10M&obs_code=1001602"`
+### 3. Docker로 실행
 
-### 🔧 개발자용 (API 키 필요 - 고급 기능)
-
-### 방법 1: GitHub Secrets 사용 (권장)
-1. **GitHub Secrets 설정**: [GITHUB_SECRETS_SETUP.md](GITHUB_SECRETS_SETUP.md) 참조
-2. **자동 배포**: main 브랜치에 push하면 자동으로 API 키가 포함된 이미지 빌드
-3. **사용**: `docker pull kwenhwang/hrfco-service:latest`
-
-### 방법 2: 로컬 빌드
 ```bash
-# API 키와 함께 빌드
-docker build --build-arg HRFCO_API_KEY=YOUR_API_KEY -t hrfco-service:latest .
+# 이미지 빌드
+docker build -t hrfco-mcp-server .
 
-# 또는 환경변수로 설정
-export HRFCO_API_KEY=YOUR_API_KEY
-docker run -p 8000:8000 -e HRFCO_API_KEY=YOUR_API_KEY hrfco-service:latest
+# 컨테이너 실행
+docker run -p 8000:8000 hrfco-mcp-server
 ```
 
-### 🐳 Docker 사용자 - API 키 불필요
-```bash
-# Linux/Mac
-./run-without-api-key.sh
+## 🔧 설정
 
-# Windows
-.\run-without-api-key.ps1
+### 환경 변수
 
-# 또는 직접 실행
-docker pull kwenhwang/hrfco-service:latest
-docker run -p 8080:8080 kwenhwang/hrfco-service:latest
-```
+| 변수명 | 설명 | 필수 |
+|--------|------|------|
+| `HRFCO_API_KEY` | HRFCO API 키 | ✅ |
 
-## 📊 지원 데이터 타입
+### API 키 발급
 
-| 타입 | 설명 | 단위 |
-|------|------|------|
-| `waterlevel` | 수위 | m |
-| `rainfall` | 강수량 | mm |
-| `dam` | 댐 | m³/s, m (방류량, 저수위 등) |
-| `bo` | 보 | m³/s, m (수위, 방류량 등) |
-
-## 🤖 AI 챗봇 사용 예시
-
-### Glama/Claude에서 자연어로 질문
-```
-"부산에서 홍수 위험이 있는 지역이 있나요?"
-→ 부산 대동낙동강교 관측소의 현재 수위는 3.41m입니다. 홍수 위험도: 보통
-
-"영천댐의 방류량이 얼마나 되나요?"
-→ 영천댐의 현재 방류량은 0.704m³/s입니다. 상태: 최소 방류 중
-
-"최근 24시간 동안 비가 많이 온 지역은 어디인가요?"
-→ 최근 24시간 강수량 현황: 부산 0.0mm, 기타 지역 0.0mm
-
-"부산 근처에 어떤 수문 관측소들이 있나요?"
-→ 부산 지역 수문 관측소 현황: 수위 관측소 18개, 강수량 관측소 3개
-```
-
-## 🔧 API 엔드포인트
-
-### 1. 상태 확인
-```http
-GET /health
-```
-
-### 2. 관측소 정보 조회
-```http
-GET /observatories?hydro_type={type}&document_type={format}
-```
-
-**예시:**
-```bash
-curl "http://localhost:8000/observatories?hydro_type=rainfall&document_type=json"
-```
-
-### 3. 수문 데이터 조회
-```http
-GET /hydro?hydro_type={type}&time_type={time}&obs_code={code}
-```
-
-**예시:**
-```bash
-# 강수량 데이터 조회
-curl "http://localhost:8000/hydro?hydro_type=rainfall&time_type=10M&obs_code=10014010"
-
-# 수위 데이터 조회
-curl "http://localhost:8000/hydro?hydro_type=waterlevel&time_type=10M&obs_code=1001602"
-
-# 댐 데이터 조회
-curl "http://localhost:8000/hydro?hydro_type=dam&time_type=10M&obs_code=1001210"
-```
-
-## 🧠 MCP 서버 도구
-
-MCP 서버를 통해 사용할 수 있는 도구들:
-
-- `get_observatory_info`: 관측소 정보 조회
-- `get_hydro_data`: 수문 데이터 조회  
-- `get_server_health`: 서버 상태 확인
-- `get_server_config`: 서버 설정 확인
-- `search_observatory`: 관측소 검색
-- `get_recent_data`: 최근 수문 데이터 조회
-- `analyze_regional_hydro_status`: 지역 수문 상태 분석
-
-## ⚡ 성능 및 제한사항
-
-- **응답 시간**: 일반적으로 1-3초 이내
-- **데이터 업데이트**: 실시간 (10분 간격)
-- **사용량 제한**: 시간당 100회 요청
-- **지원 지역**: 전국 수문 관측소 (약 3,000개소)
-- **데이터 보존**: 최근 30일간의 데이터 제공
-
-## 🔧 문제 해결
-
-### 자주 묻는 질문
-
-**Q: Docker 실행 시 포트 오류가 발생해요**
-A: 8080 포트가 사용 중일 수 있습니다. `-p 8081:8080`으로 다른 포트 사용
-
-**Q: Claude Desktop에서 연결이 안돼요**
-A: Docker 컨테이너가 정상 실행 중인지 `docker ps` 명령어로 확인
-
-**Q: 데이터가 조회되지 않아요**
-A: 네트워크 연결과 HRFCO API 서버 상태를 확인해보세요
-
-**Q: API 키가 필요한가요?**
-A: 일반 사용자는 API 키 없이도 사용 가능합니다. 개발자만 API 키가 필요합니다.
-
-### 로그 확인
-```bash
-# Docker 로그 확인
-docker logs <container_id>
-
-# 서버 상태 확인
-curl "http://localhost:8000/health"
-```
+1. [한국수자원공사 API](https://www.data.go.kr/data/15000581/openapi.do) 접속
+2. API 키 신청 및 발급
+3. 환경 변수로 설정
 
 ## 📁 프로젝트 구조
 
 ```
 hrfco-service/
-├── src/hrfco_service/
-│   ├── api.py              # API 클라이언트
-│   ├── public_server.py    # 공개 MCP 서버 (API 키 없이 사용)
-│   ├── http_server.py      # FastAPI 서버
-│   └── ...
-├── .github/workflows/      # 자동 배포
-├── run-without-api-key.sh  # 사용자 실행 스크립트
-├── run-without-api-key.ps1 # Windows 실행 스크립트
-└── Dockerfile              # Docker 이미지
+├── src/hrfco_service/     # 핵심 서비스 코드
+├── mcp_server.py          # MCP 서버 메인
+├── test_api.py           # API 테스트
+├── Dockerfile            # Docker 설정
+├── requirements.txt      # Python 의존성
+└── .github/workflows/    # GitHub Actions
 ```
 
-## 🐳 Docker 실행
+## 🛠️ 개발
+
+### API 테스트
 
 ```bash
-# 가장 간단한 방법
-docker pull kwenhwang/hrfco-service:latest
-docker run -p 8080:8080 kwenhwang/hrfco-service:latest
-
-# 또는 Docker Compose
-docker-compose up -d
+python test_api.py
 ```
 
-## 🚀 Glama MCP 서버 배포
+### MCP 서버 테스트
 
-### 자동 배포 스크립트 사용
-
-#### Linux/Mac
 ```bash
-# API 키와 함께 배포
-./scripts/deploy-to-glama.sh YOUR_API_KEY
-
-# 실행 권한 부여 (필요시)
-chmod +x scripts/deploy-to-glama.sh
+python test_mcp_direct.py
 ```
 
-#### Windows PowerShell
-```powershell
-# API 키와 함께 배포
-.\scripts\deploy-to-glama.ps1 YOUR_API_KEY
+### Docker 빌드
+
+```bash
+docker build -t hrfco-mcp-server .
+docker run --rm hrfco-mcp-server python test_api.py
 ```
+
+## 🚀 배포
+
+### GitHub Actions 자동 배포
+
+1. **GitHub Secrets 설정**
+   - `HRFCO_API_KEY`: API 키
+   - `DOCKER_USERNAME`: Docker Hub 사용자명
+   - `DOCKER_PASSWORD`: Docker Hub 액세스 토큰
+   - `GLAMA_HOST`: 배포 서버 호스트
+   - `GLAMA_USERNAME`: SSH 사용자명
+   - `GLAMA_SSH_KEY`: SSH 개인키
+
+2. **자동 배포**
+   - main 브랜치에 push하면 자동 실행
+   - Docker 이미지 빌드 및 푸시
+   - Glama 서버에 자동 배포
 
 ### 수동 배포
 
-#### 1. Docker 이미지 빌드
 ```bash
-# API 키와 함께 이미지 빌드
-docker build --build-arg HRFCO_API_KEY=YOUR_API_KEY -t hrfco-service:latest .
+# Docker Hub에 푸시
+docker build -t your-username/hrfco-mcp-server .
+docker push your-username/hrfco-mcp-server
+
+# Glama에 배포
+ssh user@glama-server
+cd /opt/hrfco-service
+docker-compose pull
+docker-compose up -d
 ```
 
-#### 2. Glama 설정 파일 생성
-```bash
-# Linux/Mac
-mkdir -p ~/.config/glama
+## 📊 API 응답 예시
 
-# Windows
-mkdir -p "$env:APPDATA\glama"
-```
-
-`~/.config/glama/mcp-servers.json` (Linux/Mac) 또는 `%APPDATA%\glama\mcp-servers.json` (Windows) 파일 생성:
-
+### 수위 데이터
 ```json
 {
-  "mcpServers": {
-    "hrfco-service": {
-      "command": "docker",
-      "args": [
-        "run",
-        "--rm",
-        "-p", "8000:8000",
-        "-e", "HRFCO_API_KEY=YOUR_API_KEY",
-        "--name", "hrfco-mcp-server",
-        "hrfco-service:latest"
-      ]
-    }
-  }
+  "wlobscd": "2201614",
+  "ymdhm": "202507161450",
+  "wl": "0.64",
+  "fw": "2.42"
 }
 ```
 
-#### 3. Kubernetes 배포 (선택사항)
-```bash
-# Secret 생성
-echo -n "YOUR_API_KEY" | base64
-
-# 배포
-kubectl apply -f glama-deployment.yaml
+### 댐 데이터
+```json
+{
+  "dmobscd": "1001210",
+  "ymdhm": "2025071613",
+  "swl": "669.480",
+  "inf": "0.380",
+  "sfw": "6.790"
+}
 ```
 
-### 배포 확인
-
-```bash
-# 컨테이너 상태 확인
-docker ps | grep hrfco-mcp-server
-
-# 헬스체크
-curl http://localhost:8000/health
-
-# 로그 확인
-docker logs hrfco-mcp-server
+### 강수량 데이터
+```json
+{
+  "rfobscd": "10014010",
+  "ymdhm": "20250715",
+  "rf": 22.0
+}
 ```
 
-### Glama에서 사용
+## 🔍 문제 해결
 
-1. **Glama 웹사이트**: https://glama.ai/mcp/servers/@kwenhwang/hrfco-service
-2. **서버 활성화** 후 바로 질문:
-   - "부산 지역 수위 상황 알려줘"
-   - "영천댐의 방류량이 얼마나 되나요?"
-   - "최근 24시간 강수량 현황은?"
+### API 키 인증 실패
+- API 키가 올바르게 설정되었는지 확인
+- API 키가 유효한지 확인
 
-자세한 배포 가이드는 [GLAMA_SETUP.md](GLAMA_SETUP.md)를 참조하세요.
+### MCP 서버 연결 실패
+- Claude Desktop 설정 파일 경로 확인
+- MCP 서버가 실행 중인지 확인
 
-## 🔧 개발자용 (API 키 필요)
+### Docker 빌드 실패
+- Dockerfile 문법 확인
+- 빌드 컨텍스트 확인
 
-### 로컬 개발 환경
-```bash
-# 가상환경 생성
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
+## 📝 라이선스
 
-# 의존성 설치
-pip install -r requirements.txt
-
-# 개발 서버 실행
-python -m src.hrfco_service.http_server
-```
-
-### 테스트
-```bash
-# 전체 테스트
-pytest
-
-# AI 챗봇 시나리오 테스트
-python test_mcp_scenarios.py
-```
-
-## 🌐 배포
-
-### GitHub Actions 자동 배포
-- main 브랜치에 push하면 자동으로 배포
-- API 키는 GitHub Secrets로 안전하게 관리
-- Docker Hub에 자동으로 이미지 업로드
-
-### 클라우드 배포
-- Railway, Heroku, AWS 등 지원
-- 환경변수로 API 키 설정
-
-## 📖 사용자 가이드
-
-자세한 사용법은 [USER_GUIDE.md](USER_GUIDE.md)를 참조하세요.
+MIT License
 
 ## 🤝 기여
 
@@ -412,14 +201,11 @@ python test_mcp_scenarios.py
 4. Push to the branch
 5. Create a Pull Request
 
-## 📞 문의
+## 📞 지원
 
-프로젝트 관련 문의사항은 이슈를 통해 연락주세요.
-
-## 📄 라이센스
-
-MIT License
+- GitHub Issues: [문제 보고](https://github.com/kwenhwang/hrfco-service/issues)
+- Email: kwenhwang@gmail.com
 
 ---
 
-**🎉 이제 누구나 API 키 발급 없이 바로 수문 데이터를 사용할 수 있습니다!**
+**🎉 HRFCO MCP Server가 성공적으로 설정되었습니다! Claude Desktop에서 한국수자원공사 데이터를 활용해보세요!**

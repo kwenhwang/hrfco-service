@@ -15,14 +15,48 @@ from typing import Dict, Any, List, Optional
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root / "src"))
 
-from hrfco_service.api import fetch_observatory_info, fetch_observatory_data
-from hrfco_service.config import Config
+# 직접 API 함수들을 정의하여 의존성 제거
+class HRFCOAPI:
+    """HRFCO API 클라이언트"""
+    
+    BASE_URL = "https://www.hrfco.go.kr/api"
+    
+    def __init__(self):
+        self.session = httpx.AsyncClient(timeout=30.0)
+    
+    async def fetch_observatory_info(self, hydro_type: str) -> Dict[str, Any]:
+        """관측소 정보 조회"""
+        url = f"{self.BASE_URL}/observatory/info"
+        params = {"hydro_type": hydro_type}
+        
+        try:
+            response = await self.session.get(url, params=params)
+            response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            return {"error": str(e), "content": []}
+    
+    async def fetch_observatory_data(self, hydro_type: str, time_type: str, obs_code: str) -> Dict[str, Any]:
+        """수문 데이터 조회"""
+        url = f"{self.BASE_URL}/observatory/data"
+        params = {
+            "hydro_type": hydro_type,
+            "time_type": time_type,
+            "obs_code": obs_code
+        }
+        
+        try:
+            response = await self.session.get(url, params=params)
+            response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            return {"error": str(e), "content": []}
 
 class HRFCOMCPServer:
     """HRFCO API를 MCP 프로토콜로 래핑하는 서버"""
     
     def __init__(self):
-        self.config = Config()
+        self.api_client = HRFCOAPI()
         self.tools = [
             {
                 "name": "get_observatory_info",
@@ -167,7 +201,7 @@ class HRFCOMCPServer:
         if not hydro_type:
             raise ValueError("hydro_type is required")
         
-        result = await fetch_observatory_info(hydro_type)
+        result = await self.api_client.fetch_observatory_info(hydro_type)
         return {
             "type": "observatory_info",
             "hydro_type": hydro_type,
@@ -183,7 +217,7 @@ class HRFCOMCPServer:
         if not all([hydro_type, time_type, obs_code]):
             raise ValueError("hydro_type, time_type, and obs_code are required")
         
-        result = await fetch_observatory_data(str(hydro_type), str(time_type), str(obs_code))
+        result = await self.api_client.fetch_observatory_data(str(hydro_type), str(time_type), str(obs_code))
         return {
             "type": "hydro_data",
             "hydro_type": hydro_type,
@@ -204,19 +238,15 @@ class HRFCOMCPServer:
         """서버 설정 확인"""
         return {
             "type": "server_config",
-            "config": {
-                "api_base_url": self.config.BASE_URL,
-                "cache_ttl_seconds": self.config.CACHE_TTL_SECONDS,
-                "max_concurrent_requests": self.config.MAX_CONCURRENT_REQUESTS,
-                "request_timeout": self.config.REQUEST_TIMEOUT,
-                "log_level": self.config.LOG_LEVEL
-            }
+            "api_base_url": self.api_client.BASE_URL,
+            "available_hydro_types": ["waterlevel", "rainfall", "dam", "bo"],
+            "available_time_types": ["10M", "1H", "1D"]
         }
     
     async def run(self):
         """MCP 서버를 실행합니다"""
         print("🚀 HRFCO MCP Server 시작 중...", file=sys.stderr)
-        print(f"📡 API URL: {self.config.BASE_URL}", file=sys.stderr)
+        print(f"📡 API URL: {self.api_client.BASE_URL}", file=sys.stderr)
         print("✅ MCP 프로토콜 준비 완료", file=sys.stderr)
         
         while True:

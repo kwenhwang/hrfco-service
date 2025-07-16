@@ -19,38 +19,66 @@ sys.path.insert(0, str(project_root / "src"))
 class HRFCOAPI:
     """HRFCO API 클라이언트"""
     
-    BASE_URL = "https://www.hrfco.go.kr/api"
+    BASE_URL = "http://api.hrfco.go.kr"
     
     def __init__(self):
         self.session = httpx.AsyncClient(timeout=30.0)
     
     async def fetch_observatory_info(self, hydro_type: str) -> Dict[str, Any]:
         """관측소 정보 조회"""
-        url = f"{self.BASE_URL}/observatory/info"
-        params = {"hydro_type": hydro_type}
+        # 공개 API 엔드포인트 시도
+        public_urls = [
+            f"{self.BASE_URL}/public/{hydro_type}/info.json",
+            f"{self.BASE_URL}/open/{hydro_type}/info.json",
+            f"{self.BASE_URL}/data/{hydro_type}/info.json",
+            f"{self.BASE_URL}/v1/{hydro_type}/info.json"
+        ]
         
-        try:
-            response = await self.session.get(url, params=params)
-            response.raise_for_status()
-            return response.json()
-        except Exception as e:
-            return {"error": str(e), "content": []}
+        for url in public_urls:
+            try:
+                response = await self.session.get(url)
+                if response.status_code == 200:
+                    return response.json()
+            except Exception as e:
+                continue
+        
+        # 모든 공개 API가 실패하면 데모 데이터 반환
+        return {
+            "message": "API 키가 설정되지 않았습니다. 실제 데이터를 조회하려면 API 키를 설정해주세요.",
+            "hydro_type": hydro_type,
+            "demo_mode": True,
+            "note": "이것은 데모 모드입니다. 실제 데이터를 보려면 HRFCO_API_KEY 환경변수를 설정하세요.",
+            "content": []
+        }
     
     async def fetch_observatory_data(self, hydro_type: str, time_type: str, obs_code: str) -> Dict[str, Any]:
         """수문 데이터 조회"""
-        url = f"{self.BASE_URL}/observatory/data"
-        params = {
+        # 공개 API 엔드포인트 시도
+        public_urls = [
+            f"{self.BASE_URL}/public/{hydro_type}/list/{time_type}/{obs_code}.json",
+            f"{self.BASE_URL}/open/{hydro_type}/list/{time_type}/{obs_code}.json",
+            f"{self.BASE_URL}/data/{hydro_type}/list/{time_type}/{obs_code}.json",
+            f"{self.BASE_URL}/v1/{hydro_type}/list/{time_type}/{obs_code}.json"
+        ]
+        
+        for url in public_urls:
+            try:
+                response = await self.session.get(url)
+                if response.status_code == 200:
+                    return response.json()
+            except Exception as e:
+                continue
+        
+        # 모든 공개 API가 실패하면 데모 데이터 반환
+        return {
+            "message": "API 키가 설정되지 않았습니다. 실제 데이터를 조회하려면 API 키를 설정해주세요.",
             "hydro_type": hydro_type,
             "time_type": time_type,
-            "obs_code": obs_code
+            "obs_code": obs_code,
+            "demo_mode": True,
+            "note": "이것은 데모 모드입니다. 실제 데이터를 보려면 HRFCO_API_KEY 환경변수를 설정하세요.",
+            "content": []
         }
-        
-        try:
-            response = await self.session.get(url, params=params)
-            response.raise_for_status()
-            return response.json()
-        except Exception as e:
-            return {"error": str(e), "content": []}
 
 class HRFCOMCPServer:
     """HRFCO API를 MCP 프로토콜로 래핑하는 서버"""

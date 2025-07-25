@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+        "hrfco-service": {
+            "command": "python",
+            "args": [
+                "mcp_server.py"
+            ],
+            "env": {
+                "HRFCO_API_KEY": "FE18B23B-A81B-4246-9674-E8D641902A42"
+            }
+        }
+    }
+}

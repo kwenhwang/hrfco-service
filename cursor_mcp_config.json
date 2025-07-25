@@ -1,0 +1,14 @@
+{
+    "mcpServers": {
+        "hrfco-service": {
+            "command": "python",
+            "args": [
+                "mcp_server.py"
+            ],
+            "env": {
+                "HRFCO_API_KEY": "실제_API_키_입력_필요"
+            },
+            "description": "한국수자원공사 홍수통제소 API MCP 서버 - 수위, 강우량, 댐 데이터 제공"
+        }
+    }
+}

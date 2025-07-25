@@ -6,6 +6,7 @@ import asyncio
 import httpx
 import logging
 from typing import Dict, List, Optional, Any
+from datetime import datetime, timedelta
 
 from .config import Config
 from .cache import CacheManager
@@ -100,48 +101,57 @@ class HRFCOAPIClient:
         """캐시를 사용하여 API 요청을 수행합니다."""
         try:
             # 캐시에서 먼저 확인
-            cached_data = self.cache_manager.get(url)
-            if cached_data is not None:
+            cached_data = await self.cache_manager.get(url)
+            if cached_data:
+                logger.debug(f"Cache hit for URL: {url}")
                 return cached_data
             
-            # API 호출
+            # API 요청 수행
             async with self.semaphore:
-                logger.info(f"Fetching URL: {url[:100]}...")
-                async with httpx.AsyncClient(timeout=self.timeout, verify=False) as client:
-                    try:
-                        logger.debug(f"Calling API: {url}")
-                        response = await client.get(url)
-                        response.raise_for_status()
-                        data = response.json()
-                        
-                        # 성공 응답만 캐시
-                        if isinstance(data, dict) and "content" in data:
-                            self.cache_manager.set(url, data)
-                        elif isinstance(data, list):
-                            # 리스트 응답 래핑 및 캐시
-                            wrapper_data = {"content": data}
-                            self.cache_manager.set(url, wrapper_data)
-                            data = wrapper_data
-                        else:
-                            # content 없는 성공 응답 등은 캐시 안 함
-                            logger.warning(f"API response for {url[:100]}... lacks 'content'. Not caching.")
-                        
-                        return data
-                    except httpx.HTTPStatusError as e:
-                        error_info = handle_api_error(e, f"fetching {url[:100]}...")
-                        raise APIError(error_info["message"], e.response.status_code, error_info) from e
-                    except (httpx.RequestError, asyncio.TimeoutError) as e:
-                        error_info = handle_api_error(e, f"fetching {url[:100]}...")
-                        raise APIError(error_info["message"], response=error_info) from e
-                    except Exception as e:
-                        error_info = handle_api_error(e, f"fetching {url[:100]}...")
-                        raise APIError(error_info["message"], response=error_info) from e
-        except APIError:
-            raise
+                async with httpx.AsyncClient(timeout=self.timeout) as client:
+                    logger.info(f"Making API request: {url}")
+                    response = await client.get(url)
+                    response.raise_for_status()
+                    data = response.json()
+                    
+                    # 캐시에 저장
+                    await self.cache_manager.set(url, data)
+                    return data
+                    
+        except httpx.HTTPStatusError as e:
+            logger.error(f"HTTP error for URL {url}: {e.response.status_code}")
+            raise APIError(f"HTTP {e.response.status_code}: {e.response.text}", status_code=e.response.status_code)
+        except httpx.RequestError as e:
+            logger.error(f"Request error for URL {url}: {e}")
+            raise APIError(f"Request failed: {str(e)}")
         except Exception as e:
-            logger.exception(f"Unexpected error in _fetch_with_cache for {url[:100]}...: {str(e)}")
-            raise APIError(f"Internal error during fetch: {str(e)}") from e
-    
+            logger.error(f"Unexpected error for URL {url}: {e}")
+            raise APIError(f"Unexpected error: {str(e)}")
+
+    def _calculate_date_range(self, time_type: str, hours: int = 48) -> tuple[str, str]:
+        """시간 단위에 따른 날짜 범위를 계산합니다."""
+        now = datetime.now()
+        
+        # 시간 단위에 따른 시작 시간 계산
+        if time_type == "10M":
+            # 10분 단위: 최근 N시간
+            start_time = now - timedelta(hours=hours)
+        elif time_type == "1H":
+            # 1시간 단위: 최근 N시간
+            start_time = now - timedelta(hours=hours)
+        elif time_type == "1D":
+            # 1일 단위: 최근 N일
+            start_time = now - timedelta(days=hours//24)
+        else:
+            # 기본값: 최근 48시간
+            start_time = now - timedelta(hours=48)
+        
+        # 날짜 형식 변환 (YYYYMMDDHHmm)
+        start_str = start_time.strftime("%Y%m%d%H%M")
+        end_str = now.strftime("%Y%m%d%H%M")
+        
+        return start_str, end_str
+
     async def fetch_data(
         self,
         hydro_type: str,
@@ -150,7 +160,8 @@ class HRFCOAPIClient:
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
         time_type: str = "1H",
-        fields: Optional[List[str]] = None
+        fields: Optional[List[str]] = None,
+        hours: int = 48
     ) -> Dict:
         """HRFCO API를 호출하여 데이터를 가져옵니다.
         
@@ -160,8 +171,9 @@ class HRFCOAPIClient:
             obs_code: 관측소 코드
             start_date: 시작 날짜 (YYYYMMDDHHmm 형식)
             end_date: 종료 날짜 (YYYYMMDDHHmm 형식)
-            time_type: 시간 단위 (1H, 1D, 1M)
+            time_type: 시간 단위 (1H, 1D, 10M)
             fields: 반환할 필드 목록
+            hours: 조회할 시간 범위 (시간 단위)
             
         Returns:
             API 응답 데이터
@@ -170,6 +182,22 @@ class HRFCOAPIClient:
             # 하천 유형 검증
             if hydro_type not in HYDRO_TYPES:
                 raise ValidationError(f"지원되지 않는 하천 유형입니다: {hydro_type}")
+            
+            # API 키가 없으면 데모 데이터 반환
+            if not Config.API_KEY or Config.API_KEY == "your-api-key-here":
+                return {
+                    "message": "API 키가 설정되지 않았습니다. 실제 데이터를 조회하려면 API 키를 설정해주세요.",
+                    "hydro_type": hydro_type,
+                    "time_type": time_type,
+                    "obs_code": obs_code,
+                    "demo_mode": True,
+                    "note": "이것은 데모 모드입니다. 실제 데이터를 보려면 HRFCO_API_KEY 환경변수를 설정하세요."
+                }
+            
+            # 날짜 범위가 지정되지 않은 경우 자동 계산
+            if not start_date or not end_date:
+                start_date, end_date = self._calculate_date_range(time_type, hours)
+                logger.info(f"Auto-calculated date range: {start_date} to {end_date}")
             
             # API URL 구성
             url_parts = [Config.BASE_URL, hydro_type, data_type]
@@ -183,14 +211,10 @@ class HRFCOAPIClient:
             params = {
                 "API_KEY": Config.API_KEY,
                 "hydro_type": hydro_type,
-                "time_type": time_type
+                "time_type": time_type,
+                "start_date": start_date,
+                "end_date": end_date
             }
-            
-            # 날짜 범위 추가
-            if start_date:
-                params["start_date"] = start_date
-            if end_date:
-                params["end_date"] = end_date
             
             # URL에 파라미터 추가
             query_string = "&".join(f"{k}={v}" for k, v in params.items())
@@ -220,7 +244,8 @@ class HRFCOAPIClient:
         obs_code: str,
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
-        time_type: str = "1H"
+        time_type: str = "1H",
+        hours: int = 48
     ) -> Dict:
         """특정 관측소의 데이터를 가져옵니다.
         
@@ -230,6 +255,7 @@ class HRFCOAPIClient:
             start_date: 시작 날짜
             end_date: 종료 날짜
             time_type: 시간 단위
+            hours: 조회할 시간 범위 (시간 단위)
             
         Returns:
             관측소 데이터
@@ -240,5 +266,6 @@ class HRFCOAPIClient:
             obs_code=obs_code,
             start_date=start_date,
             end_date=end_date,
-            time_type=time_type
+            time_type=time_type,
+            hours=hours
         ) 

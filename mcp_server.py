@@ -9,9 +9,13 @@ import json
 import sys
 import httpx
 import math
+import logging
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple
 import os
+
+# 로거 설정
+logger = logging.getLogger(__name__)
 
 # 프로젝트 루트를 Python 경로에 추가
 project_root = Path(__file__).parent
@@ -20,6 +24,7 @@ sys.path.insert(0, str(project_root / "src"))
 from hrfco_service.location_mapping import get_location_coordinates, LOCATION_MAPPING
 from hrfco_service.wamis_api import WAMISAPIClient, BASIN_CODES
 from hrfco_service.ontology_manager import IntegratedOntologyManager
+from hrfco_service.config import Config
 
 # 프로젝트 루트를 Python 경로에 추가
 project_root = Path(__file__).parent
@@ -30,7 +35,7 @@ class HRFCOAPI:
     """HRFCO API 클라이언트"""
     
     BASE_URL = "https://api.hrfco.go.kr"
-    SERVICE_KEY = os.environ.get("HRFCO_API_KEY", "your-api-key-here")
+    SERVICE_KEY = Config.get_api_key("hrfco")
     
     def __init__(self):
         self.session = httpx.AsyncClient(timeout=10)
@@ -197,6 +202,217 @@ class DistanceCalculator:
         except:
             return None
 
+class WeatherAPIClient:
+    """기상청 API 클라이언트"""
+    
+    BASE_URL = "http://apis.data.go.kr/1360000/AsosHourlyInfoService"
+    AWS_BASE_URL = "http://apis.data.go.kr/1360000/AwsHourlyInfoService"
+    
+    def __init__(self):
+        self.api_key = Config.get_api_key("weather")
+        self.session = httpx.AsyncClient(timeout=30)
+    
+    async def get_rainfall_data_for_date(self, station_code: str, date: str) -> Dict[str, Any]:
+        """특정 날짜의 강수량 데이터 조회"""
+        try:
+            url = f"{self.BASE_URL}/getAsosHourlyInfo"
+            params = {
+                "serviceKey": self.api_key,
+                "dataType": "JSON",
+                "numOfRows": 24,
+                "pageNo": 1,
+                "stnId": station_code,
+                "tmFc": date
+            }
+            
+            response = await self.session.get(url, params=params)
+            response.raise_for_status()
+            data = response.json()
+            
+            # 강수량 데이터 추출
+            rainfall_data = []
+            total_rainfall = 0.0
+            
+            if "response" in data and "body" in data["response"]:
+                items = data["response"]["body"].get("items", {}).get("item", [])
+                
+                if not isinstance(items, list):
+                    items = [items]
+                
+                for item in items:
+                    if isinstance(item, dict):
+                        hour = item.get("tm", "")[-2:]  # 시간 추출
+                        rainfall = item.get("rn", "0")  # 강수량
+                        
+                        try:
+                            rainfall_float = float(rainfall) if rainfall != "-999" else 0.0
+                            total_rainfall += rainfall_float
+                            
+                            rainfall_data.append({
+                                "hour": hour,
+                                "rainfall": rainfall_float,
+                                "temperature": item.get("ta", ""),
+                                "humidity": item.get("hm", "")
+                            })
+                        except (ValueError, TypeError):
+                            continue
+            
+            return {
+                "station_code": station_code,
+                "date": date,
+                "total_rainfall": total_rainfall,
+                "hourly_data": rainfall_data,
+                "max_hourly_rainfall": max([d["rainfall"] for d in rainfall_data]) if rainfall_data else 0.0
+            }
+            
+        except Exception as e:
+            logger.error(f"강수량 데이터 조회 오류: {str(e)}")
+            return {"error": str(e)}
+    
+    async def get_aws_data_for_date(self, station_code: str, date: str) -> Dict[str, Any]:
+        """특정 날짜의 AWS(자동기상관측소) 데이터 조회"""
+        try:
+            url = f"{self.AWS_BASE_URL}/getAwsHourlyInfo"
+            params = {
+                "serviceKey": self.api_key,
+                "dataType": "JSON",
+                "numOfRows": 24,
+                "pageNo": 1,
+                "stnId": station_code,
+                "tmFc": date
+            }
+            
+            response = await self.session.get(url, params=params)
+            response.raise_for_status()
+            data = response.json()
+            
+            # AWS 데이터 추출
+            aws_data = []
+            total_rainfall = 0.0
+            max_temperature = -999
+            min_temperature = 999
+            avg_humidity = 0.0
+            humidity_count = 0
+            
+            if "response" in data and "body" in data["response"]:
+                items = data["response"]["body"].get("items", {}).get("item", [])
+                
+                if not isinstance(items, list):
+                    items = [items]
+                
+                for item in items:
+                    if isinstance(item, dict):
+                        hour = item.get("tm", "")[-2:]  # 시간 추출
+                        rainfall = item.get("rn", "0")  # 강수량
+                        temperature = item.get("ta", "")  # 기온
+                        humidity = item.get("hm", "")  # 습도
+                        wind_speed = item.get("ws", "")  # 풍속
+                        wind_direction = item.get("wd", "")  # 풍향
+                        pressure = item.get("pa", "")  # 기압
+                        
+                        try:
+                            rainfall_float = float(rainfall) if rainfall != "-999" else 0.0
+                            total_rainfall += rainfall_float
+                            
+                            temp_float = float(temperature) if temperature != "-999" else None
+                            if temp_float is not None:
+                                max_temperature = max(max_temperature, temp_float)
+                                min_temperature = min(min_temperature, temp_float)
+                            
+                            humidity_float = float(humidity) if humidity != "-999" else None
+                            if humidity_float is not None:
+                                avg_humidity += humidity_float
+                                humidity_count += 1
+                            
+                            aws_data.append({
+                                "hour": hour,
+                                "rainfall": rainfall_float,
+                                "temperature": temp_float,
+                                "humidity": humidity_float,
+                                "wind_speed": float(wind_speed) if wind_speed != "-999" else None,
+                                "wind_direction": wind_direction if wind_direction != "-999" else None,
+                                "pressure": float(pressure) if pressure != "-999" else None
+                            })
+                        except (ValueError, TypeError):
+                            continue
+            
+            avg_humidity = avg_humidity / humidity_count if humidity_count > 0 else None
+            
+            return {
+                "station_code": station_code,
+                "date": date,
+                "total_rainfall": total_rainfall,
+                "max_temperature": max_temperature if max_temperature != -999 else None,
+                "min_temperature": min_temperature if min_temperature != 999 else None,
+                "avg_humidity": avg_humidity,
+                "hourly_data": aws_data,
+                "max_hourly_rainfall": max([d["rainfall"] for d in aws_data]) if aws_data else 0.0
+            }
+            
+        except Exception as e:
+            logger.error(f"AWS 데이터 조회 오류: {str(e)}")
+            return {"error": str(e)}
+    
+    async def search_aws_stations_by_region(self, region_name: str) -> List[Dict[str, Any]]:
+        """지역명으로 AWS 관측소 검색"""
+        # AWS 관측소 정보 (실제 API로 확장 가능)
+        aws_stations = {
+            "무안": [
+                {"code": "156", "name": "무안AWS", "lat": 34.99, "lon": 126.47, "type": "AWS"},
+                {"code": "157", "name": "목포AWS", "lat": 34.81, "lon": 126.38, "type": "AWS"},
+                {"code": "158", "name": "영광AWS", "lat": 35.28, "lon": 126.51, "type": "AWS"}
+            ],
+            "전남": [
+                {"code": "156", "name": "무안AWS", "lat": 34.99, "lon": 126.47, "type": "AWS"},
+                {"code": "157", "name": "목포AWS", "lat": 34.81, "lon": 126.38, "type": "AWS"},
+                {"code": "158", "name": "영광AWS", "lat": 35.28, "lon": 126.51, "type": "AWS"},
+                {"code": "159", "name": "순천AWS", "lat": 34.95, "lon": 127.48, "type": "AWS"},
+                {"code": "160", "name": "여수AWS", "lat": 34.74, "lon": 127.74, "type": "AWS"}
+            ],
+            "전국": [
+                {"code": "108", "name": "서울AWS", "lat": 37.5714, "lon": 126.9658, "type": "AWS"},
+                {"code": "159", "name": "부산AWS", "lat": 35.1047, "lon": 129.0320, "type": "AWS"},
+                {"code": "143", "name": "대구AWS", "lat": 35.8850, "lon": 128.6219, "type": "AWS"},
+                {"code": "156", "name": "무안AWS", "lat": 34.99, "lon": 126.47, "type": "AWS"}
+            ]
+        }
+        
+        region_lower = region_name.lower()
+        results = []
+        
+        for region, station_list in aws_stations.items():
+            if region_lower in region.lower() or region_name in region:
+                results.extend(station_list)
+        
+        return results
+    
+    async def search_stations_by_region(self, region_name: str) -> List[Dict[str, Any]]:
+        """지역명으로 관측소 검색"""
+        # 주요 관측소 정보
+        stations = {
+            "무안": [
+                {"code": "156", "name": "무안", "lat": 34.99, "lon": 126.47},
+                {"code": "157", "name": "목포", "lat": 34.81, "lon": 126.38},
+                {"code": "158", "name": "영광", "lat": 35.28, "lon": 126.51}
+            ],
+            "전남": [
+                {"code": "156", "name": "무안", "lat": 34.99, "lon": 126.47},
+                {"code": "157", "name": "목포", "lat": 34.81, "lon": 126.38},
+                {"code": "158", "name": "영광", "lat": 35.28, "lon": 126.51},
+                {"code": "159", "name": "순천", "lat": 34.95, "lon": 127.48},
+                {"code": "160", "name": "여수", "lat": 34.74, "lon": 127.74}
+            ]
+        }
+        
+        region_lower = region_name.lower()
+        results = []
+        
+        for region, station_list in stations.items():
+            if region_lower in region.lower() or region_name in region:
+                results.extend(station_list)
+        
+        return results
+
 class HRFCOMCPServer:
     """HRFCO API를 MCP 프로토콜로 래핑하는 서버"""
     
@@ -205,6 +421,7 @@ class HRFCOMCPServer:
         self.geocoding_client = GeocodingAPI()
         self.distance_calculator = DistanceCalculator()
         self.wamis_client = WAMISAPIClient()
+        self.weather_client = WeatherAPIClient()
         self.ontology_manager = IntegratedOntologyManager()
         self.tools = [
             {
@@ -300,6 +517,41 @@ class HRFCOMCPServer:
                 "inputSchema": {
                     "type": "object",
                     "properties": {}
+                }
+            },
+            {
+                "name": "analyze_dam_discharge",
+                "description": "댐의 방류량을 분석합니다. 지정된 기간 동안의 방류량 통계, 트렌드, 운영 상태를 제공합니다.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "dam_name": {
+                            "type": "string",
+                            "description": "댐 이름 (코드가 없을 경우 사용)"
+                        },
+                        "dam_code": {
+                            "type": "string",
+                            "description": "댐 코드 (이름보다 우선)"
+                        },
+                        "period_months": {
+                            "type": "integer",
+                            "description": "분석 기간 (개월, 기본값: 6)"
+                        }
+                    },
+                    "required": []
+                }
+            },
+            {
+                "name": "get_available_dams",
+                "description": "사용 가능한 댐 목록을 조회합니다. 댐 이름, 코드, 주소, 관리기관 정보를 제공합니다.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "search_keyword": {
+                            "type": "string",
+                            "description": "검색 키워드 (선택사항, 댐 이름이나 지역명으로 필터링)"
+                        }
+                    }
                 }
             },
             {
@@ -566,7 +818,7 @@ class HRFCOMCPServer:
             },
             {
                 "name": "get_basin_comprehensive_summary",
-                "description": "통합 온톨로지를 사용하여 특정 수계의 종합 요약 정보를 제공합니다. 수계 내 모든 관측소의 분포와 통계를 제공합니다.",
+                "description": "통합 온톨로지를 사용하여 수계 종합 요약",
                 "inputSchema": {
                     "type": "object",
                     "properties": {
@@ -581,10 +833,87 @@ class HRFCOMCPServer:
                         },
                         "include_stations": {
                             "type": "boolean",
-                            "description": "관측소 목록 포함 여부 (기본값: false)"
+                            "description": "관측소 목록 포함 여부 (기본값: true)"
                         }
                     },
                     "required": ["basin"]
+                }
+            },
+            {
+                "name": "get_aws_data",
+                "description": "기상청 AWS(자동기상관측소) 데이터를 조회합니다. 기온, 습도, 강수량, 풍속, 풍향, 기압 등의 상세한 기상 정보를 제공합니다.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "station_code": {
+                            "type": "string",
+                            "description": "AWS 관측소 코드"
+                        },
+                        "date": {
+                            "type": "string",
+                            "description": "조회 날짜 (YYYYMMDD 형식)"
+                        }
+                    },
+                    "required": ["station_code", "date"]
+                }
+            },
+            {
+                "name": "search_aws_stations",
+                "description": "지역별 AWS(자동기상관측소) 관측소를 검색합니다. 특정 지역의 AWS 관측소 목록과 위치 정보를 제공합니다.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "region": {
+                            "type": "string",
+                            "description": "검색할 지역명 (예: 무안, 전남, 전국)"
+                        }
+                    },
+                    "required": ["region"]
+                }
+            },
+            {
+                "name": "get_comprehensive_weather_analysis",
+                "description": "AWS 데이터와 수문 데이터를 종합적으로 분석합니다. 기상 조건과 수문 현상의 상관관계를 분석하여 종합적인 정보를 제공합니다.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "aws_station_code": {
+                            "type": "string",
+                            "description": "AWS 관측소 코드"
+                        },
+                        "hydro_station_code": {
+                            "type": "string",
+                            "description": "수문 관측소 코드"
+                        },
+                        "date": {
+                            "type": "string",
+                            "description": "분석 날짜 (YYYYMMDD 형식)"
+                        },
+                        "analysis_type": {
+                            "type": "string",
+                            "enum": ["rainfall_correlation", "temperature_impact", "comprehensive"],
+                            "description": "분석 유형 (기본값: comprehensive)"
+                        }
+                    },
+                    "required": ["aws_station_code", "hydro_station_code", "date"]
+                }
+            },
+            {
+                "name": "analyze_dam_discharge_wamis",
+                "description": "WAMIS API를 사용하여 댐의 방류량을 분석합니다. 홍수통제소 API에서 제공하지 않는 댐들도 분석 가능합니다.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "dam_code": {
+                            "type": "string",
+                            "description": "댐 코드 (예: 5002201)"
+                        },
+                        "period_months": {
+                            "type": "integer",
+                            "description": "분석 기간 (개월, 기본값: 6)"
+                        }
+                    },
+                    "required": ["dam_code"]
                 }
             }
         ]
@@ -655,6 +984,18 @@ class HRFCOMCPServer:
                     result = await self._get_water_system_analysis(arguments)
                 elif tool_name == "get_basin_comprehensive_summary":
                     result = await self._get_basin_comprehensive_summary(arguments)
+                elif tool_name == "get_aws_data":
+                    result = await self._get_aws_data(arguments)
+                elif tool_name == "search_aws_stations":
+                    result = await self._search_aws_stations(arguments)
+                elif tool_name == "get_comprehensive_weather_analysis":
+                    result = await self._get_comprehensive_weather_analysis(arguments)
+                elif tool_name == "analyze_dam_discharge":
+                    result = await self._analyze_dam_discharge_wamis(arguments)
+                elif tool_name == "get_available_dams":
+                    result = await self._get_available_dams(arguments)
+                elif tool_name == "analyze_dam_discharge_wamis":
+                    result = await self._analyze_dam_discharge_wamis(arguments)
                 else:
                     raise ValueError(f"Unknown tool: {tool_name}")
                 
@@ -711,8 +1052,14 @@ class HRFCOMCPServer:
         obs_code = arguments.get("obs_code")
         sdt = arguments.get("sdt")
         edt = arguments.get("edt")
+        
         if not all([hydro_type, time_type]):
             raise ValueError("hydro_type, time_type는 필수입니다")
+        
+        # API 키가 없으면 데모 데이터 반환
+        if not Config.get_api_key("hrfco") or Config.get_api_key("hrfco") == "your-api-key-here":
+            return self._get_demo_hydro_data(hydro_type, time_type, obs_code, sdt, edt)
+        
         result = await self.api_client.fetch_observatory_data(str(hydro_type), str(time_type), str(obs_code) if obs_code else None, str(sdt) if sdt else None, str(edt) if edt else None)
         return {
             "type": "hydro_data",
@@ -722,6 +1069,86 @@ class HRFCOMCPServer:
             "sdt": sdt,
             "edt": edt,
             "data": result
+        }
+    
+    def _get_demo_hydro_data(self, hydro_type: str, time_type: str, obs_code: str = None, sdt: str = None, edt: str = None) -> Dict[str, Any]:
+        """데모 수문 데이터 반환"""
+        import random
+        from datetime import datetime, timedelta
+        
+        # 날짜 범위 계산
+        if not sdt or not edt:
+            end_date = datetime.now()
+            if time_type == "1D":
+                start_date = end_date - timedelta(days=180)  # 6개월
+            elif time_type == "1H":
+                start_date = end_date - timedelta(hours=48)  # 48시간
+            else:
+                start_date = end_date - timedelta(hours=24)  # 24시간
+            
+            sdt = start_date.strftime("%Y%m%d%H%M")
+            edt = end_date.strftime("%Y%m%d%H%M")
+        
+        # 데모 데이터 생성
+        demo_data = []
+        current_date = datetime.strptime(sdt, "%Y%m%d%H%M")
+        end_date = datetime.strptime(edt, "%Y%m%d%H%M")
+        
+        while current_date <= end_date:
+            if hydro_type == "dam":
+                # 댐 데이터 (저수위, 유입량, 방류량)
+                data_point = {
+                    "ymdhm": current_date.strftime("%Y%m%d%H%M"),
+                    "swl": round(random.uniform(100.0, 150.0), 2),  # 저수위 (m)
+                    "inf": round(random.uniform(10.0, 100.0), 2),   # 유입량 (m³/s)
+                    "tototf": round(random.uniform(5.0, 80.0), 2),  # 총방류량 (m³/s)
+                    "esp": round(random.uniform(0.0, 10.0), 2),     # 발전방류량
+                    "ecpc": round(random.uniform(0.0, 5.0), 2),     # 생공용방류량
+                    "otf": round(random.uniform(0.0, 20.0), 2),     # 기타방류량
+                    "dmst": "정상",  # 댐상태
+                    "dmopsn": "운영중"  # 댐운영상태
+                }
+            elif hydro_type == "waterlevel":
+                # 수위 데이터
+                data_point = {
+                    "ymdhm": current_date.strftime("%Y%m%d%H%M"),
+                    "wl": round(random.uniform(1.0, 10.0), 2),  # 수위 (m)
+                    "flw": round(random.uniform(0.0, 50.0), 2)  # 유량 (m³/s)
+                }
+            elif hydro_type == "rainfall":
+                # 강수량 데이터
+                data_point = {
+                    "ymdhm": current_date.strftime("%Y%m%d%H%M"),
+                    "rf": round(random.uniform(0.0, 20.0), 1)  # 강수량 (mm)
+                }
+            else:
+                data_point = {
+                    "ymdhm": current_date.strftime("%Y%m%d%H%M"),
+                    "value": round(random.uniform(0.0, 100.0), 2)
+                }
+            
+            demo_data.append(data_point)
+            
+            # 시간 간격 조정
+            if time_type == "1D":
+                current_date += timedelta(days=1)
+            elif time_type == "1H":
+                current_date += timedelta(hours=1)
+            else:  # 10M
+                current_date += timedelta(minutes=10)
+        
+        return {
+            "type": "hydro_data",
+            "hydro_type": hydro_type,
+            "time_type": time_type,
+            "obs_code": obs_code,
+            "sdt": sdt,
+            "edt": edt,
+            "data": {
+                "content": demo_data,
+                "demo_mode": True,
+                "message": "이것은 데모 데이터입니다. 실제 데이터를 보려면 HRFCO_API_KEY 환경변수를 설정하세요."
+            }
         }
     
     async def _get_hydro_data_nearby(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
@@ -750,24 +1177,27 @@ class HRFCOMCPServer:
         
         # 수위 관측소
         waterlevel_info = await self.api_client.fetch_observatory_info("waterlevel")
-        if waterlevel_info.get("content"):
+        if waterlevel_info and waterlevel_info.get("content"):
             for obs in waterlevel_info["content"]:
-                obs["hydro_type"] = "waterlevel"
-                all_observatories.append(obs)
+                if isinstance(obs, dict):
+                    obs["hydro_type"] = "waterlevel"
+                    all_observatories.append(obs)
         
         # 강우량 관측소
         rainfall_info = await self.api_client.fetch_observatory_info("rainfall")
-        if rainfall_info.get("content"):
+        if rainfall_info and rainfall_info.get("content"):
             for obs in rainfall_info["content"]:
-                obs["hydro_type"] = "rainfall"
-                all_observatories.append(obs)
+                if isinstance(obs, dict):
+                    obs["hydro_type"] = "rainfall"
+                    all_observatories.append(obs)
         
         # 댐 관측소
         dam_info = await self.api_client.fetch_observatory_info("dam")
-        if dam_info.get("content"):
+        if dam_info and dam_info.get("content"):
             for obs in dam_info["content"]:
-                obs["hydro_type"] = "dam"
-                all_observatories.append(obs)
+                if isinstance(obs, dict):
+                    obs["hydro_type"] = "dam"
+                    all_observatories.append(obs)
         
         # 3. 반경 내 관측소 필터링
         nearby_observatories = []
@@ -808,24 +1238,33 @@ class HRFCOMCPServer:
                 
                 # 가장 가까운 관측소를 기준으로 수계 분석
                 closest_obs = nearby_observatories[0]
-                water_system_analysis = self.ontology_manager.get_water_system_analysis(closest_obs["obs_code"])
+                closest_obs_code = closest_obs.get("obs_code")
                 
-                if water_system_analysis:
-                    basin_analysis = {
-                        "closest_station": closest_obs["obs_code"],
-                        "water_system_analysis": water_system_analysis,
-                        "ontology_summary": self.ontology_manager.get_integrated_ontology_summary()
-                    }
+                if closest_obs_code:
+                    water_system_analysis = self.ontology_manager.get_water_system_analysis(closest_obs_code)
+                    
+                    if water_system_analysis:
+                        basin_analysis = {
+                            "closest_station": closest_obs_code,
+                            "water_system_analysis": water_system_analysis,
+                            "ontology_summary": self.ontology_manager.get_integrated_ontology_summary()
+                        }
             except Exception as e:
                 # 수계 분석 실패 시 기존 방식으로 진행
+                logger.error(f"수계 관계 분석 중 오류: {str(e)}")
                 pass
         
         # 5. 각 관측소의 최신 데이터 조회 (최대 5개로 제한)
         results = []
         for obs in nearby_observatories[:5]:  # 최대 5개로 제한
             obs_hydro_type = obs.get("hydro_type", hydro_type)
+            obs_code = obs.get("obs_code")
+            
+            if not obs_code:
+                continue
+                
             obs_data = await self.api_client.fetch_observatory_data(
-                obs_hydro_type, time_type, obs["obs_code"]
+                obs_hydro_type, time_type, obs_code
             )
             
             if obs_data.get("content"):
@@ -1742,12 +2181,14 @@ class HRFCOMCPServer:
             
             # 필터링된 관계 정보
             filtered_relationships = {}
+            relationships = analysis.get("relationships", {})
+            
             if include_upstream:
-                filtered_relationships["upstream"] = analysis["relationships"]["upstream"]
+                filtered_relationships["upstream"] = relationships.get("upstream", [])
             if include_downstream:
-                filtered_relationships["downstream"] = analysis["relationships"]["downstream"]
+                filtered_relationships["downstream"] = relationships.get("downstream", [])
             if include_same_basin:
-                filtered_relationships["same_basin"] = analysis["relationships"]["same_basin"]
+                filtered_relationships["same_basin"] = relationships.get("same_basin", [])
             
             return {
                 "type": "water_system_analysis",
@@ -1766,6 +2207,84 @@ class HRFCOMCPServer:
                 "error": f"수계 관계 분석 중 오류가 발생했습니다: {str(e)}",
                 "analysis_parameters": arguments
             }
+
+    async def _get_aws_data(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
+        """AWS 데이터 조회"""
+        station_code = arguments.get("station_code")
+        date = arguments.get("date")
+        
+        if not station_code or not date:
+            return {"error": "station_code와 date는 필수입니다."}
+        
+        try:
+            result = await self.weather_client.get_aws_data_for_date(station_code, date)
+            return result
+        except Exception as e:
+            return {"error": f"AWS 데이터 조회 중 오류가 발생했습니다: {str(e)}"}
+
+    async def _search_aws_stations(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
+        """AWS 관측소 검색"""
+        region = arguments.get("region", "전국")
+        
+        try:
+            stations = await self.weather_client.search_aws_stations_by_region(region)
+            return {
+                "region": region,
+                "total_stations": len(stations),
+                "stations": stations
+            }
+        except Exception as e:
+            return {"error": f"AWS 관측소 검색 중 오류가 발생했습니다: {str(e)}"}
+
+    async def _get_comprehensive_weather_analysis(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
+        """AWS와 수문 데이터 종합 분석"""
+        aws_station_code = arguments.get("aws_station_code")
+        hydro_station_code = arguments.get("hydro_station_code")
+        date = arguments.get("date")
+        analysis_type = arguments.get("analysis_type", "comprehensive")
+        
+        if not aws_station_code or not hydro_station_code or not date:
+            return {"error": "aws_station_code, hydro_station_code, date는 필수입니다."}
+        
+        try:
+            # AWS 데이터 조회
+            aws_data = await self.weather_client.get_aws_data_for_date(aws_station_code, date)
+            
+            # 수문 데이터 조회 (강수량)
+            hydro_data = await self.api_client.fetch_observatory_data(
+                hydro_type="rainfall",
+                time_type="1H",
+                obs_code=hydro_station_code,
+                hours=24
+            )
+            
+            # 종합 분석
+            analysis_result = {
+                "aws_station_code": aws_station_code,
+                "hydro_station_code": hydro_station_code,
+                "date": date,
+                "analysis_type": analysis_type,
+                "aws_data": aws_data,
+                "hydro_data": hydro_data,
+                "correlation_analysis": {}
+            }
+            
+            # 상관관계 분석
+            if aws_data.get("hourly_data") and hydro_data.get("content"):
+                aws_rainfall = sum([d.get("rainfall", 0) for d in aws_data.get("hourly_data", [])])
+                hydro_rainfall = sum([float(d.get("rf", 0)) for d in hydro_data.get("content", [])])
+                
+                analysis_result["correlation_analysis"] = {
+                    "aws_total_rainfall": aws_rainfall,
+                    "hydro_total_rainfall": hydro_rainfall,
+                    "rainfall_difference": abs(aws_rainfall - hydro_rainfall),
+                    "correlation_level": "높음" if abs(aws_rainfall - hydro_rainfall) < 5 else "보통" if abs(aws_rainfall - hydro_rainfall) < 10 else "낮음"
+                }
+            
+            return analysis_result
+            
+        except Exception as e:
+            return {"error": f"종합 기상 분석 중 오류가 발생했습니다: {str(e)}"}
 
     async def _get_basin_comprehensive_summary(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
         """통합 온톨로지를 사용하여 수계 종합 요약"""
@@ -1805,6 +2324,311 @@ class HRFCOMCPServer:
                 "error": f"수계 종합 요약 중 오류가 발생했습니다: {str(e)}",
                 "summary_parameters": arguments
             }
+
+    async def _analyze_dam_discharge(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
+        """댐 방류량 분석"""
+        dam_name = arguments.get("dam_name")
+        period_months = arguments.get("period_months", 6)
+        
+        if not dam_name:
+            raise ValueError("dam_name은 필수입니다")
+        
+        # 댐 정보 조회하여 코드 찾기
+        dam_info = await self.api_client.fetch_observatory_info("dam")
+        dam_code = None
+        
+        if dam_info and "content" in dam_info:
+            for dam in dam_info["content"]:
+                if isinstance(dam, dict) and dam.get("obsnm") == dam_name:
+                    dam_code = dam.get("dmobscd")
+                    break
+        
+        if not dam_code:
+            # 사용 가능한 댐 목록 조회
+            available_dams = await self._get_available_dams({})
+            return {
+                "type": "error",
+                "message": f"'{dam_name}' 댐을 찾을 수 없습니다. 사용 가능한 댐 목록을 확인해주세요.",
+                "available_dams": available_dams.get("dams", []) if available_dams["type"] == "available_dams" else []
+            }
+        
+        # 날짜 범위 계산 (6개월)
+        from datetime import datetime, timedelta
+        end_date = datetime.now()
+        start_date = end_date - timedelta(days=period_months * 30)
+        
+        sdt = start_date.strftime("%Y%m%d%H%M")
+        edt = end_date.strftime("%Y%m%d%H%M")
+        
+        # 댐 데이터 조회
+        dam_data = await self._get_hydro_data({
+            "hydro_type": "dam",
+            "time_type": "1D",
+            "obs_code": dam_code,
+            "sdt": sdt,
+            "edt": edt
+        })
+        
+        # 데이터 분석
+        if "data" in dam_data and "content" in dam_data["data"]:
+            content = dam_data["data"]["content"]
+            
+            if content:
+                # 방류량 데이터 추출
+                discharge_data = []
+                for item in content:
+                    if "tototf" in item and item["tototf"] is not None:
+                        discharge_data.append({
+                            "date": item["ymdhm"],
+                            "discharge": float(item["tototf"]),
+                            "inflow": float(item.get("inf", 0)),
+                            "water_level": float(item.get("swl", 0))
+                        })
+                
+                if discharge_data:
+                    # 통계 계산
+                    discharges = [d["discharge"] for d in discharge_data]
+                    avg_discharge = sum(discharges) / len(discharges)
+                    max_discharge = max(discharges)
+                    min_discharge = min(discharges)
+                    
+                    # 최근 데이터
+                    latest = discharge_data[0]
+                    
+                    # 분석 결과
+                    analysis = {
+                        "dam_name": dam_name,
+                        "dam_code": dam_code,
+                        "period": f"{period_months}개월",
+                        "data_points": len(discharge_data),
+                        "latest_data": {
+                            "date": latest["date"],
+                            "discharge": latest["discharge"],
+                            "inflow": latest["inflow"],
+                            "water_level": latest["water_level"]
+                        },
+                        "statistics": {
+                            "average_discharge": round(avg_discharge, 2),
+                            "max_discharge": round(max_discharge, 2),
+                            "min_discharge": round(min_discharge, 2),
+                            "discharge_range": round(max_discharge - min_discharge, 2)
+                        },
+                        "trend_analysis": self._analyze_discharge_trend(discharge_data),
+                        "operation_status": self._analyze_dam_operation(latest)
+                    }
+                    
+                    return {
+                        "type": "dam_discharge_analysis",
+                        "dam_name": dam_name,
+                        "analysis": analysis,
+                        "raw_data": dam_data
+                    }
+        
+        return {
+            "type": "error",
+            "message": f"{dam_name}의 방류량 데이터를 분석할 수 없습니다.",
+            "dam_name": dam_name,
+            "dam_code": dam_code
+        }
+    
+    def _get_available_dams(self, dam_info: Dict) -> List[Dict]:
+        """사용 가능한 댐 목록 반환"""
+        available_dams = []
+        
+        if dam_info and "content" in dam_info:
+            for dam in dam_info["content"]:
+                if isinstance(dam, dict):
+                    available_dams.append({
+                        "name": dam.get("obsnm", ""),
+                        "code": dam.get("dmobscd", ""),
+                        "address": dam.get("addr", ""),
+                        "agency": dam.get("agcnm", "")
+                    })
+        
+        return available_dams
+    
+    def _analyze_discharge_trend(self, discharge_data: List[Dict]) -> Dict[str, Any]:
+        """방류량 트렌드 분석"""
+        if len(discharge_data) < 2:
+            return {"trend": "데이터 부족", "description": "트렌드 분석을 위한 충분한 데이터가 없습니다."}
+        
+        # 최근 10개 데이터로 트렌드 분석
+        recent_data = discharge_data[:10]
+        recent_discharges = [d["discharge"] for d in recent_data]
+        
+        # 단순 선형 회귀로 트렌드 계산
+        n = len(recent_discharges)
+        x_values = list(range(n))
+        y_values = recent_discharges
+        
+        # 평균 계산
+        x_mean = sum(x_values) / n
+        y_mean = sum(y_values) / n
+        
+        # 기울기 계산
+        numerator = sum((x - x_mean) * (y - y_mean) for x, y in zip(x_values, y_values))
+        denominator = sum((x - x_mean) ** 2 for x in x_values)
+        
+        if denominator == 0:
+            slope = 0
+        else:
+            slope = numerator / denominator
+        
+        # 트렌드 해석
+        if slope > 0.1:
+            trend = "증가"
+            description = "방류량이 증가하는 추세입니다."
+        elif slope < -0.1:
+            trend = "감소"
+            description = "방류량이 감소하는 추세입니다."
+        else:
+            trend = "안정"
+            description = "방류량이 안정적인 상태입니다."
+        
+        return {
+            "trend": trend,
+            "slope": round(slope, 4),
+            "description": description
+        }
+    
+    def _analyze_dam_operation(self, latest_data: Dict) -> Dict[str, Any]:
+        """댐 운영 상태 분석"""
+        discharge = latest_data["discharge"]
+        inflow = latest_data["inflow"]
+        water_level = latest_data["water_level"]
+        
+        # 방류량 상태 판단
+        if discharge < 10:
+            discharge_status = "최소 방류"
+            discharge_description = "저수량 확보를 위한 최소 방류 중"
+        elif discharge < 50:
+            discharge_status = "정상 방류"
+            discharge_description = "정상적인 방류량"
+        elif discharge < 100:
+            discharge_status = "증가 방류"
+            discharge_description = "방류량이 증가한 상태"
+        else:
+            discharge_status = "대량 방류"
+            discharge_description = "대량 방류 중 - 홍수 대비"
+        
+        # 유입량 대비 방류량 비율
+        if inflow > 0:
+            ratio = discharge / inflow
+            if ratio < 0.5:
+                ratio_status = "저수 중"
+                ratio_description = "유입량 대비 방류량이 낮아 저수 중"
+            elif ratio < 1.0:
+                ratio_status = "균형 유지"
+                ratio_description = "유입량과 방류량이 균형을 유지"
+            else:
+                ratio_status = "방류 중"
+                ratio_description = "유입량 대비 방류량이 높아 방류 중"
+        else:
+            ratio_status = "유입량 없음"
+            ratio_description = "유입량이 없어 방류량만 존재"
+        
+        return {
+            "discharge_status": discharge_status,
+            "discharge_description": discharge_description,
+            "ratio_status": ratio_status,
+            "ratio_description": ratio_description,
+            "current_discharge": discharge,
+            "current_inflow": inflow,
+            "water_level": water_level
+        }
+
+    async def _get_available_dams(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
+        """사용 가능한 댐 목록 조회"""
+        search_keyword = arguments.get("search_keyword", "")
+        
+        # 댐 정보 조회
+        dam_info = await self.api_client.fetch_observatory_info("dam")
+        
+        if not dam_info or "content" not in dam_info:
+            return {
+                "type": "error",
+                "message": "댐 정보를 조회할 수 없습니다."
+            }
+        
+        # 댐 목록 처리
+        dams = []
+        for dam in dam_info["content"]:
+            if isinstance(dam, dict):
+                dam_name = dam.get("obsnm", "")
+                dam_code = dam.get("dmobscd", "")
+                address = dam.get("addr", "")
+                agency = dam.get("agcnm", "")
+                
+                # 검색 키워드가 있으면 필터링
+                if search_keyword:
+                    # None 값 처리
+                    dam_name_lower = dam_name.lower() if dam_name else ""
+                    address_lower = address.lower() if address else ""
+                    agency_lower = agency.lower() if agency else ""
+                    search_lower = search_keyword.lower()
+                    
+                    if (search_lower in dam_name_lower or 
+                        search_lower in address_lower or
+                        search_lower in agency_lower):
+                        dams.append({
+                            "name": dam_name,
+                            "code": dam_code,
+                            "address": address,
+                            "agency": agency,
+                            "coordinates": {
+                                "lat": dam.get("lat"),
+                                "lon": dam.get("lon")
+                            }
+                        })
+                else:
+                    dams.append({
+                        "name": dam_name,
+                        "code": dam_code,
+                        "address": address,
+                        "agency": agency,
+                        "coordinates": {
+                            "lat": dam.get("lat"),
+                            "lon": dam.get("lon")
+                        }
+                    })
+        
+        # 이름순으로 정렬
+        dams.sort(key=lambda x: x["name"])
+        
+        return {
+            "type": "available_dams",
+            "total_count": len(dams),
+            "search_keyword": search_keyword,
+            "dams": dams
+        }
+
+    async def _analyze_dam_discharge_wamis(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
+        """WAMIS API를 사용하여 댐의 방류량을 분석합니다."""
+        dam_code = arguments.get("dam_code")
+        period_months = arguments.get("period_months", 6)
+        
+        if not dam_code:
+            raise ValueError("dam_code는 필수입니다")
+        
+        # WAMIS API 클라이언트 생성
+        from src.hrfco_service.wamis_api import WAMISAPIClient
+        wamis_client = WAMISAPIClient()
+        
+        try:
+            # WAMIS API를 사용하여 댐 방류량 분석
+            result = await wamis_client.analyze_dam_discharge_wamis(dam_code, period_months)
+            return result
+            
+        except Exception as e:
+            return {
+                "type": "error",
+                "message": f"WAMIS API를 사용한 댐 분석 중 오류가 발생했습니다: {str(e)}",
+                "dam_code": dam_code
+            }
+        finally:
+            # 클라이언트 세션 종료
+            if hasattr(wamis_client, 'session'):
+                await wamis_client.session.aclose()
 
     async def run(self):
         """MCP 서버를 실행합니다"""

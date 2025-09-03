@@ -1233,3 +1233,39 @@ async def get_basin_comprehensive_analysis(
 # --- 서버 실행 ---
 if __name__ == "__main__":
     mcp.run()
+
+@mcp.tool()
+async def search_wamis_dams(
+    basin: Optional[str] = None,
+    mngorg: Optional[str] = None,
+    damdvcd: Optional[str] = None,
+    keynm: Optional[str] = None
+) -> List[TextContent]:
+    """WAMIS API를 사용하여 댐을 검색합니다.
+
+    Args:
+        basin: 권역 코드 (1:한강, 2:낙동강, 3:금강, 4:섬진강, 5:영산강)
+        mngorg: 관할기관 코드 (2:한국수자원공사, 3:한국농어촌공사)
+        damdvcd: 댐 구분 코드
+        keynm: 댐 이름
+    """
+    try:
+        from .wamis_api import WAMISAPIClient
+        wamis_client = WAMISAPIClient()
+        
+        result = await wamis_client.search_dams(
+            basin=basin,
+            mngorg=mngorg,
+            damdvcd=damdvcd,
+            keynm=keynm
+        )
+        
+        return [TextContent(text=json.dumps(result, ensure_ascii=False, indent=2))]
+
+    except Exception as e:
+        error_info = handle_api_error(e, "searching wamis dams")
+        return [TextContent(text=json.dumps(error_info, ensure_ascii=False, indent=2))]
+
+# --- 서버 실행 ---
+if __name__ == "__main__":
+    mcp.run()

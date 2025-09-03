@@ -1,0 +1,260 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "홍수통제소 수문데이터 API",
+        "version": "1.0.0",
+        "description": "K-water 홍수통제소 수문데이터 조회 API (수정된 버전)"
+    },
+    "servers": [
+        {
+            "url": "http://api.hrfco.go.kr",
+            "description": "홍수통제소 API 서버 (HTTP만 지원)"
+        }
+    ],
+    "paths": {
+        "/FE18B23B-A81B-4246-9674-E8D641902A42/waterlevel/list/{tm}/{obscd}/{sdt}/{edt}.json": {
+            "get": {
+                "operationId": "getWaterLevelData",
+                "summary": "수위 관측소 데이터 조회",
+                "description": "지정된 관측소의 수위 데이터를 조회합니다",
+                "parameters": [
+                    {
+                        "name": "tm",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "10M",
+                                "1H",
+                                "1D"
+                            ],
+                            "default": "1H"
+                        },
+                        "description": "시간 단위",
+                        "example": "1H"
+                    },
+                    {
+                        "name": "obscd",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "관측소 코드",
+                        "example": "4009670"
+                    },
+                    {
+                        "name": "sdt",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "조회 시작일시 (YYYYMMDDHH)",
+                        "example": "2025090300"
+                    },
+                    {
+                        "name": "edt",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "조회 종료일시 (YYYYMMDDHH)",
+                        "example": "2025090323"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "수위 데이터 조회 성공",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "content": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "wlobscd": {
+                                                        "type": "string",
+                                                        "description": "수위 관측소 코드"
+                                                    },
+                                                    "ymdhm": {
+                                                        "type": "string",
+                                                        "description": "관측 일시 (YYYYMMDDHH)"
+                                                    },
+                                                    "wl": {
+                                                        "type": "string",
+                                                        "description": "수위 (m)"
+                                                    },
+                                                    "fw": {
+                                                        "type": "string",
+                                                        "description": "유량 (㎥/s)"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/FE18B23B-A81B-4246-9674-E8D641902A42/rainfall/list/{tm}/{obscd}/{sdt}/{edt}.json": {
+            "get": {
+                "operationId": "getRainfallData",
+                "summary": "강우량 관측소 데이터 조회",
+                "description": "지정된 관측소의 강우량 데이터를 조회합니다",
+                "parameters": [
+                    {
+                        "name": "tm",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "10M",
+                                "1H",
+                                "1D"
+                            ],
+                            "default": "1H"
+                        },
+                        "description": "시간 단위"
+                    },
+                    {
+                        "name": "obscd",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "관측소 코드",
+                        "example": "4009665"
+                    },
+                    {
+                        "name": "sdt",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "조회 시작일시 (YYYYMMDDHH)"
+                    },
+                    {
+                        "name": "edt",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "조회 종료일시 (YYYYMMDDHH)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "강우량 데이터 조회 성공",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "content": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "rfobscd": {
+                                                        "type": "string",
+                                                        "description": "강우 관측소 코드"
+                                                    },
+                                                    "ymdhm": {
+                                                        "type": "string",
+                                                        "description": "관측 일시"
+                                                    },
+                                                    "rf": {
+                                                        "type": "string",
+                                                        "description": "강우량 (mm)"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/FE18B23B-A81B-4246-9674-E8D641902A42/waterlevel/info.json": {
+            "get": {
+                "operationId": "getWaterLevelObservatories",
+                "summary": "수위 관측소 정보 조회",
+                "description": "모든 수위 관측소의 기본 정보를 조회합니다",
+                "responses": {
+                    "200": {
+                        "description": "관측소 정보 조회 성공",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "content": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "wlobscd": {
+                                                        "type": "string",
+                                                        "description": "관측소 코드"
+                                                    },
+                                                    "obsnm": {
+                                                        "type": "string",
+                                                        "description": "관측소명"
+                                                    },
+                                                    "addr": {
+                                                        "type": "string",
+                                                        "description": "주소"
+                                                    },
+                                                    "lat": {
+                                                        "type": "string",
+                                                        "description": "위도"
+                                                    },
+                                                    "lon": {
+                                                        "type": "string",
+                                                        "description": "경도"
+                                                    },
+                                                    "lvlinterest": {
+                                                        "type": "string",
+                                                        "description": "관심수위"
+                                                    },
+                                                    "lvlcaution": {
+                                                        "type": "string",
+                                                        "description": "주의보수위"
+                                                    },
+                                                    "lvlwarning": {
+                                                        "type": "string",
+                                                        "description": "경보수위"
+                                                    },
+                                                    "lvlsevere": {
+                                                        "type": "string",
+                                                        "description": "심각수위"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

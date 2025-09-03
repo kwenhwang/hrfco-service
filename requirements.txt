@@ -19,3 +19,6 @@ structlog>=23.1.0
 
 # Optional: Redis for distributed caching
 redis>=4.6.0
+
+# Security: API key encryption
+cryptography>=41.0.0

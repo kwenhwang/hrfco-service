@@ -51,8 +51,11 @@ class IntegratedOntologyManager:
             
             # 수위 관측소 정보
             waterlevel_info = await api_client.fetch_observatory_info("waterlevel")
-            if waterlevel_info.get("content"):
+            if waterlevel_info and waterlevel_info.get("content"):
                 for obs in waterlevel_info["content"]:
+                    if not isinstance(obs, dict):
+                        continue
+                        
                     obs_code = obs.get("wlobscd")
                     if obs_code:
                         self.observatories[obs_code] = {
@@ -69,8 +72,11 @@ class IntegratedOntologyManager:
             
             # 강우량 관측소 정보
             rainfall_info = await api_client.fetch_observatory_info("rainfall")
-            if rainfall_info.get("content"):
+            if rainfall_info and rainfall_info.get("content"):
                 for obs in rainfall_info["content"]:
+                    if not isinstance(obs, dict):
+                        continue
+                        
                     obs_code = obs.get("rfobscd")
                     if obs_code:
                         self.observatories[obs_code] = {
@@ -86,8 +92,11 @@ class IntegratedOntologyManager:
             
             # 댐 정보
             dam_info = await api_client.fetch_observatory_info("dam")
-            if dam_info.get("content"):
+            if dam_info and dam_info.get("content"):
                 for obs in dam_info["content"]:
+                    if not isinstance(obs, dict):
+                        continue
+                        
                     obs_code = obs.get("dmobscd")
                     if obs_code:
                         self.observatories[obs_code] = {
@@ -218,7 +227,10 @@ class IntegratedOntologyManager:
                 sorted_stations = sorted(stations, key=lambda x: x.get("sbsncd", ""))
                 
                 for i, station in enumerate(sorted_stations):
-                    obs_code = station["obs_code"]
+                    obs_code = station.get("obs_code")
+                    if not obs_code:  # obs_code가 None이면 건너뛰기
+                        continue
+                        
                     sbsncd = station.get("sbsncd", "")
                     
                     if obs_code not in self.relationships:
@@ -231,28 +243,47 @@ class IntegratedOntologyManager:
                     
                     # 같은 표준유역의 다른 관측소들
                     for other_station in sorted_stations:
-                        if other_station["obs_code"] != obs_code:
-                            other_sbsncd = other_station.get("sbsncd", "")
-                            if other_sbsncd == sbsncd:
-                                self.relationships[obs_code]["same_basin"].append({
-                                    "obs_code": other_station["obs_code"],
-                                    "obs_name": other_station["obs_name"],
-                                    "obs_type": other_station["obs_type"]
-                                })
-                            elif other_sbsncd < sbsncd:  # 상류
-                                self.relationships[obs_code]["upstream"].append({
-                                    "obs_code": other_station["obs_code"],
-                                    "obs_name": other_station["obs_name"],
-                                    "obs_type": other_station["obs_type"],
-                                    "sbsncd": other_sbsncd
-                                })
-                            elif other_sbsncd > sbsncd:  # 하류
-                                self.relationships[obs_code]["downstream"].append({
-                                    "obs_code": other_station["obs_code"],
-                                    "obs_name": other_station["obs_name"],
-                                    "obs_type": other_station["obs_type"],
-                                    "sbsncd": other_sbsncd
-                                })
+                        other_obs_code = other_station.get("obs_code")
+                        if not other_obs_code or other_obs_code == obs_code:
+                            continue
+                            
+                        other_sbsncd = other_station.get("sbsncd", "")
+                        
+                        # 안전한 접근을 위한 기본값 설정
+                        if obs_code not in self.relationships:
+                            self.relationships[obs_code] = {
+                                "upstream": [],
+                                "downstream": [],
+                                "same_basin": [],
+                                "nearby": []
+                            }
+                        
+                        if other_sbsncd == sbsncd:
+                            if "same_basin" not in self.relationships[obs_code]:
+                                self.relationships[obs_code]["same_basin"] = []
+                            self.relationships[obs_code]["same_basin"].append({
+                                "obs_code": other_obs_code,
+                                "obs_name": other_station.get("obs_name", ""),
+                                "obs_type": other_station.get("obs_type", "")
+                            })
+                        elif other_sbsncd < sbsncd:  # 상류
+                            if "upstream" not in self.relationships[obs_code]:
+                                self.relationships[obs_code]["upstream"] = []
+                            self.relationships[obs_code]["upstream"].append({
+                                "obs_code": other_obs_code,
+                                "obs_name": other_station.get("obs_name", ""),
+                                "obs_type": other_station.get("obs_type", ""),
+                                "sbsncd": other_sbsncd
+                            })
+                        elif other_sbsncd > sbsncd:  # 하류
+                            if "downstream" not in self.relationships[obs_code]:
+                                self.relationships[obs_code]["downstream"] = []
+                            self.relationships[obs_code]["downstream"].append({
+                                "obs_code": other_obs_code,
+                                "obs_name": other_station.get("obs_name", ""),
+                                "obs_type": other_station.get("obs_type", ""),
+                                "sbsncd": other_sbsncd
+                            })
             
             logger.info(f"관측소 간 관계 분석 완료: {len(self.relationships)}개 관측소")
             
@@ -315,14 +346,25 @@ class IntegratedOntologyManager:
         
         relationships = self.relationships[target_obs_code]
         
+        # 안전한 접근을 위한 기본값 설정
+        upstream = relationships.get("upstream", [])
+        downstream = relationships.get("downstream", [])
+        same_basin = relationships.get("same_basin", [])
+        nearby = relationships.get("nearby", [])
+        
         return {
             "target_station": target_info,
-            "relationships": relationships,
+            "relationships": {
+                "upstream": upstream,
+                "downstream": downstream,
+                "same_basin": same_basin,
+                "nearby": nearby
+            },
             "summary": {
-                "upstream_count": len(relationships["upstream"]),
-                "downstream_count": len(relationships["downstream"]),
-                "same_basin_count": len(relationships["same_basin"]),
-                "nearby_count": len(relationships["nearby"])
+                "upstream_count": len(upstream),
+                "downstream_count": len(downstream),
+                "same_basin_count": len(same_basin),
+                "nearby_count": len(nearby)
             }
         }
     

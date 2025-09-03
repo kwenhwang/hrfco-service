@@ -1,0 +1,13 @@
+{
+  "model": "gemini-2.5-flash",
+  "timeout": 60,
+  "rate_limit_delay": 2.0,
+  "auto_consult": true,
+  "uncertainty_thresholds": {
+    "not_sure": true,
+    "uncertain": true,
+    "might_be": true,
+    "possibly": true,
+    "unclear": true
+  }
+} 

@@ -6,7 +6,7 @@ WAMIS API 클라이언트
 import httpx
 import logging
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +19,369 @@ class WAMISAPIClient:
     def __init__(self):
         self.session = httpx.AsyncClient(timeout=30)
     
+    async def get_dam_hourly_data(
+        self,
+        damcd: str,
+        startdt: Optional[str] = None,
+        enddt: Optional[str] = None,
+        output: str = "json"
+    ) -> Dict[str, Any]:
+        """댐수문정보 시자료 조회
+        
+        Args:
+            damcd: 댐 코드
+            startdt: 시작일 (YYYYMMDD)
+            enddt: 종료일 (YYYYMMDD)
+            output: 출력 포맷 (json/xml)
+        """
+        url = f"{self.DAM_URL}/mn_hrdata"
+        
+        params = {
+            "damcd": damcd,
+            "output": output
+        }
+        
+        if startdt:
+            params["startdt"] = startdt
+        if enddt:
+            params["enddt"] = enddt
+        
+        try:
+            response = await self.session.get(url, params=params)
+            response.raise_for_status()
+            data = response.json()
+            # WAMIS API 응답 구조 변환
+            if "list" in data:
+                return {"content": data["list"], "result": data.get("result", {}), "count": data.get("count", 0)}
+            return data
+        except Exception as e:
+            logger.error(f"댐 시자료 조회 오류: {str(e)}")
+            return {"error": str(e), "content": []}
+    
+    async def get_dam_daily_data(
+        self,
+        damcd: str,
+        startdt: Optional[str] = None,
+        enddt: Optional[str] = None,
+        output: str = "json"
+    ) -> Dict[str, Any]:
+        """댐수문정보 일자료 조회
+        
+        Args:
+            damcd: 댐 코드
+            startdt: 시작일 (YYYYMMDD)
+            enddt: 종료일 (YYYYMMDD)
+            output: 출력 포맷 (json/xml)
+        """
+        url = f"{self.DAM_URL}/mn_dtdata"
+        
+        params = {
+            "damcd": damcd,
+            "output": output
+        }
+        
+        if startdt:
+            params["startdt"] = startdt
+        if enddt:
+            params["enddt"] = enddt
+        
+        try:
+            response = await self.session.get(url, params=params)
+            response.raise_for_status()
+            data = response.json()
+            # WAMIS API 응답 구조 변환
+            if "list" in data:
+                return {"content": data["list"], "result": data.get("result", {}), "count": data.get("count", 0)}
+            return data
+        except Exception as e:
+            logger.error(f"댐 일자료 조회 오류: {str(e)}")
+            return {"error": str(e), "content": []}
+    
+    async def get_dam_monthly_data(
+        self,
+        damcd: str,
+        startyear: Optional[str] = None,
+        endyear: Optional[str] = None,
+        output: str = "json"
+    ) -> Dict[str, Any]:
+        """댐수문정보 월자료 조회
+        
+        Args:
+            damcd: 댐 코드
+            startyear: 시작연도 (YYYY)
+            endyear: 종료연도 (YYYY)
+            output: 출력 포맷 (json/xml)
+        """
+        url = f"{self.DAM_URL}/mn_mndata"
+        
+        params = {
+            "damcd": damcd,
+            "output": output
+        }
+        
+        if startyear:
+            params["startyear"] = startyear
+        if endyear:
+            params["endyear"] = endyear
+        
+        try:
+            response = await self.session.get(url, params=params)
+            response.raise_for_status()
+            data = response.json()
+            # WAMIS API 응답 구조 변환
+            if "list" in data:
+                return {"content": data["list"], "result": data.get("result", {}), "count": data.get("count", 0)}
+            return data
+        except Exception as e:
+            logger.error(f"댐 월자료 조회 오류: {str(e)}")
+            return {"error": str(e), "content": []}
+    
+    async def analyze_dam_discharge_wamis(
+        self,
+        dam_name: Optional[str] = None,
+        damcd: Optional[str] = None,
+        period_months: int = 6
+    ) -> Dict[str, Any]:
+        """WAMIS API를 사용한 댐 방류량 분석 (이름 또는 코드로 조회)
+        
+        Args:
+            dam_name: 댐 이름 (코드가 없을 경우 사용)
+            damcd: 댐 코드 (이름보다 우선)
+            period_months: 분석 기간 (개월)
+        """
+        try:
+            if not damcd and dam_name:
+                # 댐 이름으로 댐 코드 검색
+                dam_search_result = await self.search_dams(keynm=dam_name)
+                if "error" in dam_search_result or not dam_search_result.get("content"):
+                    return {"type": "error", "message": f"댐 '{dam_name}'을(를) 찾을 수 없습니다."}
+                
+                content = dam_search_result["content"]
+                if len(content) > 1:
+                    exact_match = next((d for d in content if d.get("damnm") == dam_name), None)
+                    if not exact_match:
+                        dam_list = [f'{d.get("damnm")} ({d.get("damcd")})' for d in content]
+                        return {"type": "error", "message": f"여러 개의 댐이 검색되었습니다: {', '.join(dam_list)}"}
+                    dam_info = exact_match
+                else:
+                    dam_info = content[0]
+                
+                damcd = dam_info.get("damcd")
+
+            if not damcd:
+                return {"type": "error", "message": "분석할 댐의 이름 또는 코드를 제공해야 합니다."}
+
+            # 날짜 범위 계산
+            end_date = datetime.now()
+            start_date = end_date - timedelta(days=period_months * 30)
+            
+            startdt = start_date.strftime("%Y%m%d")
+            enddt = end_date.strftime("%Y%m%d")
+            
+            # 일자료 조회
+            daily_data = await self.get_dam_daily_data(damcd, startdt, enddt)
+            
+            if "error" in daily_data:
+                return daily_data
+            
+            # 댐 정보 조회
+            dam_info = await self.search_dams(keynm=damcd)
+            dam_name = "알 수 없음"
+            
+            if "content" in dam_info and dam_info["content"]:
+                for dam in dam_info["content"]:
+                    if dam.get("damcd") == damcd:
+                        dam_name = dam.get("damnm", "알 수 없음")
+                        break
+            
+            # 데이터 분석
+            if "content" in daily_data and daily_data["content"]:
+                content = daily_data["content"]
+                
+                # 방류량 데이터 추출 및 정리
+                discharge_data = []
+                for item in content:
+                    try:
+                        tdqty = item.get("tdqty", "")  # 총방류량
+                        if tdqty and tdqty != "" and float(tdqty) >= 0:
+                            discharge_data.append({
+                                "date": item.get("obsymd", ""),
+                                "discharge": float(tdqty),
+                                "inflow": float(item.get("iqty", 0)) if item.get("iqty") else 0,
+                                "water_level": float(item.get("rwl", 0)) if item.get("rwl") else 0,
+                                "power_discharge": float(item.get("edqty", 0)) if item.get("edqty") else 0,
+                                "spillway_discharge": float(item.get("spdqty", 0)) if item.get("spdqty") else 0,
+                                "other_discharge": float(item.get("otltdqty", 0)) if item.get("otltdqty") else 0,
+                                "water_supply": float(item.get("itqty", 0)) if item.get("itqty") else 0,
+                                "rainfall": float(item.get("rf", 0)) if item.get("rf") else 0
+                            })
+                    except (ValueError, TypeError):
+                        continue
+                
+                if discharge_data:
+                    # 날짜순 정렬 (최신순)
+                    discharge_data.sort(key=lambda x: x["date"], reverse=True)
+                    
+                    # 통계 계산
+                    discharges = [d["discharge"] for d in discharge_data]
+                    avg_discharge = sum(discharges) / len(discharges)
+                    max_discharge = max(discharges)
+                    min_discharge = min(discharges)
+                    
+                    # 최근 데이터
+                    latest = discharge_data[0]
+                    
+                    # 트렌드 분석
+                    trend_analysis = self._analyze_discharge_trend_wamis(discharge_data[:10])
+                    
+                    # 운영 상태 분석
+                    operation_status = self._analyze_dam_operation_wamis(latest)
+                    
+                    return {
+                        "type": "wamis_dam_discharge_analysis",
+                        "dam_name": dam_name,
+                        "dam_code": damcd,
+                        "period": f"{period_months}개월",
+                        "data_points": len(discharge_data),
+                        "date_range": {
+                            "start": startdt,
+                            "end": enddt
+                        },
+                        "latest_data": latest,
+                        "statistics": {
+                            "average_discharge": round(avg_discharge, 2),
+                            "max_discharge": round(max_discharge, 2),
+                            "min_discharge": round(min_discharge, 2),
+                            "discharge_range": round(max_discharge - min_discharge, 2)
+                        },
+                        "trend_analysis": trend_analysis,
+                        "operation_status": operation_status,
+                        "data_source": "WAMIS API",
+                        "raw_data": daily_data
+                    }
+                else:
+                    return {
+                        "type": "error",
+                        "message": f"댐 {damcd}({dam_name})의 방류량 데이터를 찾을 수 없습니다.",
+                        "dam_code": damcd,
+                        "dam_name": dam_name
+                    }
+            else:
+                return {
+                    "type": "error",
+                    "message": f"댐 {damcd}의 데이터를 조회할 수 없습니다.",
+                    "dam_code": damcd
+                }
+                
+        except Exception as e:
+            logger.error(f"WAMIS 댐 방류량 분석 오류: {str(e)}")
+            return {
+                "type": "error",
+                "message": f"댐 방류량 분석 중 오류가 발생했습니다: {str(e)}",
+                "dam_code": damcd
+            }
+    
+    def _analyze_discharge_trend_wamis(self, discharge_data: List[Dict]) -> Dict[str, Any]:
+        """WAMIS 데이터 기반 방류량 트렌드 분석"""
+        if len(discharge_data) < 2:
+            return {"trend": "데이터 부족", "description": "트렌드 분석을 위한 충분한 데이터가 없습니다."}
+        
+        # 최근 데이터로 트렌드 분석
+        recent_discharges = [d["discharge"] for d in discharge_data]
+        
+        # 단순 선형 회귀로 트렌드 계산
+        n = len(recent_discharges)
+        x_values = list(range(n))
+        y_values = recent_discharges
+        
+        # 평균 계산
+        x_mean = sum(x_values) / n
+        y_mean = sum(y_values) / n
+        
+        # 기울기 계산
+        numerator = sum((x - x_mean) * (y - y_mean) for x, y in zip(x_values, y_values))
+        denominator = sum((x - x_mean) ** 2 for x in x_values)
+        
+        if denominator == 0:
+            slope = 0
+        else:
+            slope = numerator / denominator
+        
+        # 트렌드 해석
+        if slope > 0.1:
+            trend = "증가"
+            description = "방류량이 증가하는 추세입니다."
+        elif slope < -0.1:
+            trend = "감소"
+            description = "방류량이 감소하는 추세입니다."
+        else:
+            trend = "안정"
+            description = "방류량이 안정적인 상태입니다."
+        
+        return {
+            "trend": trend,
+            "slope": round(slope, 4),
+            "description": description
+        }
+    
+    def _analyze_dam_operation_wamis(self, latest_data: Dict) -> Dict[str, Any]:
+        """WAMIS 데이터 기반 댐 운영 상태 분석"""
+        discharge = latest_data["discharge"]
+        inflow = latest_data["inflow"]
+        water_level = latest_data["water_level"]
+        power_discharge = latest_data["power_discharge"]
+        spillway_discharge = latest_data["spillway_discharge"]
+        
+        # 방류량 상태 판단
+        if discharge < 10:
+            discharge_status = "최소 방류"
+            discharge_description = "저수량 확보를 위한 최소 방류 중"
+        elif discharge < 50:
+            discharge_status = "정상 방류"
+            discharge_description = "정상적인 방류량"
+        elif discharge < 100:
+            discharge_status = "증가 방류"
+            discharge_description = "방류량이 증가한 상태"
+        else:
+            discharge_status = "대량 방류"
+            discharge_description = "대량 방류 중 - 홍수 대비 또는 여수로 방류"
+        
+        # 방류 구성 분석
+        discharge_composition = {
+            "power_ratio": round(power_discharge / discharge * 100, 1) if discharge > 0 else 0,
+            "spillway_ratio": round(spillway_discharge / discharge * 100, 1) if discharge > 0 else 0,
+            "other_ratio": round((discharge - power_discharge - spillway_discharge) / discharge * 100, 1) if discharge > 0 else 0
+        }
+        
+        # 유입량 대비 방류량 비율
+        if inflow > 0:
+            ratio = discharge / inflow
+            if ratio < 0.5:
+                ratio_status = "저수 중"
+                ratio_description = "유입량 대비 방류량이 낮아 저수 중"
+            elif ratio < 1.0:
+                ratio_status = "균형 유지"
+                ratio_description = "유입량과 방류량이 균형을 유지"
+            else:
+                ratio_status = "방류 중"
+                ratio_description = "유입량 대비 방류량이 높아 방류 중"
+        else:
+            ratio_status = "유입량 없음"
+            ratio_description = "유입량이 없어 저수된 물을 방류 중"
+        
+        return {
+            "discharge_status": discharge_status,
+            "discharge_description": discharge_description,
+            "ratio_status": ratio_status,
+            "ratio_description": ratio_description,
+            "discharge_composition": discharge_composition,
+            "current_discharge": discharge,
+            "current_inflow": inflow,
+            "water_level": water_level,
+            "power_discharge": power_discharge,
+            "spillway_discharge": spillway_discharge
+        }
+
     async def search_rainfall_stations(
         self,
         basin: Optional[str] = None,
@@ -151,7 +514,11 @@ class WAMISAPIClient:
         try:
             response = await self.session.get(url, params=params)
             response.raise_for_status()
-            return response.json()
+            data = response.json()
+            # WAMIS API 응답 구조 변환
+            if "list" in data:
+                return {"content": data["list"], "result": data.get("result", {}), "count": data.get("count", 0)}
+            return data
         except Exception as e:
             logger.error(f"댐 검색 오류: {str(e)}")
             return {"error": str(e), "content": []}

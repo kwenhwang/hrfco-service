@@ -1,0 +1,457 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "HRFCO API Proxy for GPT Actions",
+        "version": "1.0.0",
+        "description": "홍수통제소 API를 GPT Actions에서 사용할 수 있도록 HTTPS 프록시 제공"
+    },
+    "servers": [
+        {
+            "url": "https://your-proxy-domain.com",
+            "description": "HRFCO API HTTPS Proxy Server"
+        }
+    ],
+    "paths": {
+        "/waterlevel/data": {
+            "get": {
+                "operationId": "getWaterLevelData",
+                "summary": "수위 관측소 데이터 조회",
+                "description": "지정된 관측소의 수위 데이터를 조회합니다",
+                "parameters": [
+                    {
+                        "name": "obscd",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "관측소 코드",
+                        "example": "4009670"
+                    },
+                    {
+                        "name": "tm",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "10M",
+                                "1H",
+                                "1D"
+                            ],
+                            "default": "1H"
+                        },
+                        "description": "시간 단위"
+                    },
+                    {
+                        "name": "hours",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 48
+                        },
+                        "description": "조회할 시간 범위 (시간 단위)"
+                    },
+                    {
+                        "name": "sdt",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "조회 시작일시 (YYYYMMDDHH, 선택사항)"
+                    },
+                    {
+                        "name": "edt",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "조회 종료일시 (YYYYMMDDHH, 선택사항)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "수위 데이터 조회 성공",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "observatory_code": {
+                                            "type": "string"
+                                        },
+                                        "time_type": {
+                                            "type": "string"
+                                        },
+                                        "period": {
+                                            "type": "object",
+                                            "properties": {
+                                                "start": {
+                                                    "type": "string"
+                                                },
+                                                "end": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "wlobscd": {
+                                                        "type": "string",
+                                                        "description": "수위 관측소 코드"
+                                                    },
+                                                    "ymdhm": {
+                                                        "type": "string",
+                                                        "description": "관측 일시"
+                                                    },
+                                                    "wl": {
+                                                        "type": "string",
+                                                        "description": "수위 (m)"
+                                                    },
+                                                    "fw": {
+                                                        "type": "string",
+                                                        "description": "유량 (㎥/s)"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "total_records": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/waterlevel/observatories": {
+            "get": {
+                "operationId": "getWaterLevelObservatories",
+                "summary": "수위 관측소 정보 조회",
+                "description": "모든 수위 관측소의 기본 정보를 조회합니다",
+                "responses": {
+                    "200": {
+                        "description": "관측소 정보 조회 성공",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "observatories": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "wlobscd": {
+                                                        "type": "string",
+                                                        "description": "관측소 코드"
+                                                    },
+                                                    "obsnm": {
+                                                        "type": "string",
+                                                        "description": "관측소명"
+                                                    },
+                                                    "addr": {
+                                                        "type": "string",
+                                                        "description": "주소"
+                                                    },
+                                                    "lat": {
+                                                        "type": "string",
+                                                        "description": "위도"
+                                                    },
+                                                    "lon": {
+                                                        "type": "string",
+                                                        "description": "경도"
+                                                    },
+                                                    "lvlinterest": {
+                                                        "type": "string",
+                                                        "description": "관심수위"
+                                                    },
+                                                    "lvlcaution": {
+                                                        "type": "string",
+                                                        "description": "주의보수위"
+                                                    },
+                                                    "lvlwarning": {
+                                                        "type": "string",
+                                                        "description": "경보수위"
+                                                    },
+                                                    "lvlsevere": {
+                                                        "type": "string",
+                                                        "description": "심각수위"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "total_count": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/rainfall/data": {
+            "get": {
+                "operationId": "getRainfallData",
+                "summary": "강우량 관측소 데이터 조회",
+                "description": "지정된 관측소의 강우량 데이터를 조회합니다",
+                "parameters": [
+                    {
+                        "name": "obscd",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "관측소 코드",
+                        "example": "4009665"
+                    },
+                    {
+                        "name": "tm",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "10M",
+                                "1H",
+                                "1D"
+                            ],
+                            "default": "1H"
+                        },
+                        "description": "시간 단위"
+                    },
+                    {
+                        "name": "hours",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 48
+                        },
+                        "description": "조회할 시간 범위 (시간 단위)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "강우량 데이터 조회 성공",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "observatory_code": {
+                                            "type": "string"
+                                        },
+                                        "time_type": {
+                                            "type": "string"
+                                        },
+                                        "period": {
+                                            "type": "object",
+                                            "properties": {
+                                                "start": {
+                                                    "type": "string"
+                                                },
+                                                "end": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "statistics": {
+                                            "type": "object",
+                                            "properties": {
+                                                "total_rainfall": {
+                                                    "type": "number"
+                                                },
+                                                "max_rainfall": {
+                                                    "type": "number"
+                                                },
+                                                "data_points": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "rfobscd": {
+                                                        "type": "string",
+                                                        "description": "강우 관측소 코드"
+                                                    },
+                                                    "ymdhm": {
+                                                        "type": "string",
+                                                        "description": "관측 일시"
+                                                    },
+                                                    "rf": {
+                                                        "type": "string",
+                                                        "description": "강우량 (mm)"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "total_records": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analysis/water_level/{obscd}": {
+            "get": {
+                "operationId": "analyzeWaterLevel",
+                "summary": "수위 데이터 종합 분석",
+                "description": "관측소의 수위 데이터를 종합 분석하여 위험도와 통계를 제공합니다",
+                "parameters": [
+                    {
+                        "name": "obscd",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "관측소 코드",
+                        "example": "4009670"
+                    },
+                    {
+                        "name": "hours",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 48
+                        },
+                        "description": "분석할 시간 범위 (시간 단위)"
+                    },
+                    {
+                        "name": "include_thresholds",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "description": "위험 수위 기준 포함 여부"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "수위 분석 성공",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "observatory_info": {
+                                            "type": "object",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "address": {
+                                                    "type": "string"
+                                                },
+                                                "coordinates": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "lat": {
+                                                            "type": "string"
+                                                        },
+                                                        "lon": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "current_water_level": {
+                                            "type": "number"
+                                        },
+                                        "statistics": {
+                                            "type": "object",
+                                            "properties": {
+                                                "max_level": {
+                                                    "type": "number"
+                                                },
+                                                "min_level": {
+                                                    "type": "number"
+                                                },
+                                                "avg_level": {
+                                                    "type": "number"
+                                                },
+                                                "data_points": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "analysis_period": {
+                                            "type": "object",
+                                            "properties": {
+                                                "start": {
+                                                    "type": "string"
+                                                },
+                                                "end": {
+                                                    "type": "string"
+                                                },
+                                                "hours": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "thresholds": {
+                                            "type": "object",
+                                            "properties": {
+                                                "interest": {
+                                                    "type": "number",
+                                                    "nullable": true
+                                                },
+                                                "caution": {
+                                                    "type": "number",
+                                                    "nullable": true
+                                                },
+                                                "warning": {
+                                                    "type": "number",
+                                                    "nullable": true
+                                                },
+                                                "severe": {
+                                                    "type": "number",
+                                                    "nullable": true
+                                                }
+                                            }
+                                        },
+                                        "alert_status": {
+                                            "type": "string"
+                                        },
+                                        "margin_to_next_level": {
+                                            "type": "number",
+                                            "nullable": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

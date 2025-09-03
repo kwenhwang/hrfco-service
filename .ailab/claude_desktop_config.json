@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "gemini-collaboration": {
+      "command": "python",
+      "args": ["C:\\Users\\20172483\\web\\Mywater_webgame\\ai-lab\\mcp-server.py", "--project-root", "C:\\Users\\20172483\\web\\Mywater_webgame\\ai-lab"],
+      "env": {
+        "GEMINI_ENABLED": "true",
+        "GEMINI_AUTO_CONSULT": "true",
+        "PYTHONPATH": "C:\\Users\\20172483\\web\\Mywater_webgame\\ai-lab",
+        "PATH": "C:\\Users\\20172483\\web\\Mywater_webgame\\ai-lab\\venv\\Scripts;${PATH}"
+      }
+    }
+  }
+} 

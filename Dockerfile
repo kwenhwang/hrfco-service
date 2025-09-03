@@ -1,53 +1,33 @@
-# 멀티 스테이지 빌드로 용량 최적화
-FROM python:3.11-slim as builder
-
-# 빌드 인수 정의
-ARG HRFCO_API_KEY
+# HRFCO MCP 서버 Docker 이미지
+FROM python:3.11-slim
 
 # 작업 디렉토리 설정
 WORKDIR /app
 
-# 시스템 패키지 업데이트 및 필요한 패키지 설치
+# 시스템 패키지 업데이트 및 필수 도구 설치
 RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Python 의존성 설치 (캐시 최적화)
+# Python 의존성 파일 복사 및 설치
 COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-# 프로덕션 이미지
-FROM python:3.11-slim
+# 애플리케이션 코드 복사
+COPY . .
 
-# 환경 변수 설정
-ENV HRFCO_API_KEY=$HRFCO_API_KEY
-
-# 작업 디렉토리 설정
-WORKDIR /app
-
-# 시스템 패키지 설치 (최소한만)
-RUN apt-get update && apt-get install -y \
-    curl \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
-
-# Python 사용자 패키지 복사
-COPY --from=builder /root/.local /root/.local
-
-# PATH에 사용자 패키지 추가
-ENV PATH=/root/.local/bin:$PATH
-
-# 필요한 파일만 복사 (불필요한 파일 제외)
-COPY src/ ./src/
-COPY mcp_server.py .
-COPY requirements.txt .
+# 사용자 생성 (보안 강화)
+RUN useradd -m -u 1000 hrfco && \
+    chown -R hrfco:hrfco /app
+USER hrfco
 
 # 포트 노출
 EXPOSE 8000
 
-# 헬스체크 추가
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+# 헬스체크
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
-# 애플리케이션 실행
+# 서버 실행
 CMD ["python", "mcp_server.py"] 

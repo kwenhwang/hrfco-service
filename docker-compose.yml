@@ -1,35 +1,49 @@
 version: '3.8'
 
 services:
-  hrfco-service:
+  hrfco-mcp:
     build: .
+    container_name: hrfco-mcp-server
+    restart: unless-stopped
     ports:
       - "8000:8000"
     environment:
       - HRFCO_API_KEY=${HRFCO_API_KEY}
-      - LOG_LEVEL=INFO
-      - CACHE_TTL_SECONDS=300
-      - MAX_CONCURRENT_REQUESTS=5
+      - KMA_API_KEY=${KMA_API_KEY}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - DEBUG=${DEBUG:-false}
+    env_file:
+      - .env
     volumes:
       - ./logs:/app/logs
-    restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
+    networks:
+      - hrfco-network
 
-  # 개발용 Redis 캐시 (선택사항)
-  redis:
-    image: redis:7-alpine
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
+  # Cloudflare Tunnel (선택사항)
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-tunnel
     restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - hrfco-mcp
+    networks:
+      - hrfco-network
     profiles:
-      - cache
+      - cloudflare
+
+networks:
+  hrfco-network:
+    driver: bridge
 
 volumes:
-  redis_data: 
+  logs:
+    driver: local 

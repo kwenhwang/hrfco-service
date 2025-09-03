@@ -1,5 +1,22 @@
+# API Keys and Secrets (CRITICAL - NEVER COMMIT)
+.env
+.env.*
+*.key
+*.pem
+*_key.txt
+*secret*
+*password*
+api_keys.json
+config_secrets.json
+
 # Environment variables
 .env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # Python
 __pycache__/
@@ -28,26 +45,38 @@ wheels/
 .vscode/
 *.swp
 *.swo
+*~
 
-# Virtual Environment
-venv/
-env/
-ENV/
+# OS
+.DS_Store
+Thumbs.db
 
 # Logs
 *.log
-hrfco_server.log
+logs/
+log/
 
-# Local development settings
-instance/
-.webassets-cache
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
 
-# Testing
+# Project specific
+*.exe
+*.zip
+*.tar.gz
+*backup*
+*_backup.*
+*.bak
+
+# Test files
+test_output/
+coverage/
 .pytest_cache/
 .coverage
-htmlcov/
 
-# API Keys and sensitive data
-*.key
-*.pem
-secrets/
+# MCP Server specific
+mcp_server.log
+*.sqlite
+*.db

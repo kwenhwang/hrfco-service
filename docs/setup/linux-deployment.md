@@ -1,140 +1,65 @@
-# 윈도우 → 리눅스 서버 배포 가이드
+# Linux 서버 배포 가이드
 
-## 🎯 **추천 방법 순위**
+이 가이드는 HRFCO Service를 Linux 서버에 배포하는 방법을 설명합니다.
 
-### 🥇 **1순위: Git 사용 (최고 추천!)**
+## 📋 **배포 방법 선택**
 
-#### **장점:**
-- ✅ **버전 관리** - 변경 이력 추적
-- ✅ **자동 동기화** - push/pull로 간편 업데이트  
-- ✅ **안전성** - 백업 및 롤백 가능
-- ✅ **협업 용이** - 팀 작업 가능
-- ✅ **무료** - GitHub, GitLab 등 무료 서비스
+### 1️⃣ **Git Clone (권장)**
+가장 깔끔하고 버전 관리가 쉬운 방법입니다.
 
-#### **설정 방법:**
-
-##### A. GitHub 사용 (공개 저장소)
 ```bash
-# 윈도우에서
-git add .
-git commit -m "HRFCO API 프록시 서버 추가"
-git push origin main
-
-# 리눅스 서버에서
-git clone https://github.com/username/hrfco-service.git
+# 서버에서 직접 클론
+git clone https://github.com/kwenhwang/hrfco-service.git
 cd hrfco-service
+
+# 환경변수 설정
+cp env.example .env
+nano .env  # API 키 입력
 ```
 
-##### B. GitLab 사용 (비공개 가능)
-```bash
-# 윈도우에서
-git remote add gitlab https://gitlab.com/username/hrfco-service.git
-git push gitlab main
+**장점:**
+- 최신 버전 유지 용이 (`git pull`)
+- 변경사항 추적 가능
+- 브랜치별 배포 가능
 
-# 리눅스 서버에서
-git clone https://gitlab.com/username/hrfco-service.git
+### 2️⃣ **rsync 동기화**
+개발 환경과 동일한 상태로 배포하고 싶을 때 사용합니다.
+
+```bash
+# Windows에서 Linux로 동기화
+rsync -avz --exclude '.git' --exclude '__pycache__' /c/Users/20172483/web/hrfco-service/ user@server:/opt/hrfco-service/
 ```
 
-##### C. 자체 Git 서버 (완전 비공개)
+**장점:**
+- 개발 환경과 동일한 파일 구조
+- 특정 파일 제외 가능
+- 증분 동기화로 효율적
+
+### 3️⃣ **압축 파일 업로드**
+간단한 일회성 배포에 적합합니다.
+
 ```bash
-# 리눅스 서버에서 bare 저장소 생성
-git init --bare hrfco-service.git
+# Windows에서 압축
+tar -czf hrfco-service.tar.gz hrfco-service/
 
-# 윈도우에서
-git remote add server user@server:/path/to/hrfco-service.git
-git push server main
-
-# 리눅스 서버에서
-git clone /path/to/hrfco-service.git
+# WinSCP로 업로드 후 서버에서 압축 해제
+tar -xzf hrfco-service.tar.gz
 ```
 
-### 🥈 **2순위: rsync (직접 동기화)**
+## 🚀 **Linux 서버 설정**
 
-#### **장점:**
-- ✅ **차분 전송** - 변경된 파일만 전송
-- ✅ **빠른 속도** - 압축 및 최적화
-- ✅ **실시간 동기화** 가능
-
-#### **설정 방법:**
-```bash
-# WSL 또는 Git Bash에서
-rsync -avz --progress . user@server:/path/to/hrfco-service/
-
-# 제외 파일 설정
-rsync -avz --progress --exclude='.git' --exclude='__pycache__' --exclude='*.pyc' . user@server:/path/to/hrfco-service/
-```
-
-### 🥉 **3순위: SCP/SFTP (간단한 복사)**
-
-#### **장점:**
-- ✅ **단순함** - 명령어 하나로 전송
-- ✅ **안전성** - SSH 암호화
-
-#### **설정 방법:**
-```bash
-# 전체 폴더 압축 후 전송
-tar -czf hrfco-service.tar.gz .
-scp hrfco-service.tar.gz user@server:/tmp/
-
-# 리눅스 서버에서 압축 해제
-ssh user@server "cd /path/to/destination && tar -xzf /tmp/hrfco-service.tar.gz"
-```
-
-### 📁 **4순위: WinSCP (GUI 방식)**
-
-#### **장점:**
-- ✅ **직관적 GUI** - 드래그앤드롭
-- ✅ **동기화 기능** - 폴더 동기화 가능
-
-#### **설정 방법:**
-1. WinSCP 실행
-2. 서버 연결 설정
-3. **Commands → Synchronize** 선택
-4. 로컬과 원격 폴더 동기화
-
-## 🚀 **권장 워크플로우**
-
-### **초기 설정 (Git 추천)**
+### 1. Python 환경 준비
 
 ```bash
-# 1. 현재 프로젝트 Git 초기화 (윈도우)
-git init
-git add .
-git commit -m "Initial commit: HRFCO API 프록시 서버"
-
-# 2. GitHub/GitLab에 저장소 생성 후 푸시
-git remote add origin https://github.com/username/hrfco-service.git
-git push -u origin main
-
-# 3. 리눅스 서버에서 클론
-git clone https://github.com/username/hrfco-service.git
-cd hrfco-service
-```
-
-### **지속적 업데이트**
-
-```bash
-# 윈도우에서 변경 사항 푸시
-git add .
-git commit -m "프록시 서버 기능 추가"
-git push
-
-# 리눅스 서버에서 풀
-git pull
-```
-
-## 🐧 **리눅스 서버 설정**
-
-### **1. Python 환경 설정**
-
-```bash
-# Python 3.9+ 설치 확인
+# Python 3.8+ 설치 확인
 python3 --version
 
-# pip 업그레이드
-python3 -m pip install --upgrade pip
+# pip 업데이트
+sudo apt update
+sudo apt install python3-pip python3-venv
 
-# 가상환경 생성 (권장)
+# 가상환경 생성
+cd /opt/hrfco-service
 python3 -m venv venv
 source venv/bin/activate
 
@@ -142,133 +67,402 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### **2. 환경 변수 설정**
+### 2. 환경변수 설정
 
 ```bash
 # .env 파일 생성
-cat > .env << EOF
-HRFCO_API_KEY=FE18B23B-A81B-4246-9674-E8D641902A42
-KMA_API_KEY=bI7VVvskaOdKJGMej%2F2zJzaxEyiCeGn8kLEidNAxHV7%2FRLiWMCAIlqMY08bwU1MqnakQ4ulEirojxHU800l%2BMA%3D%3D
-HOST=0.0.0.0
-PORT=8000
-DEBUG=False
-EOF
+cp env.example .env
 
-# 권한 설정
-chmod 600 .env
+# API 키 설정 (nano 또는 vi 사용)
+nano .env
 ```
 
-### **3. 서비스 실행**
+**.env 파일 내용:**
+```bash
+# API 키 설정 (실제 키로 교체)
+HRFCO_API_KEY=your_actual_hrfco_api_key
+KMA_API_KEY=your_actual_kma_api_key
+
+# 서버 설정
+DEBUG=false
+LOG_LEVEL=INFO
+PORT=8000
+```
+
+### 3. 방화벽 설정
 
 ```bash
-# 직접 실행
-python gpt_actions_proxy.py
+# MCP 서버 포트 열기 (예: 8000)
+sudo ufw allow 8000/tcp
 
-# 백그라운드 실행
-nohup python gpt_actions_proxy.py > proxy.log 2>&1 &
+# HTTPS 포트 (443) - 필요한 경우
+sudo ufw allow 443/tcp
 
-# systemd 서비스 등록 (권장)
-sudo tee /etc/systemd/system/hrfco-proxy.service << EOF
+# 방화벽 활성화
+sudo ufw enable
+```
+
+## 🔧 **MCP 서버 배포**
+
+### 1. systemd 서비스 생성
+
+```bash
+sudo nano /etc/systemd/system/hrfco-mcp.service
+```
+
+**서비스 파일 내용:**
+```ini
 [Unit]
-Description=HRFCO API Proxy Server
+Description=HRFCO MCP Server
 After=network.target
 
 [Service]
 Type=simple
-User=www-data
-WorkingDirectory=/path/to/hrfco-service
-Environment=PATH=/path/to/hrfco-service/venv/bin
-ExecStart=/path/to/hrfco-service/venv/bin/python gpt_actions_proxy.py
+User=ubuntu
+WorkingDirectory=/opt/hrfco-service
+Environment=PATH=/opt/hrfco-service/venv/bin
+ExecStart=/opt/hrfco-service/venv/bin/python mcp_server.py
 Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
-EOF
-
-# 서비스 시작
-sudo systemctl enable hrfco-proxy
-sudo systemctl start hrfco-proxy
-sudo systemctl status hrfco-proxy
 ```
 
-## 🔒 **HTTPS 설정 (리눅스)**
+### 2. 서비스 시작
 
-### **1. Nginx + Let's Encrypt**
+```bash
+# 서비스 등록 및 시작
+sudo systemctl daemon-reload
+sudo systemctl enable hrfco-mcp
+sudo systemctl start hrfco-mcp
+
+# 상태 확인
+sudo systemctl status hrfco-mcp
+
+# 로그 확인
+journalctl -u hrfco-mcp -f
+```
+
+## 🌐 **HTTPS 설정 (선택사항)**
+
+### Nginx + Let's Encrypt
 
 ```bash
 # Nginx 설치
-sudo apt update
 sudo apt install nginx certbot python3-certbot-nginx
 
 # Nginx 설정
-sudo tee /etc/nginx/sites-available/hrfco-proxy << EOF
+sudo nano /etc/nginx/sites-available/hrfco-mcp
+```
+
+**Nginx 설정 파일:**
+```nginx
 server {
     listen 80;
     server_name your-domain.com;
-    
+
     location / {
         proxy_pass http://127.0.0.1:8000;
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
-        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto \$scheme;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
-EOF
+```
 
+```bash
 # 설정 활성화
-sudo ln -s /etc/nginx/sites-available/hrfco-proxy /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/hrfco-mcp /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
 
-# SSL 인증서 설치
+# SSL 인증서 발급
 sudo certbot --nginx -d your-domain.com
 ```
 
-### **2. Caddy (자동 HTTPS)**
+### Caddy (더 간단한 대안)
 
 ```bash
 # Caddy 설치
-sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
 sudo apt update
 sudo apt install caddy
 
 # Caddyfile 설정
-sudo tee /etc/caddy/Caddyfile << EOF
-your-domain.com {
-    reverse_proxy localhost:8000
-}
-EOF
+sudo nano /etc/caddy/Caddyfile
+```
 
+**Caddyfile 내용:**
+```
+your-domain.com {
+    reverse_proxy 127.0.0.1:8000
+}
+```
+
+```bash
 # Caddy 시작
 sudo systemctl enable caddy
 sudo systemctl start caddy
 ```
 
-## 📊 **방법별 비교**
+## 📊 **모니터링 설정**
 
-| 방법 | 복잡도 | 속도 | 버전관리 | 협업 | 보안 |
-|------|--------|------|----------|------|------|
-| **Git** | ⭐⭐ | ⭐⭐⭐⭐ | ✅ | ✅ | ⭐⭐⭐⭐⭐ |
-| **rsync** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ❌ | ❌ | ⭐⭐⭐⭐ |
-| **SCP** | ⭐ | ⭐⭐⭐ | ❌ | ❌ | ⭐⭐⭐⭐ |
-| **WinSCP** | ⭐ | ⭐⭐ | ❌ | ❌ | ⭐⭐⭐ |
+### 1. 로그 관리
 
-## 🎯 **최종 추천**
-
-### **개발/테스트 환경:**
 ```bash
-# Git을 사용한 지속적 배포
-git push  # 윈도우에서
-git pull  # 리눅스에서
+# 로그 로테이션 설정
+sudo nano /etc/logrotate.d/hrfco-mcp
 ```
 
-### **프로덕션 환경:**
-```bash
-# Git + 자동화 스크립트
-git pull && pip install -r requirements.txt && sudo systemctl restart hrfco-proxy
+```
+/opt/hrfco-service/logs/*.log {
+    daily
+    missingok
+    rotate 30
+    compress
+    delaycompress
+    notifempty
+    create 644 ubuntu ubuntu
+    postrotate
+        systemctl reload hrfco-mcp
+    endscript
+}
 ```
 
-**Git을 사용하면 코드 관리, 배포, 협업이 모두 쉬워집니다!** 🚀 
+### 2. 상태 모니터링 스크립트
+
+```bash
+# 헬스체크 스크립트 생성
+nano /opt/hrfco-service/healthcheck.sh
+```
+
+```bash
+#!/bin/bash
+# HRFCO MCP 서버 헬스체크
+
+URL="http://localhost:8000/health"
+RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" $URL)
+
+if [ $RESPONSE -eq 200 ]; then
+    echo "$(date): MCP Server is healthy"
+else
+    echo "$(date): MCP Server is down (HTTP $RESPONSE)"
+    # 서비스 재시작
+    systemctl restart hrfco-mcp
+fi
+```
+
+```bash
+# 실행 권한 부여
+chmod +x /opt/hrfco-service/healthcheck.sh
+
+# 크론탭 등록 (5분마다 체크)
+crontab -e
+```
+
+```
+*/5 * * * * /opt/hrfco-service/healthcheck.sh >> /var/log/hrfco-healthcheck.log 2>&1
+```
+
+## 🔄 **업데이트 및 유지보수**
+
+### Git 기반 업데이트
+
+```bash
+cd /opt/hrfco-service
+
+# 백업 생성
+cp .env .env.backup
+
+# 최신 코드 가져오기
+git pull origin main
+
+# 의존성 업데이트
+source venv/bin/activate
+pip install -r requirements.txt
+
+# 서비스 재시작
+sudo systemctl restart hrfco-mcp
+```
+
+### 자동 배포 스크립트
+
+```bash
+nano /opt/hrfco-service/deploy.sh
+```
+
+```bash
+#!/bin/bash
+# 자동 배포 스크립트
+
+set -e
+
+echo "=== HRFCO Service 배포 시작 ==="
+
+# 기존 서비스 중지
+sudo systemctl stop hrfco-mcp
+
+# 백업 생성
+timestamp=$(date +%Y%m%d_%H%M%S)
+cp .env .env.backup.$timestamp
+
+# 최신 코드 가져오기
+git pull origin main
+
+# 가상환경 활성화 및 의존성 업데이트
+source venv/bin/activate
+pip install -r requirements.txt
+
+# 서비스 재시작
+sudo systemctl start hrfco-mcp
+
+# 상태 확인
+sleep 5
+if systemctl is-active --quiet hrfco-mcp; then
+    echo "✅ 배포 완료! 서비스가 정상 실행 중입니다."
+else
+    echo "❌ 배포 실패! 서비스 시작에 실패했습니다."
+    sudo systemctl status hrfco-mcp
+    exit 1
+fi
+
+echo "=== 배포 완료 ==="
+```
+
+```bash
+chmod +x /opt/hrfco-service/deploy.sh
+```
+
+## 🐛 **문제 해결**
+
+### 일반적인 오류들
+
+**1. 포트 충돌**
+```bash
+# 포트 사용 확인
+sudo netstat -tlnp | grep :8000
+
+# 프로세스 종료
+sudo kill -9 <PID>
+```
+
+**2. 권한 문제**
+```bash
+# 파일 소유권 변경
+sudo chown -R ubuntu:ubuntu /opt/hrfco-service
+
+# 실행 권한 부여
+chmod +x mcp_server.py
+```
+
+**3. 의존성 오류**
+```bash
+# 가상환경 재생성
+rm -rf venv
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+**4. 메모리 부족**
+```bash
+# 메모리 사용량 확인
+free -h
+
+# 스왑 추가 (필요한 경우)
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+```
+
+### 로그 분석
+
+```bash
+# 서비스 로그 확인
+journalctl -u hrfco-mcp -n 100
+
+# 실시간 로그 모니터링
+journalctl -u hrfco-mcp -f
+
+# 에러 로그만 필터링
+journalctl -u hrfco-mcp -p err
+```
+
+## 📈 **성능 최적화**
+
+### 1. 서버 자원 설정
+
+```bash
+# CPU 코어 수 확인
+nproc
+
+# 메모리 사용량 최적화
+echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
+
+# 파일 디스크립터 제한 증가
+echo 'ubuntu soft nofile 65536' | sudo tee -a /etc/security/limits.conf
+echo 'ubuntu hard nofile 65536' | sudo tee -a /etc/security/limits.conf
+```
+
+### 2. 데이터베이스 최적화 (필요한 경우)
+
+```bash
+# Redis 설치 (캐싱용)
+sudo apt install redis-server
+
+# Redis 설정
+sudo nano /etc/redis/redis.conf
+```
+
+## 🔐 **보안 강화**
+
+### 1. 방화벽 설정
+
+```bash
+# 기본 정책 설정
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# SSH 포트만 허용
+sudo ufw allow ssh
+
+# MCP 서버 포트 (특정 IP에서만)
+sudo ufw allow from YOUR_IP to any port 8000
+```
+
+### 2. 사용자 권한 제한
+
+```bash
+# 전용 사용자 생성
+sudo useradd -r -s /bin/false hrfco-service
+
+# 서비스 파일 수정
+sudo nano /etc/systemd/system/hrfco-mcp.service
+```
+
+```ini
+[Service]
+User=hrfco-service
+Group=hrfco-service
+```
+
+### 3. 환경변수 보안
+
+```bash
+# .env 파일 권한 제한
+chmod 600 .env
+
+# 환경변수 암호화 (선택사항)
+sudo apt install gnupg
+
+# 암호화된 환경변수 파일 생성
+gpg --cipher-algo AES256 --compress-algo 1 --s2k-cipher-algo AES256 --s2k-digest-algo SHA512 --s2k-mode 3 --s2k-count 65536 --symmetric .env
+```
+
+이제 Linux 서버에 HRFCO Service를 안전하고 효율적으로 배포할 수 있습니다! 🚀 

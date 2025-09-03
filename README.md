@@ -6,7 +6,6 @@
 
 - **MCP 서버**: Claude/Cursor에서 직접 사용 가능한 수문 데이터 조회
 - **ChatGPT Function Calling**: ChatGPT에서 자연어로 수문 정보 조회
-- **GPT Actions 프록시**: HTTPS 프록시 서버로 GPT Actions 지원
 - **통합 온톨로지**: HRFCO, WAMIS, 기상청 API 통합 관리
 - **실시간 분석**: 수위 위험도, 강우량 통계 자동 분석
 
@@ -33,20 +32,10 @@ cp env.example .env
 python mcp_server.py
 ```
 
-### GPT Actions 프록시
-```bash
-# 프록시 서버 실행
-python gpt_actions_proxy.py
-
-# 또는 도구 사용
-python tools/run_proxy_server.py
-```
-
 ## 📚 문서
 
 ### 📋 설정 가이드 (`docs/setup/`)
 - [ChatGPT Function Calling 설정](docs/setup/CHATGPT_SETUP.md)
-- [GPT Actions 프록시 설정](docs/setup/gpt-actions-setup.md)
 - [Linux 서버 배포](docs/setup/linux-deployment.md)
 - [Cloudflare 터널링](docs/setup/cloudflare_tunnel_setup.md)
 - [ngrok 터널링](docs/setup/ngrok_setup.md)
@@ -58,10 +47,9 @@ python tools/run_proxy_server.py
 - [통합 API 가이드](docs/api/integrated-apis-guide.md)
 
 ### 💻 사용 예시 (`docs/examples/`)
-- [ChatGPT Function Calling](docs/examples/chatgpt-functions.py)
-- [ChatGPT 사용법](docs/examples/chatgpt-usage.py)
-- [실제 사용 데모](docs/examples/chatgpt-real-demo.py)
-- [GPT Actions 스키마](docs/examples/gpt_actions_proxy_schema.json)
+- [ChatGPT Function Calling](docs/examples/chatgpt_functions.py)
+- [ChatGPT 사용법](docs/examples/chatgpt_usage.py)
+- [함수 테스트](docs/examples/test_chatgpt_functions.py)
 
 ## 🛠️ 개발
 
@@ -101,14 +89,8 @@ KMA_API_KEY=your_kma_api_key
 "하동군 주변 관측소들의 실시간 데이터를 비교 분석해주세요"
 ```
 
-### GPT Actions에서
-1. 프록시 서버 실행: `python gpt_actions_proxy.py`
-2. HTTPS 터널링: ngrok, Cloudflare Tunnel 등 사용
-3. GPT에 Actions 등록 후 자연어 질문
-
 ## 🔧 도구 (`tools/`)
 
-- **`run_proxy_server.py`**: GPT Actions 프록시 서버 실행
 - **`setup_api_keys.py`**: API 키 설정 도구
 - **`test_wamis_complete_api.py`**: WAMIS API 테스트
 
@@ -123,7 +105,6 @@ hrfco-service/
 ├── src/hrfco_service/      # 핵심 라이브러리
 ├── tools/                  # 유틸리티 도구
 ├── mcp_server.py          # MCP 서버 메인
-├── gpt_actions_proxy.py   # GPT Actions 프록시
 └── requirements.txt       # 의존성
 ```
 
@@ -133,9 +114,6 @@ hrfco-service/
 ```bash
 # MCP 서버
 python mcp_server.py
-
-# GPT Actions 프록시
-python gpt_actions_proxy.py
 ```
 
 ### 클라우드 배포
@@ -145,6 +123,15 @@ python gpt_actions_proxy.py
 - **Linux 서버**: Docker 또는 직접 배포
 
 자세한 내용은 [docs/setup/linux-deployment.md](docs/setup/linux-deployment.md) 참고
+
+## 🔐 보안
+
+- ✅ API 키는 환경변수로 관리
+- ✅ .env 파일 Git 제외
+- ✅ 하드코딩된 인증정보 없음
+- ✅ 최소 권한 원칙 적용
+
+**⚠️ 중요**: API 키를 코드에 직접 포함하지 마세요!
 
 ## 🤝 기여하기
 

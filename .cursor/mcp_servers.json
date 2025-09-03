@@ -5,10 +5,10 @@
             "args": [
                 "mcp_server.py"
             ],
-            "cwd": "C:\\Users\\20172483\\web\\hrfco-service",
+            "cwd": "C:/Users/20172483/web/hrfco-service",
             "env": {
-                "HRFCO_API_KEY": "FE18B23B-A81B-4246-9674-E8D641902A42",
-                "LOG_LEVEL": "INFO"
+                "HRFCO_API_KEY": "${env:HRFCO_API_KEY}",
+                "KMA_API_KEY": "${env:KMA_API_KEY}"
             },
             "description": "한국수자원공사 홍수통제소 API MCP 서버 - 수위, 강우량, 댐 데이터 제공 및 댐 방류량 분석"
         }

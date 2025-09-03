@@ -9,12 +9,17 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
 import os
 from dotenv import load_dotenv
+import urllib.parse
 
 load_dotenv()
 
 # API 키 설정 (실제 키 적용)
-HRFCO_API_KEY = os.getenv("HRFCO_API_KEY", "FE18B23B-A81B-4246-9674-E8D641902A42")
-KMA_API_KEY = os.getenv("KMA_API_KEY", "bI7VVvskaOdKJGMej%2F2zJzaxEyiCeGn8kLEidNAxHV7%2FRLiWMCAIlqMY08bwU1MqnakQ4ulEirojxHU800l%2BMA%3D%3D")
+HRFCO_API_KEY = os.getenv("HRFCO_API_KEY")
+KMA_API_KEY = os.getenv("KMA_API_KEY")
+
+# KMA API 키 URL 디코딩 (필요한 경우)
+if KMA_API_KEY and "%2F" in KMA_API_KEY:
+    KMA_API_KEY = urllib.parse.unquote(KMA_API_KEY)
 
 # ChatGPT Function Definitions
 CHATGPT_FUNCTIONS = [

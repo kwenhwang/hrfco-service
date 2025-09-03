@@ -1,13 +1,13 @@
 # HRFCO Service - 홍수통제소 API 통합 서비스
 
-한국수자원공사 홍수통제소(HRFCO) API와 WAMIS API를 통합하여 실시간 수문 정보를 제공하는 MCP(Model Context Protocol) 서버입니다.
+홍수통제소(HRFCO) API와 WAMIS API를 통합하여 실시간 수문 정보를 제공하는 MCP(Model Context Protocol) 서버입니다.
 
 ## 🌟 주요 기능
 
 - **MCP 서버**: Claude/Cursor에서 직접 사용 가능한 수문 데이터 조회
-- **ChatGPT Function Calling**: ChatGPT에서 자연어로 수문 정보 조회
 - **통합 온톨로지**: HRFCO, WAMIS, 기상청 API 통합 관리
 - **실시간 분석**: 수위 위험도, 강우량 통계 자동 분석
+- **Linux 서버 배포**: systemd 서비스로 안정적 운영
 
 ## 📊 지원 데이터
 
@@ -35,7 +35,6 @@ python mcp_server.py
 ## 📚 문서
 
 ### 📋 설정 가이드 (`docs/setup/`)
-- [ChatGPT Function Calling 설정](docs/setup/CHATGPT_SETUP.md)
 - [Linux 서버 배포](docs/setup/linux-deployment.md)
 - [Cloudflare 터널링](docs/setup/cloudflare_tunnel_setup.md)
 - [ngrok 터널링](docs/setup/ngrok_setup.md)
@@ -45,11 +44,6 @@ python mcp_server.py
 - [WAMIS API 명세](docs/api/wamis-api-spec.md)
 - [WAMIS 완전 API 명세](docs/api/wamis-complete-spec.md)
 - [통합 API 가이드](docs/api/integrated-apis-guide.md)
-
-### 💻 사용 예시 (`docs/examples/`)
-- [ChatGPT Function Calling](docs/examples/chatgpt_functions.py)
-- [ChatGPT 사용법](docs/examples/chatgpt_usage.py)
-- [함수 테스트](docs/examples/test_chatgpt_functions.py)
 
 ## 🛠️ 개발
 
@@ -82,13 +76,6 @@ KMA_API_KEY=your_kma_api_key
 "수계별 관측소 정보를 조회해주세요"
 ```
 
-### ChatGPT에서
-```python
-# Function Calling으로 자동 호출
-"진주 지역 날씨와 수위 상황을 종합해서 알려주세요"
-"하동군 주변 관측소들의 실시간 데이터를 비교 분석해주세요"
-```
-
 ## 🔧 도구 (`tools/`)
 
 - **`setup_api_keys.py`**: API 키 설정 도구
@@ -100,8 +87,7 @@ KMA_API_KEY=your_kma_api_key
 hrfco-service/
 ├── docs/                    # 문서
 │   ├── setup/              # 설정 가이드
-│   ├── api/                # API 문서
-│   └── examples/           # 사용 예시
+│   └── api/                # API 문서
 ├── src/hrfco_service/      # 핵심 라이브러리
 ├── tools/                  # 유틸리티 도구
 ├── mcp_server.py          # MCP 서버 메인
@@ -116,11 +102,33 @@ hrfco-service/
 python mcp_server.py
 ```
 
-### 클라우드 배포
-- **Vercel**: 서버리스 배포
-- **Railway**: 컨테이너 배포  
-- **Render**: 웹 서비스 배포
-- **Linux 서버**: Docker 또는 직접 배포
+### Linux 서버 배포 (권장)
+```bash
+# 1. 서버에 접속
+ssh user@your-server
+
+# 2. 프로젝트 클론
+git clone https://github.com/kwenhwang/hrfco-service.git
+cd hrfco-service
+
+# 3. Python 환경 설정
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# 4. 환경변수 설정
+cp env.example .env
+nano .env  # API 키 입력
+
+# 5. systemd 서비스 등록
+sudo cp docs/setup/hrfco-mcp.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable hrfco-mcp
+sudo systemctl start hrfco-mcp
+
+# 6. 상태 확인
+sudo systemctl status hrfco-mcp
+```
 
 자세한 내용은 [docs/setup/linux-deployment.md](docs/setup/linux-deployment.md) 참고
 
@@ -147,6 +155,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 감사의 말
 
-- 한국수자원공사 홍수통제소 API
-- 국가수자원관리종합정보시스템(WAMIS) API
+- 홍수통제소(HRFCO) API
+- 국가수자원관리종합정보시스템(WAMIS) API  
 - 기상청 날씨 API

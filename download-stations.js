@@ -37,17 +37,32 @@ async function fetchStationData(dataType) {
     // 데이터 타입별로 다른 응답 형식 처리
     let stations = [];
     if (data.content) {
-      stations = data.content.map((station) => ({
-        obs_code: station.damcd || station.wlobscd || station.rfobscd || '',
-        obs_name: station.damnm || station.obsnm || '',
-        river_name: station.rivnm || station.river_name,
-        location: station.addr || station.location,
-        address: station.addr,
-        agency: station.agcnm || station.agency,
-        latitude: station.lat ? parseFloat(station.lat) : undefined,
-        longitude: station.lon ? parseFloat(station.lon) : undefined,
-        data_type: dataType
-      }));
+      stations = data.content
+        .filter(station => station && (station.dmobscd || station.damcd || station.wlobscd || station.rfobscd))
+        .map((station) => ({
+          obs_code: station.dmobscd || station.damcd || station.wlobscd || station.rfobscd || '',
+          obs_name: station.damnm || station.obsnm || '',
+          river_name: station.rivnm || station.river_name,
+          location: station.addr || station.location,
+          address: station.addr,
+          agency: station.agcnm || station.agency,
+          latitude: station.lat ? parseFloat(station.lat) : undefined,
+          longitude: station.lon ? parseFloat(station.lon) : undefined,
+          data_type: dataType
+        }));
+      
+      // 댐 데이터의 경우 추가 정보 포함
+      if (dataType === 'dam') {
+        const validDamData = data.content.filter(station => station && (station.dmobscd || station.damcd));
+        stations = stations.map((station, index) => ({
+          ...station,
+          dam_type: validDamData[index]?.damtp || '',
+          dam_height: validDamData[index]?.damht || '',
+          dam_length: validDamData[index]?.damln || '',
+          storage_capacity: validDamData[index]?.stcap || '',
+          flood_control_capacity: validDamData[index]?.flwcap || ''
+        }));
+      }
     }
     
     console.log(`✅ ${dataType} 관측소 ${stations.length}개 다운로드 완료`);

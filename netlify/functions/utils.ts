@@ -21,7 +21,10 @@ export interface SearchResult {
     name: string;
     address: string;
     agency?: string;
+    real_code?: string;
   }>;
+  error?: string;
+  note?: string;
 }
 
 // Korean region mapping

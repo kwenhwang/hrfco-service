@@ -399,6 +399,32 @@ function formatPipelineResponse(result: PipelineResult): string {
     return result.direct_answer + `\n\n✅ **완전한 답변 제공 완료** - 추가 질문 불필요`;
   }
   
+  // 직접 답변이 없으면 강제로 생성
+  if (result.found_stations > 0) {
+    const primaryStation = result.stations[0];
+    const dataType = result.query_analysis?.dataType || 'waterlevel';
+    
+    let directAnswer = '';
+    if (dataType === 'rainfall') {
+      const rainfall = primaryStation.current_data?.rainfall || '0.0mm';
+      const status = primaryStation.current_data?.status || '정상';
+      directAnswer = `${primaryStation.name}의 현재 강수량은 ${rainfall}이며, 상태는 ${status}입니다.`;
+    } else if (dataType === 'waterlevel') {
+      const waterLevel = primaryStation.current_data?.water_level || 'N/A';
+      const status = primaryStation.current_data?.status || '정상';
+      directAnswer = `${primaryStation.name}의 현재 수위는 ${waterLevel}이며, 상태는 ${status}입니다.`;
+    } else if (dataType === 'dam') {
+      const waterLevel = primaryStation.current_data?.water_level || 'N/A';
+      const storageRate = primaryStation.current_data?.storage_rate || 'N/A';
+      directAnswer = `${primaryStation.name}의 현재 수위는 ${waterLevel}이며, 저수율은 ${storageRate}입니다.`;
+    } else {
+      directAnswer = `${primaryStation.name}의 현재 측정값을 조회했습니다.`;
+    }
+    
+    console.log('✅ Generated direct answer:', directAnswer);
+    return directAnswer + `\n\n✅ **완전한 답변 제공 완료** - 추가 질문 불필요`;
+  }
+  
   if (result.found_stations === 0) {
     return `❌ '${result.query}' 관측소를 찾을 수 없습니다.`;
   }

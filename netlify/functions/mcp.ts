@@ -412,8 +412,10 @@ async function getWaterInfoIntegrated(params: any) {
 // StationMapper 초기화 함수
 async function initializeStationMapper(): Promise<void> {
   if (!isMapperInitialized) {
+    console.log('🔄 StationMapper 초기화 시작...');
     await stationMapper.initializeMapping();
     isMapperInitialized = true;
+    console.log('✅ StationMapper 초기화 완료');
   }
 }
 

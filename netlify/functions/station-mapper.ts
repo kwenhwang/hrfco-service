@@ -58,59 +58,29 @@ export class StationMapper {
     }
   }
 
-  // HRFCO API에서 관측소 정보 가져오기 (데이터 타입별로 다른 API 호출)
+  // 저장된 관측소 정보 파일에서 데이터 로드
   private async fetchStationInfo(dataType: string): Promise<StationInfo[]> {
     try {
-      const apiKey = process.env.HRFCO_API_KEY;
-      if (!apiKey) {
-        throw new Error('HRFCO_API_KEY가 설정되지 않았습니다');
-      }
-
-      // 데이터 타입별로 다른 API 엔드포인트 사용
-      let endpoint: string;
-      switch (dataType) {
-        case 'dam':
-          endpoint = 'dam/info.json';
-          break;
-        case 'waterlevel':
-          endpoint = 'waterlevel/info.json';
-          break;
-        case 'rainfall':
-          endpoint = 'rainfall/info.json';
-          break;
-        default:
-          throw new Error(`지원하지 않는 데이터 타입: ${dataType}`);
-      }
-
-      const url = `http://api.hrfco.go.kr/${apiKey}/${endpoint}`;
-      const response = await fetch(url);
+      // 저장된 파일에서 데이터 로드 시도
+      const fs = require('fs');
+      const path = require('path');
       
-      if (!response.ok) {
-        throw new Error(`${dataType} API 호출 실패: ${response.status}`);
+      const fileName = `${dataType}-stations.json`;
+      const filePath = path.join(__dirname, '..', 'data', fileName);
+      
+      if (fs.existsSync(filePath)) {
+        console.log(`📁 ${dataType} 저장된 파일에서 로드: ${filePath}`);
+        const fileData = fs.readFileSync(filePath, 'utf8');
+        const stations = JSON.parse(fileData);
+        console.log(`✅ ${dataType} 관측소 ${stations.length}개 파일에서 로드 완료`);
+        return stations;
+      } else {
+        console.log(`⚠️ ${dataType} 저장된 파일이 없음: ${filePath}`);
+        throw new Error(`저장된 ${dataType} 파일이 없습니다`);
       }
-      
-      const data = await response.json() as any;
-      
-      // 데이터 타입별로 다른 응답 형식 처리
-      let stations: StationInfo[] = [];
-      if (data.content) {
-        stations = data.content.map((station: any) => ({
-          obs_code: station.damcd || station.wlobscd || station.rfobscd || '',
-          obs_name: station.damnm || station.obsnm || '',
-          river_name: station.rivnm || station.river_name,
-          location: station.addr || station.location,
-          address: station.addr,
-          agency: station.agcnm || station.agency,
-          latitude: station.lat ? parseFloat(station.lat) : undefined,
-          longitude: station.lon ? parseFloat(station.lon) : undefined,
-          data_type: dataType as 'dam' | 'waterlevel' | 'rainfall'
-        }));
-      }
-      
-      return stations;
       
     } catch (error) {
-      console.warn(`⚠️ ${dataType} API 호출 실패, 데모 데이터 사용:`, error);
+      console.warn(`⚠️ ${dataType} 파일 로드 실패, 데모 데이터 사용:`, error);
       return this.getDemoStationInfo(dataType);
     }
   }
@@ -266,6 +236,7 @@ export class StationMapper {
       { name: '광주우량관측소', code: '1018829', river: '영산강', location: '광주' },
       { name: '대전우량관측소', code: '1018830', river: '금강', location: '대전' },
       { name: '문경시(농암리)', code: '1018831', river: '낙동강', location: '문경시' },
+      { name: '문경시(화산리)', code: '1018833', river: '낙동강', location: '문경시' },
       { name: '가평군(가평교)', code: '1018832', river: '한강', location: '가평군' },
     ];
 

@@ -1,0 +1,7421 @@
+[
+  {
+    "obs_code": "10014010",
+    "obs_name": "평창군(월정분교)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014020",
+    "obs_name": "정선군(정선군2청사)",
+    "location": "강원특별자치도 정선군",
+    "address": "강원특별자치도 정선군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014070",
+    "obs_name": "상원사",
+    "location": "강원도 평창군 진부면",
+    "address": "강원도 평창군 진부면",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014080",
+    "obs_name": "강릉시(대기리)",
+    "location": "강원특별자치도 강릉시",
+    "address": "강원특별자치도 강릉시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014090",
+    "obs_name": "정선군(고한읍사무소)",
+    "location": "강원특별자치도 정선군",
+    "address": "강원특별자치도 정선군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014100",
+    "obs_name": "삼척시(번천리)",
+    "location": "강원특별자치도 삼척시",
+    "address": "강원특별자치도 삼척시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014110",
+    "obs_name": "평창군(상진부리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014120",
+    "obs_name": "평창군(수하리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014130",
+    "obs_name": "정선군(애산리)",
+    "location": "강원특별자치도 정선군",
+    "address": "강원특별자치도 정선군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014140",
+    "obs_name": "정선군(송계리)",
+    "location": "강원특별자치도 정선군",
+    "address": "강원특별자치도 정선군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014150",
+    "obs_name": "정선군(직전리)",
+    "location": "강원특별자치도 정선군",
+    "address": "강원특별자치도 정선군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014160",
+    "obs_name": "평창군(율치리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014170",
+    "obs_name": "강릉시(대기리2)",
+    "location": "강원특별자치도 강릉시",
+    "address": "강원특별자치도 강릉시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014180",
+    "obs_name": "삼척시(광동리)",
+    "location": "강원특별자치도 삼척시",
+    "address": "강원특별자치도 삼척시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014190",
+    "obs_name": "삼척시(광동댐)",
+    "location": "강원특별자치도 삼척시",
+    "address": "강원특별자치도 삼척시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014197",
+    "obs_name": "태백시(상사미동)",
+    "location": "강원특별자치도 태백시",
+    "address": "강원특별자치도 태백시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014200",
+    "obs_name": "평창군(회동리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014210",
+    "obs_name": "평창군(수항리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014220",
+    "obs_name": "정선군(문곡리)",
+    "location": "강원특별자치도 정선군",
+    "address": "강원특별자치도 정선군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014230",
+    "obs_name": "정선군(유천리)",
+    "location": "강원특별자치도 정선군 여량면",
+    "address": "강원특별자치도 정선군 여량면",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014240",
+    "obs_name": "정선군(덕암리)",
+    "location": "강원특별자치도 정선군",
+    "address": "강원특별자치도 정선군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014250",
+    "obs_name": "원동",
+    "location": "강원특별자치도 태백시",
+    "address": "강원특별자치도 태백시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10014260",
+    "obs_name": "송천1교",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024010",
+    "obs_name": "평창군(가평초교)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024060",
+    "obs_name": "평창군(방림면사무소)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024070",
+    "obs_name": "대화",
+    "location": "강원도 평창군 대화면",
+    "address": "강원도 평창군 대화면",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024080",
+    "obs_name": "계촌",
+    "location": "강원도 평창군 방림면",
+    "address": "강원도 평창군 방림면",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024090",
+    "obs_name": "평창군(흥정리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024100",
+    "obs_name": "평창군(계촌리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024110",
+    "obs_name": "평창군(유포리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024120",
+    "obs_name": "평창군(유포리2)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024130",
+    "obs_name": "평창군(도사리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024140",
+    "obs_name": "평창군(고길리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024150",
+    "obs_name": "평창군(신리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024160",
+    "obs_name": "평창군(이승복기념관)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024170",
+    "obs_name": "영월군(무릉리)",
+    "location": "강원특별자치도 영월군",
+    "address": "강원특별자치도 영월군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024180",
+    "obs_name": "평창군(계촌리2)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024190",
+    "obs_name": "평창군(원길리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024200",
+    "obs_name": "평창군(후평리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024210",
+    "obs_name": "평창군(대화리)",
+    "location": "강원특별자치도 평창군",
+    "address": "강원특별자치도 평창군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024220",
+    "obs_name": "영월군(북쌍리)",
+    "location": "강원특별자치도 영월군",
+    "address": "강원특별자치도 영월군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024230",
+    "obs_name": "횡성군(부곡리)",
+    "location": "강원특별자치도 횡성군",
+    "address": "강원특별자치도 횡성군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024240",
+    "obs_name": "원주시(황둔리)",
+    "location": "강원특별자치도 원주시",
+    "address": "강원특별자치도 원주시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024250",
+    "obs_name": "횡성군(상안리)",
+    "location": "강원특별자치도 횡성군",
+    "address": "강원특별자치도 횡성군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10024260",
+    "obs_name": "영월군(연덕리)",
+    "location": "강원특별자치도 영월군",
+    "address": "강원특별자치도 영월군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034050",
+    "obs_name": "단양군(영춘중교)",
+    "location": "충청북도 단양군",
+    "address": "충청북도 단양군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034060",
+    "obs_name": "제천시(덕주휴게소)",
+    "location": "충청북도 제천시",
+    "address": "충청북도 제천시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034070",
+    "obs_name": "단양군(올산리)",
+    "location": "충청북도 단양군",
+    "address": "충청북도 단양군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034080",
+    "obs_name": "제천시(평동리)",
+    "location": "충청북도 제천시",
+    "address": "충청북도 제천시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034090",
+    "obs_name": "제천시(물태리)",
+    "location": "충청북도 제천시",
+    "address": "충청북도 제천시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034100",
+    "obs_name": "단양군(하방리)",
+    "location": "충청북도 단양군",
+    "address": "충청북도 단양군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034110",
+    "obs_name": "단양군(오사리)",
+    "location": "충청북도 단양군",
+    "address": "충청북도 단양군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034120",
+    "obs_name": "영월군(주문리)",
+    "location": "강원특별자치도 영월군",
+    "address": "강원특별자치도 영월군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034130",
+    "obs_name": "충주시(충주댐)",
+    "location": "충청북도 충주시",
+    "address": "충청북도 충주시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034140",
+    "obs_name": "단양군(가평리)",
+    "location": "충청북도 단양군 매포읍",
+    "address": "충청북도 단양군 매포읍",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034150",
+    "obs_name": "제천시(삼거리)",
+    "location": "충청북도 제천시",
+    "address": "충청북도 제천시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034160",
+    "obs_name": "제천시(도전리)",
+    "location": "충청북도 제천시",
+    "address": "충청북도 제천시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034170",
+    "obs_name": "단양군(율곡리)",
+    "location": "충청북도 단양군",
+    "address": "충청북도 단양군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10034180",
+    "obs_name": "영월군(내리)",
+    "location": "강원특별자치도 영월군",
+    "address": "강원특별자치도 영월군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044010",
+    "obs_name": "괴산군(청천면사무소)",
+    "location": "충청북도 괴산군",
+    "address": "충청북도 괴산군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044020",
+    "obs_name": "충주시(수안보면사무소)",
+    "location": "충청북도 충주시",
+    "address": "충청북도 충주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044030",
+    "obs_name": "괴산군(연풍초교)",
+    "location": "충청북도 괴산군",
+    "address": "충청북도 괴산군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044040",
+    "obs_name": "갈계",
+    "location": "경상남도 거창군",
+    "address": "경상남도 거창군",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044060",
+    "obs_name": "보은군(법주분교)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044080",
+    "obs_name": "상주시(입석분교)",
+    "location": "경상북도 상주시",
+    "address": "경상북도 상주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044090",
+    "obs_name": "보은군(법주사)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044100",
+    "obs_name": "괴산군(고마리)",
+    "location": "충청북도 괴산군",
+    "address": "충청북도 괴산군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044110",
+    "obs_name": "청주시(성대리)",
+    "location": "충청북도 청주시",
+    "address": "충청북도 청주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044120",
+    "obs_name": "충주시(대곡리)",
+    "location": "충청북도 충주시",
+    "address": "충청북도 충주시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044130",
+    "obs_name": "충주시(향산리)",
+    "location": "충청북도 충주시",
+    "address": "충청북도 충주시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044140",
+    "obs_name": "괴산군(오가리)",
+    "location": "충청북도 괴산군",
+    "address": "충청북도 괴산군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044150",
+    "obs_name": "음성군(음성고교)",
+    "location": "충청북도 음성군",
+    "address": "충청북도 음성군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044160",
+    "obs_name": "괴산군(송면중교)",
+    "location": "충청북도 괴산군",
+    "address": "충청북도 괴산군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044170",
+    "obs_name": "괴산군(문당리)",
+    "location": "충청북도 괴산군",
+    "address": "충청북도 괴산군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044180",
+    "obs_name": "보은군(탁주리)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044182",
+    "obs_name": "괴산댐",
+    "location": "충청북도 괴산군",
+    "address": "충청북도 괴산군",
+    "agency": "한국수력원자력",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044270",
+    "obs_name": "송면",
+    "location": "충청북도 괴산군",
+    "address": "충청북도 괴산군",
+    "agency": "한국수력원자력",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044280",
+    "obs_name": "미원",
+    "location": "충청북도 청원군",
+    "address": "충청북도 청원군",
+    "agency": "한국수력원자력",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044282",
+    "obs_name": "내속리",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "한국수력원자력",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044284",
+    "obs_name": "압항천",
+    "location": "충청북도 괴산군",
+    "address": "충청북도 괴산군",
+    "agency": "한국수력원자력",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044285",
+    "obs_name": "고성교",
+    "location": "충청북도 괴산군 청천면",
+    "address": "충청북도 괴산군 청천면",
+    "agency": "한국수력원자력",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10044286",
+    "obs_name": "후영교",
+    "location": "충청북도 괴산군 청천면",
+    "address": "충청북도 괴산군 청천면",
+    "agency": "한국수력원자력",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10054010",
+    "obs_name": "원주시(법천교)",
+    "location": "강원특별자치도 원주시",
+    "address": "강원특별자치도 원주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10054020",
+    "obs_name": "충주시(엄정면사무소)",
+    "location": "충청북도 충주시",
+    "address": "충청북도 충주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10054030",
+    "obs_name": "충주시(용대리)",
+    "location": "충청북도 충주시",
+    "address": "충청북도 충주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064010",
+    "obs_name": "원주",
+    "location": "강원도 원주시",
+    "address": "강원도 원주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064020",
+    "obs_name": "횡성군(횡성군청)",
+    "location": "강원특별자치도 횡성군",
+    "address": "강원특별자치도 횡성군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064030",
+    "obs_name": "양평군(양동주민자치센터)",
+    "location": "경기도 양평군",
+    "address": "경기도 양평군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064040",
+    "obs_name": "횡성군(청일면사무소)",
+    "location": "강원특별자치도 횡성군",
+    "address": "강원특별자치도 횡성군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064050",
+    "obs_name": "원주시(지정면사무소)",
+    "location": "강원특별자치도 원주시",
+    "address": "강원특별자치도 원주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064060",
+    "obs_name": "원주시(문막교)",
+    "location": "강원특별자치도 원주시",
+    "address": "강원특별자치도 원주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064070",
+    "obs_name": "원주시(서곡초교)",
+    "location": "강원특별자치도 원주시",
+    "address": "강원특별자치도 원주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064075",
+    "obs_name": "원주시(신촌리)",
+    "location": "강원특별자치도 원주시 판부면",
+    "address": "강원특별자치도 원주시 판부면",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064080",
+    "obs_name": "횡성군(우항리)",
+    "location": "강원특별자치도 횡성군",
+    "address": "강원특별자치도 횡성군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064090",
+    "obs_name": "원주시(흥양초교)",
+    "location": "강원특별자치도 원주시",
+    "address": "강원특별자치도 원주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064100",
+    "obs_name": "횡성군(춘당리)",
+    "location": "강원특별자치도 횡성군",
+    "address": "강원특별자치도 횡성군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064110",
+    "obs_name": "횡성군(갑천리)",
+    "location": "강원특별자치도 횡성군",
+    "address": "강원특별자치도 횡성군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10064120",
+    "obs_name": "횡성군(횡성댐)",
+    "location": "강원특별자치도 횡성군",
+    "address": "강원특별자치도 횡성군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074010",
+    "obs_name": "양평군(양평교)",
+    "location": "경기도 양평군",
+    "address": "경기도 양평군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074020",
+    "obs_name": "장호원",
+    "location": "경기도 이천군 장호원읍",
+    "address": "경기도 이천군 장호원읍",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074030",
+    "obs_name": "여주시(여주대교)",
+    "location": "경기도 여주시",
+    "address": "경기도 여주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074040",
+    "obs_name": "양평군(청운면사무소)",
+    "location": "경기도 양평군",
+    "address": "경기도 양평군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074050",
+    "obs_name": "음성군(생극면사무소)",
+    "location": "충청북도 음성군",
+    "address": "충청북도 음성군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074060",
+    "obs_name": "이천시(이천남초교)",
+    "location": "경기도 이천시",
+    "address": "경기도 이천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074070",
+    "obs_name": "여주시(금당초교)",
+    "location": "경기도 여주시",
+    "address": "경기도 여주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074080",
+    "obs_name": "안성시(삼죽초교)",
+    "location": "경기도 안성시",
+    "address": "경기도 안성시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074090",
+    "obs_name": "이천시(장천초교)",
+    "location": "경기도 이천시",
+    "address": "경기도 이천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074100",
+    "obs_name": "여주시(주암리)",
+    "location": "경기도 여주시",
+    "address": "경기도 여주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074110",
+    "obs_name": "광주시(검천리)",
+    "location": "경기도 광주시",
+    "address": "경기도 광주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074120",
+    "obs_name": "여주시(상품중교)",
+    "location": "경기도 여주시",
+    "address": "경기도 여주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074170",
+    "obs_name": "흑천",
+    "location": "경기도 양평군",
+    "address": "경기도 양평군",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10074175",
+    "obs_name": "남한강",
+    "location": "경기도 여주군",
+    "address": "경기도 여주군",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10094010",
+    "obs_name": "화천군(평화의댐)",
+    "location": "강원특별자치도 화천군",
+    "address": "강원특별자치도 화천군",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10094020",
+    "obs_name": "화천군(풍산리)",
+    "location": "강원특별자치도 화천군 화천읍",
+    "address": "강원특별자치도 화천군 화천읍",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104010",
+    "obs_name": "화천군(화천군청)",
+    "location": "강원특별자치도 화천군",
+    "address": "강원특별자치도 화천군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104020",
+    "obs_name": "화천군(다목초교)",
+    "location": "강원특별자치도 화천군",
+    "address": "강원특별자치도 화천군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104030",
+    "obs_name": "양구군(방산초교)",
+    "location": "강원특별자치도 양구군",
+    "address": "강원특별자치도 양구군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104040",
+    "obs_name": "화천군(명월리)",
+    "location": "강원특별자치도 화천군",
+    "address": "강원특별자치도 화천군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104048",
+    "obs_name": "화천댐",
+    "location": "강원도 화천군",
+    "address": "강원도 화천군",
+    "agency": "한국수력원자력",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104050",
+    "obs_name": "화천군(화천댐)",
+    "location": "강원특별자치도 화천군",
+    "address": "강원특별자치도 화천군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104060",
+    "obs_name": "양구군(금악리)",
+    "location": "강원특별자치도 양구군",
+    "address": "강원특별자치도 양구군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104070",
+    "obs_name": "춘천시(지촌초교)",
+    "location": "강원특별자치도 춘천시",
+    "address": "강원특별자치도 춘천시",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104080",
+    "obs_name": "화천군(상승초교)",
+    "location": "강원특별자치도 화천군",
+    "address": "강원특별자치도 화천군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104082",
+    "obs_name": "춘천댐",
+    "location": "강원도 춘천시",
+    "address": "강원도 춘천시",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104170",
+    "obs_name": "수입천",
+    "location": "강원특별자치도 양구군",
+    "address": "강원특별자치도 양구군",
+    "agency": "한국수력원자력",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104171",
+    "obs_name": "양구서천",
+    "location": "강원특별자치도 양구군",
+    "address": "강원특별자치도 양구군",
+    "agency": "한국수력원자력",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104172",
+    "obs_name": "용신교",
+    "location": " ",
+    "address": " ",
+    "agency": "한국수력원자력",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104173",
+    "obs_name": "지촌천",
+    "location": "강원특별자치도 춘천시",
+    "address": "강원특별자치도 춘천시",
+    "agency": "한국수력원자력",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10104174",
+    "obs_name": "약수교",
+    "location": "강원특별자치도 양구군 동면",
+    "address": "강원특별자치도 양구군 동면",
+    "agency": "한국수력원자력",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10114020",
+    "obs_name": "용대",
+    "location": "강원도 인제군 북면",
+    "address": "강원도 인제군 북면",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10114030",
+    "obs_name": "인제군(서성초교)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10114040",
+    "obs_name": "인제군(한계초교)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10114050",
+    "obs_name": "인제군(백담산장)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10114060",
+    "obs_name": "장수대",
+    "location": "강원도 인제군 북면",
+    "address": "강원도 인제군 북면",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10114070",
+    "obs_name": "인제군(덕적리)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10114080",
+    "obs_name": "인제군(용대초교)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124020",
+    "obs_name": "인제군(신남중교)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124050",
+    "obs_name": "춘천시(추곡초교)",
+    "location": "강원특별자치도 춘천시 북산면",
+    "address": "강원특별자치도 춘천시 북산면",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124060",
+    "obs_name": "인제군(남전리)",
+    "location": "강원특별자치도 인제군 남면",
+    "address": "강원특별자치도 인제군 남면",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124080",
+    "obs_name": "인제군(현리)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124090",
+    "obs_name": "홍천군(창촌리)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124110",
+    "obs_name": "인제군(진동리)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124120",
+    "obs_name": "홍천군(명개리)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124130",
+    "obs_name": "인제군(신남리)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124140",
+    "obs_name": "인제군(상남초교)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124150",
+    "obs_name": "인제군(귀둔리)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124160",
+    "obs_name": "홍천군(명개리2)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124170",
+    "obs_name": "춘천시(천전리)",
+    "location": "강원특별자치도 춘천시",
+    "address": "강원특별자치도 춘천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124175",
+    "obs_name": "지내천",
+    "location": "강원특별자치도 춘천시",
+    "address": "강원특별자치도 춘천시",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10124180",
+    "obs_name": "춘천시(소양강댐)",
+    "location": "강원특별자치도 춘천시 신북읍",
+    "address": "강원특별자치도 춘천시 신북읍",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10134010",
+    "obs_name": "춘천시(소양2교)",
+    "location": "강원특별자치도 춘천시",
+    "address": "강원특별자치도 춘천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10134020",
+    "obs_name": "가평군(가평교)",
+    "location": "경기도 가평군",
+    "address": "경기도 가평군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10134030",
+    "obs_name": "가평군(화악교)",
+    "location": "경기도 가평군",
+    "address": "경기도 가평군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10134032",
+    "obs_name": "의암댐",
+    "location": "강원도 춘천시",
+    "address": "강원도 춘천시",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10134045",
+    "obs_name": "목동교",
+    "location": "경기도 가평군",
+    "address": "경기도 가평군",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10134140",
+    "obs_name": "가평천",
+    "location": "경기도 가평군",
+    "address": "경기도 가평군",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144010",
+    "obs_name": "홍천군(홍천농고)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144020",
+    "obs_name": "홍천군(서석면사무소)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144030",
+    "obs_name": "두촌2",
+    "location": "강원특별자치도 홍천군 두촌면",
+    "address": "강원특별자치도 홍천군 두촌면",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144040",
+    "obs_name": "홍천군(내촌면사무소)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144050",
+    "obs_name": "홍천군(반곡교)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144060",
+    "obs_name": "홍천군(매산초교)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144070",
+    "obs_name": "홍천군(삼포초교)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144080",
+    "obs_name": "홍천군(노천초교)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144090",
+    "obs_name": "홍천군(북방리)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144100",
+    "obs_name": "홍천군(두촌중교)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144165",
+    "obs_name": "홍천강(성포교)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144170",
+    "obs_name": "홍천강(남산교)",
+    "location": "강원도 홍천군",
+    "address": "강원도 홍천군",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144172",
+    "obs_name": "화천천",
+    "location": "강원특별자치도 화천군",
+    "address": "강원특별자치도 화천군",
+    "agency": "한국수력원자력",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10144180",
+    "obs_name": "홍천강(한덕교)",
+    "location": "강원특별자치도 홍천군",
+    "address": "강원특별자치도 홍천군",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10154010",
+    "obs_name": "가평군(하면사무소)",
+    "location": "경기도 가평군",
+    "address": "경기도 가평군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10154020",
+    "obs_name": "가평군(신청평대교)",
+    "location": "경기도 가평군",
+    "address": "경기도 가평군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10154030",
+    "obs_name": "가평군(중미산)",
+    "location": "경기도 가평군",
+    "address": "경기도 가평군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10154032",
+    "obs_name": "청평댐",
+    "location": "경기도 가평군",
+    "address": "경기도 가평군",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10154035",
+    "obs_name": "산장제1교",
+    "location": "경기도 가평군",
+    "address": "경기도 가평군",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10164010",
+    "obs_name": "광주시(광주시청)",
+    "location": "경기도 광주시",
+    "address": "경기도 광주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10164020",
+    "obs_name": "광주시(남한산초교)",
+    "location": "경기도 광주시",
+    "address": "경기도 광주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10164030",
+    "obs_name": "용인시(포곡초교)",
+    "location": "경기도 용인시",
+    "address": "경기도 용인시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10164040",
+    "obs_name": "용인시(운학초교)",
+    "location": "경기도 용인시",
+    "address": "경기도 용인시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10164050",
+    "obs_name": "용인시(모현면사무소)",
+    "location": "경기도 용인시",
+    "address": "경기도 용인시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10164060",
+    "obs_name": "용인시(용동중교)",
+    "location": "경기도 용인시",
+    "address": "경기도 용인시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10164070",
+    "obs_name": "용인시(역삼동주민센터)",
+    "location": "경기도 용인시",
+    "address": "경기도 용인시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10164075",
+    "obs_name": "경안교",
+    "location": "경기도 광주시 ",
+    "address": "경기도 광주시 ",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10164080",
+    "obs_name": "광주시(경안교)",
+    "location": "경기도 광주시",
+    "address": "경기도 광주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10174020",
+    "obs_name": "남양주시(팔당댐)",
+    "location": "경기도 남양주시",
+    "address": "경기도 남양주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184010",
+    "obs_name": "의정부시(중앙초교)",
+    "location": "경기도 의정부시",
+    "address": "경기도 의정부시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184020",
+    "obs_name": "포천시(내촌면사무소)",
+    "location": "경기도 포천시",
+    "address": "경기도 포천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184030",
+    "obs_name": "남면",
+    "location": "경기도 군포시 군포2동",
+    "address": "경기도 군포시 군포2동",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184040",
+    "obs_name": "성남시(한국학중앙연구원)",
+    "location": "경기도 성남시",
+    "address": "경기도 성남시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184050",
+    "obs_name": "고안(등록문화재)",
+    "location": "경기도 남양주시 조안면",
+    "address": "경기도 남양주시 조안면",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184060",
+    "obs_name": "남양주시(금곡초교)",
+    "location": "경기도 남양주시",
+    "address": "경기도 남양주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184070",
+    "obs_name": "서울",
+    "location": "서울특별시 서대문구",
+    "address": "서울특별시 서대문구",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184080",
+    "obs_name": "서울시(구로구청)",
+    "location": "서울특별시 구로구",
+    "address": "서울특별시 구로구",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184090",
+    "obs_name": "안양시(충훈1교)",
+    "location": "경기도 안양시",
+    "address": "경기도 안양시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184100",
+    "obs_name": "서울시(대곡교)",
+    "location": "서울특별시",
+    "address": "서울특별시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184110",
+    "obs_name": "남양주시(진관교)",
+    "location": "경기도 남양주시",
+    "address": "경기도 남양주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184120",
+    "obs_name": "포천시(진목리)",
+    "location": "경기도 포천시",
+    "address": "경기도 포천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184125",
+    "obs_name": "의정부시(도봉차량기지)",
+    "location": "경기도 의정부시",
+    "address": "경기도 의정부시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184130",
+    "obs_name": "성남시(대장동)",
+    "location": "경기도 성남시",
+    "address": "경기도 성남시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184140",
+    "obs_name": "서울시(송정동)",
+    "location": "서울특별시 성동구",
+    "address": "서울특별시 성동구",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184150",
+    "obs_name": "과천시(한국수자원공사)",
+    "location": "경기도 과천시",
+    "address": "경기도 과천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184160",
+    "obs_name": "부천시(부안초교)",
+    "location": "경기도 부천시",
+    "address": "경기도 부천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184170",
+    "obs_name": "군포시(군포1동주민센터)",
+    "location": "경기도 군포시",
+    "address": "경기도 군포시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184180",
+    "obs_name": "성남시(성남북초교)",
+    "location": "경기도 성남시",
+    "address": "경기도 성남시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184190",
+    "obs_name": "서울시(동막골주차장)",
+    "location": "서울특별시 노원구",
+    "address": "서울특별시 노원구",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184200",
+    "obs_name": "서울시(월계2교)",
+    "location": "서울특별시 노원구",
+    "address": "서울특별시 노원구",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184210",
+    "obs_name": "의왕시(포일동)",
+    "location": "경기도 의왕시",
+    "address": "경기도 의왕시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184220",
+    "obs_name": "남양주시(진접읍사무소)",
+    "location": "경기도 남양주시",
+    "address": "경기도 남양주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184230",
+    "obs_name": "성남시(구미초교)",
+    "location": "경기도 성남시",
+    "address": "경기도 성남시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10184232",
+    "obs_name": "팔당댐",
+    "location": "경기도 남양주시",
+    "address": "경기도 남양주시",
+    "agency": "한국수력원자력",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10194010",
+    "obs_name": "김포시(김포시청)",
+    "location": "경기도 김포시",
+    "address": "경기도 김포시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10194020",
+    "obs_name": "귤현보",
+    "location": "인천광역시 계양구 귤현동",
+    "address": "인천광역시 계양구 귤현동",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10194030",
+    "obs_name": "아라김포TM",
+    "location": "서울특별시 강서구 개화동",
+    "address": "서울특별시 강서구 개화동",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10204010",
+    "obs_name": "연천군(고문분교)",
+    "location": "경기도 연천군",
+    "address": "경기도 연천군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10204015",
+    "obs_name": "연천군(한탄강댐)",
+    "location": "경기도 연천군 연천읍",
+    "address": "경기도 연천군 연천읍",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10204020",
+    "obs_name": "연천군(상리초교)",
+    "location": "경기도 연천군",
+    "address": "경기도 연천군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10214010",
+    "obs_name": "연천군(임진교)",
+    "location": "경기도 연천군",
+    "address": "경기도 연천군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10214020",
+    "obs_name": "연천군(횡산리)",
+    "location": "경기도 연천군 중면",
+    "address": "경기도 연천군 중면",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10214030",
+    "obs_name": "연천군(군남댐)",
+    "location": "경기도 연천군 군남면",
+    "address": "경기도 연천군 군남면",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10214040",
+    "obs_name": "철원군(중세리)",
+    "location": "강원특별자치도 철원군 철원읍",
+    "address": "강원특별자치도 철원군 철원읍",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224010",
+    "obs_name": "포천시(용담교)",
+    "location": "경기도 포천시",
+    "address": "경기도 포천시",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224020",
+    "obs_name": "포천시(영송리)",
+    "location": "경기도 포천시",
+    "address": "경기도 포천시",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224030",
+    "obs_name": "철원군(청양리)",
+    "location": "강원특별자치도 철원군",
+    "address": "강원특별자치도 철원군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224037",
+    "obs_name": "철원군(삼합교)",
+    "location": "강원특별자치도 철원군 갈말읍",
+    "address": "강원특별자치도 철원군 갈말읍",
+    "agency": "한국수자원공사",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224040",
+    "obs_name": "포천시(노곡리)",
+    "location": "경기도 포천시",
+    "address": "경기도 포천시",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224050",
+    "obs_name": "양주시(봉암초교)",
+    "location": "경기도 양주시",
+    "address": "경기도 양주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224060",
+    "obs_name": "포천시(포천삼정초교)",
+    "location": "경기도 포천시",
+    "address": "경기도 포천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224070",
+    "obs_name": "포천시(송우초교)",
+    "location": "경기도 포천시",
+    "address": "경기도 포천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224080",
+    "obs_name": "철원군(오덕초교)",
+    "location": "강원특별자치도 철원군",
+    "address": "강원특별자치도 철원군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224090",
+    "obs_name": "포천시(화현초교)",
+    "location": "경기도 포천시",
+    "address": "경기도 포천시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10224100",
+    "obs_name": "철원군(서면초교)",
+    "location": "강원특별자치도 철원군",
+    "address": "강원특별자치도 철원군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10234010",
+    "obs_name": "파주시(통일대교)",
+    "location": "경기도 파주시",
+    "address": "경기도 파주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10234020",
+    "obs_name": "파주시(법원리)",
+    "location": "경기도 파주시",
+    "address": "경기도 파주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10234030",
+    "obs_name": "파주시(신산초교)",
+    "location": "경기도 파주시",
+    "address": "경기도 파주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "10234040",
+    "obs_name": "파주시(용연초교)",
+    "location": "경기도 파주시",
+    "address": "경기도 파주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014010",
+    "obs_name": "평택시(진위면사무소)",
+    "location": "경기도 평택시",
+    "address": "경기도 평택시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014020",
+    "obs_name": "안성시(안성시청)",
+    "location": "경기도 안성시",
+    "address": "경기도 안성시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014030",
+    "obs_name": "용인시(원삼면사무소)",
+    "location": "경기도 용인시",
+    "address": "경기도 용인시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014040",
+    "obs_name": "화성시(양감면사무소)",
+    "location": "경기도 화성시",
+    "address": "경기도 화성시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014050",
+    "obs_name": "천안시(대홍초교)",
+    "location": "충청남도 천안시",
+    "address": "충청남도 천안시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014060",
+    "obs_name": "화성시(수원대학교)",
+    "location": "경기도 화성시",
+    "address": "경기도 화성시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014070",
+    "obs_name": "평택시(회화리)",
+    "location": "경기도 평택시",
+    "address": "경기도 평택시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014080",
+    "obs_name": "평택시(군문교)",
+    "location": "경기도 평택시",
+    "address": "경기도 평택시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014090",
+    "obs_name": "용인시(신갈저수지)",
+    "location": "경기도 용인시",
+    "address": "경기도 용인시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014100",
+    "obs_name": "용인시(이동면사무소)",
+    "location": "경기도 용인시",
+    "address": "경기도 용인시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014110",
+    "obs_name": "천안시(성거읍사무소)",
+    "location": "충청남도 천안시",
+    "address": "충청남도 천안시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014120",
+    "obs_name": "안성시(삼암리)",
+    "location": "경기도 안성시",
+    "address": "경기도 안성시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014130",
+    "obs_name": "안성시(안성서운중교)",
+    "location": "경기도 안성시",
+    "address": "경기도 안성시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "11014140",
+    "obs_name": "파주시(적암초교)",
+    "location": "경기도 파주시",
+    "address": "경기도 파주시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "12014010",
+    "obs_name": "아라인천TM",
+    "location": "인천광역시 서구 오류동",
+    "address": "인천광역시 서구 오류동",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "12024010",
+    "obs_name": "안산시(안산호동초교)",
+    "location": "경기도 안산시",
+    "address": "경기도 안산시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "12024020",
+    "obs_name": "안산시(장상동)",
+    "location": "경기도 안산시",
+    "address": "경기도 안산시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "13014010",
+    "obs_name": "양양군(갈천리)",
+    "location": "강원특별자치도 양양군",
+    "address": "강원특별자치도 양양군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "13014020",
+    "obs_name": "인제군(한계령)",
+    "location": "강원특별자치도 인제군",
+    "address": "강원특별자치도 인제군",
+    "agency": "환경부",
+    "latitude": 38,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "13024010",
+    "obs_name": "강릉시(소금강분소)",
+    "location": "강원특별자치도 강릉시",
+    "address": "강원특별자치도 강릉시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "13024030",
+    "obs_name": "동해시(달방댐)",
+    "location": "강원특별자치도 동해시",
+    "address": "강원특별자치도 동해시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "13034010",
+    "obs_name": "삼척시(심포리)",
+    "location": "강원특별자치도 삼척시",
+    "address": "강원특별자치도 삼척시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014005",
+    "obs_name": "현동",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014010",
+    "obs_name": "봉화군(재산면사무소)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014020",
+    "obs_name": "안동시(석동동)",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014030",
+    "obs_name": "안동시(서부리)",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014040",
+    "obs_name": "봉화군(애당리)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014050",
+    "obs_name": "안동시(월곡초교)",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014060",
+    "obs_name": "봉화군(풍호리)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014070",
+    "obs_name": "태백시(태백시청)",
+    "location": "강원특별자치도 태백시",
+    "address": "강원특별자치도 태백시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014080",
+    "obs_name": "봉화군(석포초교)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014090",
+    "obs_name": "봉화군(분천리)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014100",
+    "obs_name": "삼계",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014110",
+    "obs_name": "안동시(의촌리)",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014120",
+    "obs_name": "봉화군(대현리)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014130",
+    "obs_name": "봉화군(갈산리)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014140",
+    "obs_name": "봉화군(고선리)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014150",
+    "obs_name": "현동",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014160",
+    "obs_name": "태백시(소도동)",
+    "location": "강원특별자치도 태백시",
+    "address": "강원특별자치도 태백시",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014170",
+    "obs_name": "봉화군(관창리)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014180",
+    "obs_name": "안동시(기사리)",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014190",
+    "obs_name": "봉화군(서동리)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014200",
+    "obs_name": "태백시(문곡동)",
+    "location": "강원도 태백시",
+    "address": "강원도 태백시",
+    "agency": "한국수자원공사",
+    "latitude": 37,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014210",
+    "obs_name": "울진군(전곡리)",
+    "location": "경상북도 울진군",
+    "address": "경상북도 울진군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20014230",
+    "obs_name": "영천시(화남면사무소)",
+    "location": "경상북도 영천시",
+    "address": "경상북도 영천시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024020",
+    "obs_name": "안동시(당북동)",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024025",
+    "obs_name": "안동",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "환경부",
+    "latitude": null,
+    "longitude": null,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024030",
+    "obs_name": "청송군(현서면사무소)",
+    "location": "경상북도 청송군",
+    "address": "경상북도 청송군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024050",
+    "obs_name": "안동시(묵계교)",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024060",
+    "obs_name": "안동시(중평리)",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024070",
+    "obs_name": "진보2",
+    "location": "경상북도 청송군",
+    "address": "경상북도 청송군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024080",
+    "obs_name": "청송군(덕리)",
+    "location": "경상북도 청송군",
+    "address": "경상북도 청송군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024090",
+    "obs_name": "청송군(대전리)",
+    "location": "경상북도 청송군",
+    "address": "경상북도 청송군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024100",
+    "obs_name": "영양군(현리)",
+    "location": "경상북도 영양군",
+    "address": "경상북도 영양군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024110",
+    "obs_name": "영양군(답곡리)",
+    "location": "경상북도 영양군",
+    "address": "경상북도 영양군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024120",
+    "obs_name": "영양군(도곡리)",
+    "location": "경상북도 영양군",
+    "address": "경상북도 영양군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024130",
+    "obs_name": "청송군(도평리)",
+    "location": "경상북도 청송군",
+    "address": "경상북도 청송군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024140",
+    "obs_name": "청송군(월전리)",
+    "location": "경상북도 청송군",
+    "address": "경상북도 청송군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024150",
+    "obs_name": "청송군(상의리)",
+    "location": "경상북도 청송군",
+    "address": "경상북도 청송군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024160",
+    "obs_name": "영양군(송하리)",
+    "location": "경상북도 영양군",
+    "address": "경상북도 영양군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024170",
+    "obs_name": "청송군(성재리)",
+    "location": "경상북도 청송군",
+    "address": "경상북도 청송군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024180",
+    "obs_name": "청송군(갈천리)",
+    "location": "경상북도 청송군",
+    "address": "경상북도 청송군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20024190",
+    "obs_name": "청송군(무계리)",
+    "location": "경상북도 청송군 현서면",
+    "address": "경상북도 청송군 현서면",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20034010",
+    "obs_name": "의성군(풍지교)",
+    "location": "경상북도 의성군",
+    "address": "경상북도 의성군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20034020",
+    "obs_name": "의성군(윤암리)",
+    "location": "경상북도 의성군",
+    "address": "경상북도 의성군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20034030",
+    "obs_name": "안동시(만운리)",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20034040",
+    "obs_name": "안동시(망호리)",
+    "location": "경상북도 안동시",
+    "address": "경상북도 안동시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044010",
+    "obs_name": "영주시(서천교)",
+    "location": "경상북도 영주시",
+    "address": "경상북도 영주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044020",
+    "obs_name": "영주시(부석중고교)",
+    "location": "경상북도 영주시",
+    "address": "경상북도 영주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044030",
+    "obs_name": "문경시(동로면사무소)",
+    "location": "경상북도 문경시",
+    "address": "경상북도 문경시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044040",
+    "obs_name": "대구",
+    "location": "대구광역시 ",
+    "address": "대구광역시 ",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044050",
+    "obs_name": "영주시(수철리)",
+    "location": "경상북도 영주시",
+    "address": "경상북도 영주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044060",
+    "obs_name": "경천댐",
+    "location": "경상북도 문경시 동로면",
+    "address": "경상북도 문경시 동로면",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044065",
+    "obs_name": "봉화군(물야정수장)",
+    "location": "경상북도 봉화군 물야면",
+    "address": "경상북도 봉화군 물야면",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044070",
+    "obs_name": "예천군(두천리)",
+    "location": "경상북도 예천군",
+    "address": "경상북도 예천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044080",
+    "obs_name": "예천군(고평교)",
+    "location": "경상북도 예천군",
+    "address": "경상북도 예천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044090",
+    "obs_name": "예천군(은풍면사무소)",
+    "location": "경상북도 예천군",
+    "address": "경상북도 예천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044100",
+    "obs_name": "영주시(성내리)",
+    "location": "경상북도 영주시",
+    "address": "경상북도 영주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044110",
+    "obs_name": "봉화군(봉화대교)",
+    "location": "경상북도 봉화군",
+    "address": "경상북도 봉화군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044120",
+    "obs_name": "영주시(영주댐)",
+    "location": "경상북도 영주시 평은면",
+    "address": "경상북도 영주시 평은면",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044130",
+    "obs_name": "봉화군(도촌초)",
+    "location": "경상북도 봉화군 봉화읍",
+    "address": "경상북도 봉화군 봉화읍",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20044140",
+    "obs_name": "봉화군(상운초)",
+    "location": "경상북도 봉화군 상운면",
+    "address": "경상북도 봉화군 상운면",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20054010",
+    "obs_name": "문경시(농암리)",
+    "location": "경상북도 문경시",
+    "address": "경상북도 문경시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20054020",
+    "obs_name": "문경시(김용리)",
+    "location": "경상북도 문경시",
+    "address": "경상북도 문경시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20054030",
+    "obs_name": "상주시(하송리)",
+    "location": "경상북도 상주시",
+    "address": "경상북도 상주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20054040",
+    "obs_name": "상주시(이안교)",
+    "location": "경상북도 상주시",
+    "address": "경상북도 상주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20054050",
+    "obs_name": "거창",
+    "location": "경상남도 거창군",
+    "address": "경상남도 거창군",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20054060",
+    "obs_name": "상주시(화북초교)",
+    "location": "경상북도 상주시",
+    "address": "경상북도 상주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20054070",
+    "obs_name": "문경시(진안리)",
+    "location": "경상북도 문경시",
+    "address": "경상북도 문경시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20054080",
+    "obs_name": "문경시(화산리)",
+    "location": "경상북도 문경시",
+    "address": "경상북도 문경시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20064010",
+    "obs_name": "상주시(후천교)",
+    "location": "경상북도 상주시",
+    "address": "경상북도 상주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20064020",
+    "obs_name": "상주시(외서면사무소)",
+    "location": "경상북도 상주시",
+    "address": "경상북도 상주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20074010",
+    "obs_name": "예천군(상풍교)",
+    "location": "경상북도 예천군",
+    "address": "경상북도 예천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084010",
+    "obs_name": "의성군(도서리)",
+    "location": "경상북도 의성군",
+    "address": "경상북도 의성군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084020",
+    "obs_name": "군위군(정리)",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084030",
+    "obs_name": "의성군(안계면사무소)",
+    "location": "경상북도 의성군",
+    "address": "경상북도 의성군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084050",
+    "obs_name": "군위군(고곡리)",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084060",
+    "obs_name": "군위군(효령교)",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084070",
+    "obs_name": "군위군(대율초교)",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084080",
+    "obs_name": "우보",
+    "location": "경상북도 군위군 우보면",
+    "address": "경상북도 군위군 우보면",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084090",
+    "obs_name": "군위군(화본리)",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084100",
+    "obs_name": "군위군(화수리)",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084110",
+    "obs_name": "군위군(고로면)",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084120",
+    "obs_name": "석산",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084130",
+    "obs_name": "군위군(읍내리)",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084140",
+    "obs_name": "의성군(도원리)",
+    "location": "경상북도 의성군",
+    "address": "경상북도 의성군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084150",
+    "obs_name": "군위군(무성리)",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084160",
+    "obs_name": "군위군(미성교)",
+    "location": "경상북도 군위군",
+    "address": "경상북도 군위군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084170",
+    "obs_name": "대구시(군위댐)",
+    "location": "대구광역시 군위군",
+    "address": "대구광역시 군위군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20084180",
+    "obs_name": "대구시(양지리)",
+    "location": "대구광역시 군위군",
+    "address": "대구광역시 군위군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20094010",
+    "obs_name": "의성군(낙단교)",
+    "location": "경상북도 의성군",
+    "address": "경상북도 의성군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20094020",
+    "obs_name": "구미시(일선교)",
+    "location": "경상북도 구미시",
+    "address": "경상북도 구미시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20104010",
+    "obs_name": "김천시(부곡동)",
+    "location": "경상북도 김천시",
+    "address": "경상북도 김천시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20104020",
+    "obs_name": "김천시(지례면사무소)",
+    "location": "경상북도 김천시",
+    "address": "경상북도 김천시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20104030",
+    "obs_name": "김천시(월곡리)",
+    "location": "경상북도 김천시",
+    "address": "경상북도 김천시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20104040",
+    "obs_name": "김천시(파천리)",
+    "location": "경상북도 김천시",
+    "address": "경상북도 김천시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20104050",
+    "obs_name": "구미시(선주교)",
+    "location": "경상북도 구미시",
+    "address": "경상북도 구미시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20104060",
+    "obs_name": "김천시(김천부항댐)",
+    "location": "경상북도 김천시",
+    "address": "경상북도 김천시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20114010",
+    "obs_name": "칠곡군(호국의다리)",
+    "location": "경상북도 칠곡군",
+    "address": "경상북도 칠곡군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20114020",
+    "obs_name": "구미시(장천초교)",
+    "location": "경상북도 구미시",
+    "address": "경상북도 구미시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20114030",
+    "obs_name": "성주군(성주대교)",
+    "location": "경상북도 성주군",
+    "address": "경상북도 성주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20114040",
+    "obs_name": "구미시(구미대교)",
+    "location": "경상북도 구미시",
+    "address": "경상북도 구미시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124010",
+    "obs_name": "영천시(영동교)",
+    "location": "경상북도 영천시",
+    "address": "경상북도 영천시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124020",
+    "obs_name": "포항시(죽장초교)",
+    "location": "경상북도 포항시",
+    "address": "경상북도 포항시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124030",
+    "obs_name": "영천시(화성리)",
+    "location": "경상북도 영천시",
+    "address": "경상북도 영천시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124035",
+    "obs_name": "포항시(가사리)",
+    "location": "경상북도 포항시 북구 죽장면 가사리 387",
+    "address": "경상북도 포항시 북구 죽장면 가사리 387",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124037",
+    "obs_name": "포항시(죽장면)",
+    "location": "경상북도 포항시 북구 죽장면 현내리 552-1",
+    "address": "경상북도 포항시 북구 죽장면 현내리 552-1",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124040",
+    "obs_name": "경산시(자인중학교)",
+    "location": "경상북도 경산시",
+    "address": "경상북도 경산시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124050",
+    "obs_name": "부산",
+    "location": "부산광역시 동구",
+    "address": "부산광역시 동구",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124060",
+    "obs_name": "신천",
+    "location": "대구광역시 달성군",
+    "address": "대구광역시 달성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124070",
+    "obs_name": "영천시(치산리)",
+    "location": "경상북도 영천시",
+    "address": "경상북도 영천시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124080",
+    "obs_name": "대구시(오리)",
+    "location": "대구광역시 달성군",
+    "address": "대구광역시 달성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124090",
+    "obs_name": "대구시(신암동)",
+    "location": "대구광역시 동구",
+    "address": "대구광역시 동구",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124100",
+    "obs_name": "영천시(정각리)",
+    "location": "경상북도 영천시",
+    "address": "경상북도 영천시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124118",
+    "obs_name": "영천시(영천댐)",
+    "location": "경상북도 영천시 자양면 성곡리 113-2",
+    "address": "경상북도 영천시 자양면 성곡리 113-2",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124120",
+    "obs_name": "영천시(가수리)",
+    "location": "경상북도 영천시",
+    "address": "경상북도 영천시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124130",
+    "obs_name": "영천시(금창교)",
+    "location": "경상북도 영천시",
+    "address": "경상북도 영천시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124150",
+    "obs_name": "대구시(성동교)",
+    "location": "대구광역시 수성구",
+    "address": "대구광역시 수성구",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124160",
+    "obs_name": "칠곡군(금암리)",
+    "location": "경상북도 칠곡군",
+    "address": "경상북도 칠곡군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124170",
+    "obs_name": "경산시(와촌초교)",
+    "location": "경상북도 경산시",
+    "address": "경상북도 경산시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124190",
+    "obs_name": "포항시(지동리)",
+    "location": "경상북도 포항시 북구 죽장면 지동리 산49-5",
+    "address": "경상북도 포항시 북구 죽장면 지동리 산49-5",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124200",
+    "obs_name": "영천시(보현산댐)",
+    "location": "경상북도 영천시 화북면",
+    "address": "경상북도 영천시 화북면",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20124210",
+    "obs_name": "영천시(굼이교)",
+    "location": "경상북도 영천시",
+    "address": "경상북도 영천시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20134010",
+    "obs_name": "고령군(회천교)",
+    "location": "경상북도 고령군",
+    "address": "경상북도 고령군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20134020",
+    "obs_name": "합천군(야로면사무소)",
+    "location": "경상남도 합천군",
+    "address": "경상남도 합천군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20134030",
+    "obs_name": "성주군(옥화리)",
+    "location": "경상북도 성주군",
+    "address": "경상북도 성주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20134040",
+    "obs_name": "성주군(신파리)",
+    "location": "경상북도 성주군",
+    "address": "경상북도 성주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20144010",
+    "obs_name": "대구시(성하리)",
+    "location": "대구광역시 달성군",
+    "address": "대구광역시 달성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20144020",
+    "obs_name": "대구시(사문진교)",
+    "location": "대구광역시 달성군",
+    "address": "대구광역시 달성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20144030",
+    "obs_name": "고령군(고령교)",
+    "location": "경상북도 고령군",
+    "address": "경상북도 고령군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20154010",
+    "obs_name": "거창군(산포리)",
+    "location": "경상남도 거창군",
+    "address": "경상남도 거창군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20154020",
+    "obs_name": "거창군(병곡리)",
+    "location": "경상남도 거창군",
+    "address": "경상남도 거창군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20154030",
+    "obs_name": "거창군(농산리)",
+    "location": "경상남도 거창군",
+    "address": "경상남도 거창군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20154040",
+    "obs_name": "거창군(거열교)",
+    "location": "경상남도 거창군",
+    "address": "경상남도 거창군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20154050",
+    "obs_name": "거창군(노현리)",
+    "location": "경상남도 거창군",
+    "address": "경상남도 거창군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20154060",
+    "obs_name": "거창군(덕산리)",
+    "location": "경상남도 거창군",
+    "address": "경상남도 거창군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20154070",
+    "obs_name": "거창군(우혜리)",
+    "location": "경상남도 거창군",
+    "address": "경상남도 거창군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20154080",
+    "obs_name": "거창군(지산교)",
+    "location": "경상남도 거창군",
+    "address": "경상남도 거창군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20164020",
+    "obs_name": "합천군(남정교)",
+    "location": "경상남도 합천군",
+    "address": "경상남도 합천군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20164030",
+    "obs_name": "합천군(황강교)",
+    "location": "경상남도 합천군",
+    "address": "경상남도 합천군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20174010",
+    "obs_name": "창녕군(본초리)",
+    "location": "경상남도 창녕군",
+    "address": "경상남도 창녕군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20174020",
+    "obs_name": "의령군(부림면사무소)",
+    "location": "경상남도 의령군",
+    "address": "경상남도 의령군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20174030",
+    "obs_name": "의령군(청계리)",
+    "location": "경상남도 의령군",
+    "address": "경상남도 의령군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20174040",
+    "obs_name": "합천군(적포교)",
+    "location": "경상남도 합천군",
+    "address": "경상남도 합천군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184020",
+    "obs_name": "마천2",
+    "location": "경상남도 함양군",
+    "address": "경상남도 함양군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184040",
+    "obs_name": "시천",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "기타",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184060",
+    "obs_name": "남원시(화수리)",
+    "location": "전라북도 남원시",
+    "address": "전라북도 남원시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184070",
+    "obs_name": "함양군(중남리)",
+    "location": "경상남도 함양군",
+    "address": "경상남도 함양군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184100",
+    "obs_name": "산청군(홍계리)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184110",
+    "obs_name": "산청군(상중리)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184120",
+    "obs_name": "수곡2",
+    "location": "경상남도 진주시",
+    "address": "경상남도 진주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184130",
+    "obs_name": "산청군(경호교)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184140",
+    "obs_name": "산청군(창촌리)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184150",
+    "obs_name": "함양군(삼정리)",
+    "location": "경상남도 함양군",
+    "address": "경상남도 함양군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184160",
+    "obs_name": "산청군(동당리)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184170",
+    "obs_name": "합천군(소오리)",
+    "location": "경상남도 합천군",
+    "address": "경상남도 합천군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184180",
+    "obs_name": "남원시(운봉읍)",
+    "location": "전라북도 남원시",
+    "address": "전라북도 남원시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184190",
+    "obs_name": "함양군(의탄리)",
+    "location": "경상남도 함양군",
+    "address": "경상남도 함양군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184200",
+    "obs_name": "함양군(금천리)",
+    "location": "경상남도 함양군",
+    "address": "경상남도 함양군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184210",
+    "obs_name": "남원시(덕동리)",
+    "location": "전라북도 남원시",
+    "address": "전라북도 남원시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184220",
+    "obs_name": "남원시(의지리)",
+    "location": "전라북도 남원시",
+    "address": "전라북도 남원시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184230",
+    "obs_name": "함양군(운곡리)",
+    "location": "경상남도 함양군",
+    "address": "경상남도 함양군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184240",
+    "obs_name": "산청군(내대리)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184250",
+    "obs_name": "함양군(용평리)",
+    "location": "경상남도 함양군",
+    "address": "경상남도 함양군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184260",
+    "obs_name": "산청군(내원리)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184270",
+    "obs_name": "함양군(화촌리)",
+    "location": "경상남도 함양군",
+    "address": "경상남도 함양군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184280",
+    "obs_name": "하동군(위태리)",
+    "location": "경상남도 하동군",
+    "address": "경상남도 하동군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184290",
+    "obs_name": "하동군(대곡리)",
+    "location": "경상남도 하동군",
+    "address": "경상남도 하동군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184300",
+    "obs_name": "진주시(자매리)",
+    "location": "경상남도 진주시",
+    "address": "경상남도 진주시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184310",
+    "obs_name": "산청군(실매리)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184320",
+    "obs_name": "산청군(하정리)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184340",
+    "obs_name": "구례군(문수리)",
+    "location": "전라남도 구례군",
+    "address": "전라남도 구례군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184350",
+    "obs_name": "산청군(장천리)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20184360",
+    "obs_name": "산청군(향양리)",
+    "location": "경상남도 산청군",
+    "address": "경상남도 산청군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20194020",
+    "obs_name": "진주시(장대동)",
+    "location": "경상남도 진주시",
+    "address": "경상남도 진주시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20194030",
+    "obs_name": "진주시(운천리)",
+    "location": "경상남도 진주시",
+    "address": "경상남도 진주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20194040",
+    "obs_name": "함안군(대사교)",
+    "location": "경상남도 함안군",
+    "address": "경상남도 함안군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20194050",
+    "obs_name": "의령군(정암교)",
+    "location": "경상남도 의령군",
+    "address": "경상남도 의령군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20194060",
+    "obs_name": "의령군(성산리)",
+    "location": "경상남도 의령군",
+    "address": "경상남도 의령군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20194070",
+    "obs_name": "의령군(칠곡초교)",
+    "location": "경상남도 의령군",
+    "address": "경상남도 의령군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20194075",
+    "obs_name": "고성군(두문교)",
+    "location": "경상남도 고성군",
+    "address": "경상남도 고성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20204010",
+    "obs_name": "창녕군(영산면사무소)",
+    "location": "경상남도 창녕군",
+    "address": "경상남도 창녕군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20204020",
+    "obs_name": "창원시(수산대교)",
+    "location": "경상남도 창원시",
+    "address": "경상남도 창원시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20204030",
+    "obs_name": "창녕군(청암리)",
+    "location": "경상남도 창녕군",
+    "address": "경상남도 창녕군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20204040",
+    "obs_name": "함안군(계내리)",
+    "location": "경상남도 함안군",
+    "address": "경상남도 함안군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20204050",
+    "obs_name": "밀양시(내진초교)",
+    "location": "경상남도 밀양시",
+    "address": "경상남도 밀양시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214010",
+    "obs_name": "밀양2",
+    "location": "경상남도 밀양군",
+    "address": "경상남도 밀양군",
+    "agency": "기타",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214020",
+    "obs_name": "밀양시(남포동)",
+    "location": "경상남도 밀양시",
+    "address": "경상남도 밀양시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214030",
+    "obs_name": "밀양시(용전리)",
+    "location": "경상남도 밀양시",
+    "address": "경상남도 밀양시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214040",
+    "obs_name": "청도군(삼신리)",
+    "location": "경상북도 청도군",
+    "address": "경상북도 청도군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214050",
+    "obs_name": "경산시(곡신리)",
+    "location": "경상북도 경산시",
+    "address": "경상북도 경산시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214060",
+    "obs_name": "경주시(내칠리)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214090",
+    "obs_name": "청도군(현리리)",
+    "location": "경상북도 청도군",
+    "address": "경상북도 청도군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214100",
+    "obs_name": "양산시(선리)",
+    "location": "경상남도 양산시",
+    "address": "경상남도 양산시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214110",
+    "obs_name": "밀양시(밀양댐)",
+    "location": "경상남도 밀양시 단장면",
+    "address": "경상남도 밀양시 단장면",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214120",
+    "obs_name": "청도군(신원리)",
+    "location": "경상북도 청도군",
+    "address": "경상북도 청도군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214130",
+    "obs_name": "청도군(운문댐)",
+    "location": "경상북도 청도군",
+    "address": "경상북도 청도군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214135",
+    "obs_name": "경주시(대현리)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20214140",
+    "obs_name": "울산시(이천리)",
+    "location": "경상북도 울주군",
+    "address": "경상북도 울주군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20224010",
+    "obs_name": "양산시(상북면사무소)",
+    "location": "경상남도 양산시",
+    "address": "경상남도 양산시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20224020",
+    "obs_name": "금천",
+    "location": "경상북도 청도군",
+    "address": "경상북도 청도군",
+    "agency": "기타",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20224030",
+    "obs_name": "김해시(전하동)",
+    "location": "경상남도 김해시",
+    "address": "경상남도 김해시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20224040",
+    "obs_name": "양산시(양산교)",
+    "location": "경상남도 양산시",
+    "address": "경상남도 양산시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20224050",
+    "obs_name": "밀양시(삼랑진교)",
+    "location": "경상남도 밀양시",
+    "address": "경상남도 밀양시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "20224060",
+    "obs_name": "부산시(구포대교)",
+    "location": "부산광역시 북구",
+    "address": "부산광역시 북구",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014010",
+    "obs_name": "포항시(현내리)",
+    "location": "경상북도 포항시",
+    "address": "경상북도 포항시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014020",
+    "obs_name": "경주시(시래동)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014030",
+    "obs_name": "경주시(안계댐)",
+    "location": "경상북도 경주시 강동면 안계리 산10",
+    "address": "경상북도 경주시 강동면 안계리 산10",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014040",
+    "obs_name": "경주시(신평리)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014050",
+    "obs_name": "포항시(용기리)",
+    "location": "경상북도 포항시",
+    "address": "경상북도 포항시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014060",
+    "obs_name": "경주시(옥산리)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014070",
+    "obs_name": "경주시(서천교)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014080",
+    "obs_name": "경주시(검단리)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014090",
+    "obs_name": "울산시(봉월초교)",
+    "location": "울산광역시 울주군",
+    "address": "울산광역시 울주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014100",
+    "obs_name": "경주시(달성교)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014110",
+    "obs_name": "경주시(화산리)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014120",
+    "obs_name": "경주시(박달리)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014130",
+    "obs_name": "경주시(덕동)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "21014140",
+    "obs_name": "경주시(국당리)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014010",
+    "obs_name": "울산시(덕현리)",
+    "location": "울산광역시 울주군",
+    "address": "울산광역시 울주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014020",
+    "obs_name": "울산시(신답교)",
+    "location": "울산광역시 북구",
+    "address": "울산광역시 북구",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014030",
+    "obs_name": "울산시(삼동초교)",
+    "location": "울산광역시 울주군",
+    "address": "울산광역시 울주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014040",
+    "obs_name": "척과",
+    "location": "울산광역시 울주군",
+    "address": "울산광역시 울주군",
+    "agency": "기타",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014050",
+    "obs_name": "경주시(연안리)",
+    "location": "경상북도 경주시",
+    "address": "경상북도 경주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014054",
+    "obs_name": "울산시(사연댐)",
+    "location": "울산광역시 울주군 범서읍 사연리",
+    "address": "울산광역시 울주군 범서읍 사연리",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014060",
+    "obs_name": "울산시(대암댐)",
+    "location": "울산광역시 울주군 언양읍 구수리",
+    "address": "울산광역시 울주군 언양읍 구수리",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014080",
+    "obs_name": "울산시(태화교)",
+    "location": "울산광역시 중구",
+    "address": "울산광역시 중구",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014082",
+    "obs_name": "울산시(구미리)",
+    "location": "울산광역시 울주군 두동면 구미리 566-1",
+    "address": "울산광역시 울주군 두동면 구미리 566-1",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014084",
+    "obs_name": "울산시(천전리)",
+    "location": "울산광역시 울주군 두동면 천전리 306",
+    "address": "울산광역시 울주군 두동면 천전리 306",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "22014090",
+    "obs_name": "울산시(사연교)",
+    "location": "울산광역시 울주군",
+    "address": "울산광역시 울주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "23014010",
+    "obs_name": "양산시(삼호동)",
+    "location": "경상남도 양산시",
+    "address": "경상남도 양산시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "23014011",
+    "obs_name": "울산시(선암댐)",
+    "location": "울산관역시 남구 선암동",
+    "address": "울산관역시 남구 선암동",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "24014010",
+    "obs_name": "영양군(신원리)",
+    "location": "경상북도 영양군",
+    "address": "경상북도 영양군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "24034010",
+    "obs_name": "경주시(감포댐)",
+    "location": "경상북도 경주시 감포읍 오류리 산 16-2",
+    "address": "경상북도 경주시 감포읍 오류리 산 16-2",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "24034020",
+    "obs_name": "포항시(문덕3교)",
+    "location": "경상북도 포항시 남구 오천읍",
+    "address": "경상북도 포항시 남구 오천읍",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 129,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "25034050",
+    "obs_name": "거제시(구천댐)",
+    "location": "경상남도 거제시 신현읍 삼거리 529-4",
+    "address": "경상남도 거제시 신현읍 삼거리 529-4",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "25034052",
+    "obs_name": "거제시(연초댐)",
+    "location": "경상남도 거제시 연초면 덕치리 107",
+    "address": "경상남도 거제시 연초면 덕치리 107",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "25044010",
+    "obs_name": "부산시(을숙도)",
+    "location": "부산광역시 사하구",
+    "address": "부산광역시 사하구",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014010",
+    "obs_name": "진안군(마을지원센터)",
+    "location": "전라북도 진안군",
+    "address": "전라북도 진안군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014020",
+    "obs_name": "무주군(안성초교)",
+    "location": "전라북도 무주군",
+    "address": "전라북도 무주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014030",
+    "obs_name": "용담",
+    "location": "전라북도 진안군",
+    "address": "전라북도 진안군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014040",
+    "obs_name": "장수군(장수초교)",
+    "location": "전라북도 장수군",
+    "address": "전라북도 장수군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014070",
+    "obs_name": "천천",
+    "location": "전라북도 장수군",
+    "address": "전라북도 장수군",
+    "agency": "기타",
+    "latitude": null,
+    "longitude": null,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014080",
+    "obs_name": "진안군(대불리)",
+    "location": "전라북도 진안군",
+    "address": "전라북도 진안군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014090",
+    "obs_name": "진안",
+    "location": " ",
+    "address": " ",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014100",
+    "obs_name": "장수",
+    "location": " ",
+    "address": " ",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014120",
+    "obs_name": "무주군(원통사)",
+    "location": "전라북도 무주군",
+    "address": "전라북도 무주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014130",
+    "obs_name": "계북",
+    "location": " ",
+    "address": " ",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014140",
+    "obs_name": "진안군(황금리)",
+    "location": "전라북도 진안군",
+    "address": "전라북도 진안군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014150",
+    "obs_name": "진안군(주평리)",
+    "location": "전라북도 진안군",
+    "address": "전라북도 진안군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014160",
+    "obs_name": "장수군(장판리)",
+    "location": "전라북도 장수군",
+    "address": "전라북도 장수군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014170",
+    "obs_name": "진안군(신괴리)",
+    "location": "전라북도 진안군",
+    "address": "전라북도 진안군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014180",
+    "obs_name": "장수군(삼봉리)",
+    "location": "전라북도 장수군",
+    "address": "전라북도 장수군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014190",
+    "obs_name": "장수군(원촌리)",
+    "location": "전라북도 장수군",
+    "address": "전라북도 장수군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30014210",
+    "obs_name": "진안군(주양리)",
+    "location": "전라북도 진안군",
+    "address": "전라북도 진안군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30034010",
+    "obs_name": "무주군(무주중앙초교)",
+    "location": "전라북도 무주군",
+    "address": "전라북도 무주군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30034020",
+    "obs_name": "무주군(적상초교)",
+    "location": "전라북도 무주군",
+    "address": "전라북도 무주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30034030",
+    "obs_name": "무주군(삼가리)",
+    "location": "전라북도 무주군",
+    "address": "전라북도 무주군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30034040",
+    "obs_name": "무주군(구천정수장)",
+    "location": "전라북도 무주군",
+    "address": "전라북도 무주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30034050",
+    "obs_name": "무주군(증산리)",
+    "location": "전라북도 무주군",
+    "address": "전라북도 무주군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30034054",
+    "obs_name": "무주군(신촌농2교)",
+    "location": "전북특별자치도 무주군 설천면",
+    "address": "전북특별자치도 무주군 설천면",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30034060",
+    "obs_name": "무주군(기곡리)",
+    "location": "전라북도 무주군",
+    "address": "전라북도 무주군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30044010",
+    "obs_name": "영동",
+    "location": "충청북도 영동군",
+    "address": "충청북도 영동군",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30044020",
+    "obs_name": "금산",
+    "location": "전라북도 금산군",
+    "address": "전라북도 금산군",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30044030",
+    "obs_name": "금산군(선원리)",
+    "location": "충청남도 금산군",
+    "address": "충청남도 금산군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30044040",
+    "obs_name": "영동군(산막리)",
+    "location": "충청북도 영동군",
+    "address": "충청북도 영동군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30054010",
+    "obs_name": "상주시(삼포리)",
+    "location": "경상북도 상주시",
+    "address": "경상북도 상주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30054020",
+    "obs_name": "영동군(궁촌리)",
+    "location": "충청북도 영동군",
+    "address": "충청북도 영동군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30054030",
+    "obs_name": "영동군(남성리)",
+    "location": "충청북도 영동군",
+    "address": "충청북도 영동군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30054040",
+    "obs_name": "상주시(화동초교)",
+    "location": "경상북도 상주시",
+    "address": "경상북도 상주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30054050",
+    "obs_name": "상주시(화령초교)",
+    "location": "경상북도 상주시",
+    "address": "경상북도 상주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30054060",
+    "obs_name": "영동군(웅북리)",
+    "location": "충청북도 영동군",
+    "address": "충청북도 영동군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 128,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30054070",
+    "obs_name": "상주시(득수리)",
+    "location": "경상북도 상주시",
+    "address": "경상북도 상주시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30054080",
+    "obs_name": "영동군(궁촌리2)",
+    "location": "충청북도 영동군",
+    "address": "충청북도 영동군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30064010",
+    "obs_name": "개심",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30064020",
+    "obs_name": "옥천군(원동리)",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074010",
+    "obs_name": "옥천군(청산초교)",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074030",
+    "obs_name": "보은군(삼산초교)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074040",
+    "obs_name": "보은",
+    "location": " ",
+    "address": " ",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074050",
+    "obs_name": "보은군(관기초교)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074060",
+    "obs_name": "보은군(구병리)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074070",
+    "obs_name": "옥천군(도로관리사업소)",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074080",
+    "obs_name": "보은군(동정리)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074090",
+    "obs_name": "보은군(이원리)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074100",
+    "obs_name": "옥천군(묘금리)",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074110",
+    "obs_name": "보은군(송죽초교)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074130",
+    "obs_name": "보은군(삼가분교)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074140",
+    "obs_name": "보은군(신함리)",
+    "location": "충청북도 보은군",
+    "address": "충청북도 보은군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074150",
+    "obs_name": "옥천군(산계리)",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30074160",
+    "obs_name": "부여군(삼산리)",
+    "location": "충청남도 부여군",
+    "address": "충청남도 부여군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30084010",
+    "obs_name": "옥천",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30084030",
+    "obs_name": "옥천군(안내초교)",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30084040",
+    "obs_name": "옥천군(대정리)",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30084050",
+    "obs_name": "금산군(마전리)",
+    "location": "충청남도 금산군",
+    "address": "충청남도 금산군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30084060",
+    "obs_name": "금산군(상곡리)",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30084070",
+    "obs_name": "청주시(문화재조사연구단)",
+    "location": "충청북도 청주시",
+    "address": "충청북도 청주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30084080",
+    "obs_name": "청원군(상장리)",
+    "location": "충청북도 청주시",
+    "address": "충청북도 청주시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30084090",
+    "obs_name": "옥천군(인포리)",
+    "location": "충청북도 옥천군",
+    "address": "충청북도 옥천군",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30094010",
+    "obs_name": "금산군(신대리)",
+    "location": "충청남도 금산군",
+    "address": "충청남도 금산군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30094020",
+    "obs_name": "대전시(원촌교)",
+    "location": "대전광역시 대덕구",
+    "address": "대전광역시 대덕구",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30094030",
+    "obs_name": "대전시(두계교)",
+    "location": "대전광역시 유성구",
+    "address": "대전광역시 유성구",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30094040",
+    "obs_name": "대전시(만년교)",
+    "location": "대전광역시 서구",
+    "address": "대전광역시 서구",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30094050",
+    "obs_name": "대전시(인창교)",
+    "location": "대전광역시 동구",
+    "address": "대전광역시 동구",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30104010",
+    "obs_name": "세종시(부강면사무소)",
+    "location": "세종특별자치시",
+    "address": "세종특별자치시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30104040",
+    "obs_name": "세종시(명학리)",
+    "location": "세종특별자치시   연동면",
+    "address": "세종특별자치시   연동면",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114010",
+    "obs_name": "천안시(병천초교)",
+    "location": "충청남도 천안시",
+    "address": "충청남도 천안시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114020",
+    "obs_name": "청주시(흥덕교)",
+    "location": "충청북도 청주시",
+    "address": "충청북도 청주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114030",
+    "obs_name": "진천군(진천여중)",
+    "location": "충청북도 진천군",
+    "address": "충청북도 진천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114040",
+    "obs_name": "청주시(가덕초교)",
+    "location": "충청북도 청주시상당구",
+    "address": "충청북도 청주시상당구",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114050",
+    "obs_name": "음성군(대소보건지소)",
+    "location": "충청북도 음성군",
+    "address": "충청북도 음성군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114060",
+    "obs_name": "증평군(반탄교)",
+    "location": "충청북도 증평군",
+    "address": "충청북도 증평군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114070",
+    "obs_name": "세종시(농정원)",
+    "location": "세종특별자치시",
+    "address": "세종특별자치시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114090",
+    "obs_name": "음성군(쌍봉리)",
+    "location": "충청북도 음성군",
+    "address": "충청북도 음성군",
+    "agency": "환경부",
+    "latitude": 37,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114100",
+    "obs_name": "천안시(화청교)",
+    "location": "충청남도 천안시",
+    "address": "충청남도 천안시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114110",
+    "obs_name": "옥산",
+    "location": "충청북도 청원군 옥산면",
+    "address": "충청북도 청원군 옥산면",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30114120",
+    "obs_name": "초평",
+    "location": "충청북도 진천군 초평면",
+    "address": "충청북도 진천군 초평면",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124010",
+    "obs_name": "공주시(금강교)",
+    "location": "충청남도 공주시",
+    "address": "충청남도 공주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124020",
+    "obs_name": "부여군(홍산초교)",
+    "location": "충청남도 부여군",
+    "address": "충청남도 부여군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124030",
+    "obs_name": "부여",
+    "location": "충청북도 부여군",
+    "address": "충청북도 부여군",
+    "agency": "기타",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124040",
+    "obs_name": "청양군(청양읍사무소)",
+    "location": "충청남도 청양군",
+    "address": "충청남도 청양군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124050",
+    "obs_name": "청양군(119안전센터)",
+    "location": "충청남도 청양군",
+    "address": "충청남도 청양군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124060",
+    "obs_name": "공주시(정안면사무소)",
+    "location": "충청남도 공주시",
+    "address": "충청남도 공주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124070",
+    "obs_name": "공주시(반포중)",
+    "location": "충청남도 공주시",
+    "address": "충청남도 공주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124080",
+    "obs_name": "공주시(복룡리)",
+    "location": "충청남도 공주시",
+    "address": "충청남도 공주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124090",
+    "obs_name": "부여군(백제교)",
+    "location": "충청남도 부여군",
+    "address": "충청남도 부여군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124100",
+    "obs_name": "공주시(유구초교)",
+    "location": "충청남도 공주시",
+    "address": "충청남도 공주시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124110",
+    "obs_name": "세종시(문성교)",
+    "location": "세종특별자치시",
+    "address": "세종특별자치시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30124120",
+    "obs_name": "우성",
+    "location": "충청남도 공주시 사곡면",
+    "address": "충청남도 공주시 사곡면",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30134010",
+    "obs_name": "논산시(연산중)",
+    "location": "충청남도 논산시",
+    "address": "충청남도 논산시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30134020",
+    "obs_name": "완주군(운주초교)",
+    "location": "전라북도 완주군",
+    "address": "전라북도 완주군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30134030",
+    "obs_name": "탑정",
+    "location": "충청남도 논산군",
+    "address": "충청남도 논산군",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30134040",
+    "obs_name": "논산시(동산초교)",
+    "location": "충청남도 논산시",
+    "address": "충청남도 논산시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30134050",
+    "obs_name": "논산시(토양리)",
+    "location": "충청남도 논산시",
+    "address": "충청남도 논산시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30144010",
+    "obs_name": "논산시(황산리)",
+    "location": "충청남도 논산시",
+    "address": "충청남도 논산시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30144020",
+    "obs_name": "익산시(함열초교)",
+    "location": "전라북도 익산시",
+    "address": "전라북도 익산시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30144030",
+    "obs_name": "서천군(망월리)",
+    "location": "충청남도 서천군",
+    "address": "충청남도 서천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30144040",
+    "obs_name": "서천군(충남디자인예술고)",
+    "location": "충청남도 서천군",
+    "address": "충청남도 서천군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "30144050",
+    "obs_name": "익산시(연동리)",
+    "location": "전라북도 익산시",
+    "address": "전라북도 익산시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014010",
+    "obs_name": "홍성군(홍성초교)",
+    "location": "충청남도 홍성군",
+    "address": "충청남도 홍성군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014020",
+    "obs_name": "예산군(예산국토)",
+    "location": "충청남도 예산군",
+    "address": "충청남도 예산군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014030",
+    "obs_name": "예산군(덕산면사무소)",
+    "location": "충청남도 예산군",
+    "address": "충청남도 예산군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014040",
+    "obs_name": "삽교호",
+    "location": "충청남도 당진군 신평면",
+    "address": "충청남도 당진군 신평면",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014050",
+    "obs_name": "예당",
+    "location": "충청남도 예산군 대흥면",
+    "address": "충청남도 예산군 대흥면",
+    "agency": "한국농어촌공사",
+    "latitude": 37,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014060",
+    "obs_name": "궁평",
+    "location": "충청남도 아산시 송악면",
+    "address": "충청남도 아산시 송악면",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014070",
+    "obs_name": "아산",
+    "location": "충청남도 아산시 모종면",
+    "address": "충청남도 아산시 모종면",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014090",
+    "obs_name": "당진시(순성초교)",
+    "location": "충청남도 당진시",
+    "address": "충청남도 당진시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014100",
+    "obs_name": "청양군(가남초교)",
+    "location": "충청남도 청양군",
+    "address": "충청남도 청양군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014110",
+    "obs_name": "예산군(신양리)",
+    "location": "충청남도 예산군",
+    "address": "충청남도 예산군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014120",
+    "obs_name": "아산시(초사초교)",
+    "location": "충청남도 아산시",
+    "address": "충청남도 아산시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014130",
+    "obs_name": "아산시(동방초교)",
+    "location": "충청남도 아산시",
+    "address": "충청남도 아산시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014140",
+    "obs_name": "천안시(신흥교)",
+    "location": "충청남도 천안시",
+    "address": "충청남도 천안시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014150",
+    "obs_name": "아산시(강청교)",
+    "location": "충청남도 아산시",
+    "address": "충청남도 아산시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014160",
+    "obs_name": "광시",
+    "location": "충청남도 예산군",
+    "address": "충청남도 예산군",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014170",
+    "obs_name": "대흥",
+    "location": "충청남도 예산군",
+    "address": "충청남도 예산군",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014180",
+    "obs_name": "송석",
+    "location": "충청남도 예산군",
+    "address": "충청남도 예산군",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014190",
+    "obs_name": "예산2",
+    "location": "충청남도 예산군",
+    "address": "충청남도 예산군",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014192",
+    "obs_name": "예산군(은사교)",
+    "location": "충청남도 예산군",
+    "address": "충청남도 예산군",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014195",
+    "obs_name": "신대교",
+    "location": "충청남도 예산군 광시면",
+    "address": "충청남도 예산군 광시면",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "31014198",
+    "obs_name": "배약교",
+    "location": "충청남도 예산군 신양면",
+    "address": "충청남도 예산군 신양면",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "32034010",
+    "obs_name": "보령시(미산면사무소)",
+    "location": "충청남도 보령시",
+    "address": "충청남도 보령시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "32034020",
+    "obs_name": "보령시(미산초교)",
+    "location": "충청남도 보령시",
+    "address": "충청남도 보령시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "32034050",
+    "obs_name": "보령시(보령댐)",
+    "location": "충청남도 보령시",
+    "address": "충청남도 보령시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "32034060",
+    "obs_name": "보령시(도화담리)",
+    "location": "충청남도 보령시",
+    "address": "충청남도 보령시",
+    "agency": "한국수자원공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "32034070",
+    "obs_name": "청천",
+    "location": "충남 보령시 죽정동",
+    "address": "충남 보령시 죽정동",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014010",
+    "obs_name": "완주군(고산중교)",
+    "location": "전라북도 완주군",
+    "address": "전라북도 완주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014020",
+    "obs_name": "군산시(임피초교)",
+    "location": "전라북도 군산시",
+    "address": "전라북도 군산시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014030",
+    "obs_name": "경천",
+    "location": "전라북도 완주군 경천면",
+    "address": "전라북도 완주군 경천면",
+    "agency": "한국농어촌공사",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014040",
+    "obs_name": "대아",
+    "location": "전라북도 완주군 고산면",
+    "address": "전라북도 완주군 고산면",
+    "agency": "한국농어촌공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014050",
+    "obs_name": "동상",
+    "location": "전라북도 완주군 동상면",
+    "address": "전라북도 완주군 동상면",
+    "agency": "한국농어촌공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014060",
+    "obs_name": "대천",
+    "location": "전라북도 완주군 삼례읍",
+    "address": "전라북도 완주군 삼례읍",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014070",
+    "obs_name": "완주군(구이초교)",
+    "location": "전라북도 완주군",
+    "address": "전라북도 완주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014080",
+    "obs_name": "김제시(용지초교)",
+    "location": "전라북도 김제시",
+    "address": "전라북도 김제시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014090",
+    "obs_name": "익산시(미륵초교)",
+    "location": "전라북도 익산시",
+    "address": "전라북도 익산시",
+    "agency": "환경부",
+    "latitude": 36,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014100",
+    "obs_name": "전주시(미산교)",
+    "location": "전라북도 전주시",
+    "address": "전라북도 전주시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014110",
+    "obs_name": "완주군(용봉교)",
+    "location": "전라북도 완주군",
+    "address": "전라북도 완주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33014120",
+    "obs_name": "완주군(용진초교)",
+    "location": "전라북도 완주군",
+    "address": "전라북도 완주군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33024020",
+    "obs_name": "김제시(금구초교)",
+    "location": "전라북도 김제시",
+    "address": "전라북도 김제시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33024030",
+    "obs_name": "정읍시(고부초교)",
+    "location": "전라북도 정읍시",
+    "address": "전라북도 정읍시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33024040",
+    "obs_name": "김제시(김제중앙중교)",
+    "location": "전라북도 김제시",
+    "address": "전라북도 김제시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33024050",
+    "obs_name": "정읍시(태인중교)",
+    "location": "전라북도 정읍시",
+    "address": "전라북도 정읍시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33024070",
+    "obs_name": "정읍시(산외중교)",
+    "location": "전라북도 정읍시",
+    "address": "전라북도 정읍시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33024080",
+    "obs_name": "정읍시(정읍북초교)",
+    "location": "전라북도 정읍시",
+    "address": "전라북도 정읍시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33034030",
+    "obs_name": "부안군(부안댐)",
+    "location": "전라북도 부안군",
+    "address": "전라북도 부안군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "33034040",
+    "obs_name": "부안군(부안청림천문대)",
+    "location": "전라북도 부안군 상서면",
+    "address": "전라북도 부안군 상서면",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40014030",
+    "obs_name": "약수",
+    "location": "전라남도 장성군 북하면",
+    "address": "전라남도 장성군 북하면",
+    "agency": "한국농어촌공사",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40014050",
+    "obs_name": "순창군(시산리)",
+    "location": "전라북도 순창군",
+    "address": "전라북도 순창군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40014060",
+    "obs_name": "임실군(용암리)",
+    "location": "전라북도 임실군",
+    "address": "전라북도 임실군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40014070",
+    "obs_name": "진안군(도통리)",
+    "location": "전라북도 진안군",
+    "address": "전라북도 진안군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40024010",
+    "obs_name": "강진",
+    "location": " ",
+    "address": " ",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40024020",
+    "obs_name": "임실군(섬진강댐)",
+    "location": "전라북도 임실군",
+    "address": "전라북도 임실군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40024030",
+    "obs_name": "임실군(일중리)",
+    "location": "전라북도 임실군",
+    "address": "전라북도 임실군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40024040",
+    "obs_name": "임실군(두복리)",
+    "location": "전라북도 임실군",
+    "address": "전라북도 임실군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40024050",
+    "obs_name": "순창군(평남리)",
+    "location": "전라북도 순창군",
+    "address": "전라북도 순창군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40024060",
+    "obs_name": "임실군(청웅면사무소)",
+    "location": "전라북도 임실군 청웅면",
+    "address": "전라북도 임실군 청웅면",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40034010",
+    "obs_name": "임실군(문화체육센터)",
+    "location": "전라북도 임실군",
+    "address": "전라북도 임실군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40034020",
+    "obs_name": "순창군(현포리)",
+    "location": "전라북도 순창군",
+    "address": "전라북도 순창군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40034030",
+    "obs_name": "임실군(오봉리)",
+    "location": "전라북도 임실군",
+    "address": "전라북도 임실군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40044010",
+    "obs_name": "곡성군(옥과톨게이트)",
+    "location": "전라남도 곡성군",
+    "address": "전라남도 곡성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40044020",
+    "obs_name": "순창",
+    "location": " ",
+    "address": " ",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40044030",
+    "obs_name": "순창군(옥천교)",
+    "location": "전라북도 순창군",
+    "address": "전라북도 순창군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40044040",
+    "obs_name": "순창군(유적교)",
+    "location": "전라북도 순창군",
+    "address": "전라북도 순창군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40044060",
+    "obs_name": "남원시(신덕리)",
+    "location": "전라북도 남원시",
+    "address": "전라북도 남원시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40044070",
+    "obs_name": "곡성군(괴소리)",
+    "location": "전라남도 곡성군 삼기면",
+    "address": "전라남도 곡성군 삼기면",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40054020",
+    "obs_name": "남원시(동림교)",
+    "location": "전라북도 남원시",
+    "address": "전라북도 남원시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40054030",
+    "obs_name": "장수군(동화저수지)",
+    "location": "전라북도 장수군",
+    "address": "전라북도 장수군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40054040",
+    "obs_name": "남원시(요천대교)",
+    "location": "전라북도 남원시",
+    "address": "전라북도 남원시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40064010",
+    "obs_name": "곡성군(고달교)",
+    "location": "전라남도 곡성군",
+    "address": "전라남도 곡성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074020",
+    "obs_name": "복내",
+    "location": " ",
+    "address": " ",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074030",
+    "obs_name": "보성",
+    "location": " ",
+    "address": " ",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074040",
+    "obs_name": "보성",
+    "location": "전라남도 보성군",
+    "address": "전라남도 보성군",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074050",
+    "obs_name": "화순군(동복댐)",
+    "location": "전라남도 화순군",
+    "address": "전라남도 화순군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074060",
+    "obs_name": "보성군(복내리)",
+    "location": "전라남도 보성군",
+    "address": "전라남도 보성군",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074070",
+    "obs_name": "순천시(우산리)",
+    "location": "전라남도 순천시",
+    "address": "전라남도 순천시",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074080",
+    "obs_name": "순천시(주암댐)",
+    "location": "전라남도 순천시",
+    "address": "전라남도 순천시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074082",
+    "obs_name": "장흥군(봉동리)",
+    "location": "전라남도 장흥군",
+    "address": "전라남도 장흥군",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074090",
+    "obs_name": "보성군(보성강댐)",
+    "location": "전라남도 보성군",
+    "address": "전라남도 보성군",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074092",
+    "obs_name": "보성강댐",
+    "location": "전남 보성군",
+    "address": "전남 보성군",
+    "agency": "한국수력원자력",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074126",
+    "obs_name": "웅치",
+    "location": "전라남도 보성군 웅치면 용반리",
+    "address": "전라남도 보성군 웅치면 용반리",
+    "agency": "한국수력원자력",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074127",
+    "obs_name": "장평",
+    "location": "전라남도 장흥군 장평면 봉림리",
+    "address": "전라남도 장흥군 장평면 봉림리",
+    "agency": "한국수력원자력",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074140",
+    "obs_name": "화순군(동가리)",
+    "location": "전라남도 화순군",
+    "address": "전라남도 화순군",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074143",
+    "obs_name": "화순군(맹리)",
+    "location": "전라남도 보성군",
+    "address": "전라남도 보성군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074145",
+    "obs_name": "보성교",
+    "location": "전라남도 보성군 보성읍",
+    "address": "전라남도 보성군 보성읍",
+    "agency": "한국수력원자력",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074146",
+    "obs_name": "죽동교",
+    "location": "전라남도 장흥군 장평면",
+    "address": "전라남도 장흥군 장평면",
+    "agency": "한국수력원자력",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40074147",
+    "obs_name": "광곡교",
+    "location": "전라남도 보성군 노동면",
+    "address": "전라남도 보성군 노동면",
+    "agency": "한국수력원자력",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40084010",
+    "obs_name": "곡성군(태안교)",
+    "location": "전라남도 곡성군",
+    "address": "전라남도 곡성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40084020",
+    "obs_name": "곡성군(석곡톨게이트)",
+    "location": "전라남도 곡성군",
+    "address": "전라남도 곡성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094010",
+    "obs_name": "하동",
+    "location": "경상남도 하동",
+    "address": "경상남도 하동",
+    "agency": "기타",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094030",
+    "obs_name": "삼일암",
+    "location": "전라남도 구례군",
+    "address": "전라남도 구례군",
+    "agency": "기타",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094040",
+    "obs_name": "범왕",
+    "location": "경상남도 하동",
+    "address": "경상남도 하동",
+    "agency": "기타",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094050",
+    "obs_name": "하동군(묵계리)",
+    "location": "경상남도 하동군",
+    "address": "경상남도 하동군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094060",
+    "obs_name": "구례군(구례교)",
+    "location": "전라남도 구례군",
+    "address": "전라남도 구례군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094070",
+    "obs_name": "구례군(문수리경로당)",
+    "location": "전라남도 구례군",
+    "address": "전라남도 구례군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094080",
+    "obs_name": "하동군(쌍계초교)",
+    "location": "경상남도 하동군",
+    "address": "경상남도 하동군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094090",
+    "obs_name": "하동군(읍내리)",
+    "location": "경상남도 하동군",
+    "address": "경상남도 하동군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094100",
+    "obs_name": "하동군(횡천초교)",
+    "location": "경상남도 하동군",
+    "address": "경상남도 하동군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094110",
+    "obs_name": "곡성군(예성교)",
+    "location": "전라남도 곡성군",
+    "address": "전라남도 곡성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094120",
+    "obs_name": "광양시(남도대교)",
+    "location": "전라남도 광양시",
+    "address": "전라남도 광양시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094140",
+    "obs_name": "광양시(다압취수장)",
+    "location": "전라남도 광양시",
+    "address": "전라남도 광양시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094150",
+    "obs_name": "순천시(괴목리)",
+    "location": "전라남도 순천시",
+    "address": "전라남도 순천시",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094160",
+    "obs_name": "구례군(서시교)",
+    "location": "전라남도 구례군",
+    "address": "전라남도 구례군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "40094170",
+    "obs_name": "구례군(문수리)",
+    "location": "전라남도 구례군 토지면",
+    "address": "전라남도 구례군 토지면",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "41044020",
+    "obs_name": "순천시(주암조절지댐)",
+    "location": "전라남도 순천시",
+    "address": "전라남도 순천시",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "41044030",
+    "obs_name": "순천시(죽학리)",
+    "location": "전라남도 순천시",
+    "address": "전라남도 순천시",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "41044040",
+    "obs_name": "순천국토관리사무소",
+    "location": "전라남도 순천시",
+    "address": "전라남도 순천시",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "41054030",
+    "obs_name": "광양시(수어댐)",
+    "location": "전라남도 광양시",
+    "address": "전라남도 광양시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "41054050",
+    "obs_name": "광양시(어치리)",
+    "location": "전라남도 광양시",
+    "address": "전라남도 광양시",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50014010",
+    "obs_name": "용면",
+    "location": "전라남도 담양군 용면",
+    "address": "전라남도 담양군 용면",
+    "agency": "한국농어촌공사",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50014020",
+    "obs_name": "광주광역시(대성초교)",
+    "location": "광주광역시 남구",
+    "address": "광주광역시 남구",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50014030",
+    "obs_name": "담양군(광주댐)",
+    "location": "전라남도 담양군",
+    "address": "전라남도 담양군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50014040",
+    "obs_name": "광주광역시(무등산2중계소)",
+    "location": "광주광역시 동구",
+    "address": "광주광역시 동구",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50014050",
+    "obs_name": "담양군(담양댐)",
+    "location": "전라남도 담양군",
+    "address": "전라남도 담양군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50014060",
+    "obs_name": "담양군(삼지교)",
+    "location": "전라남도 담양군",
+    "address": "전라남도 담양군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50014070",
+    "obs_name": "담양군(담양홍수조절지)",
+    "location": "전라남도 담양군 월산면",
+    "address": "전라남도 담양군 월산면",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50024010",
+    "obs_name": "장성",
+    "location": "전라남도 장성군 장성읍",
+    "address": "전라남도 장성군 장성읍",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50024020",
+    "obs_name": "장성군(백암저수지)",
+    "location": "전라남도 장성군",
+    "address": "전라남도 장성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50024030",
+    "obs_name": "장성군(장성댐)",
+    "location": "전라남도 장성군",
+    "address": "전라남도 장성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50024040",
+    "obs_name": "장성군(월평리)",
+    "location": "전남 장성군 황룡면",
+    "address": "전남 장성군 황룡면",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50024050",
+    "obs_name": "장성군(수산리)",
+    "location": "전남 장성군 삼계면 ",
+    "address": "전남 장성군 삼계면 ",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50024051",
+    "obs_name": "장성군(평림댐)",
+    "location": "전남 장성군 삼계면",
+    "address": "전남 장성군 삼계면",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50034030",
+    "obs_name": "나주시(나주댐)",
+    "location": "전라남도 나주시",
+    "address": "전라남도 나주시",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50034040",
+    "obs_name": "화순군(신성교)",
+    "location": "전라남도 화순군",
+    "address": "전라남도 화순군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50034050",
+    "obs_name": "광주광역시(양과동)",
+    "location": "광주광역시 남구",
+    "address": "광주광역시 남구",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50034060",
+    "obs_name": "화순군(동면초교)",
+    "location": "전라남도 화순군",
+    "address": "전라남도 화순군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 127,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50034070",
+    "obs_name": "화순군(청풍초교)",
+    "location": "전라남도 화순군",
+    "address": "전라남도 화순군",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50034080",
+    "obs_name": "화순군(화순홍수조절지)",
+    "location": "전라남도 화순군 청풍면",
+    "address": "전라남도 화순군 청풍면",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50044010",
+    "obs_name": "영산포",
+    "location": "전라남도 화순군 능주면",
+    "address": "전라남도 화순군 능주면",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50044020",
+    "obs_name": "도암",
+    "location": "전라남도 나주시 이창동",
+    "address": "전라남도 나주시 이창동",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50044030",
+    "obs_name": "광주광역시(동곡초교)",
+    "location": "광주광역시 광산구",
+    "address": "광주광역시 광산구",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50044040",
+    "obs_name": "나주시(봉황초교)",
+    "location": "전라남도 나주시",
+    "address": "전라남도 나주시",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50054010",
+    "obs_name": "장성군(삼서면사무소)",
+    "location": "전라남도 장성군",
+    "address": "전라남도 장성군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50054020",
+    "obs_name": "함평군(나산교)",
+    "location": "전라남도 함평군",
+    "address": "전라남도 함평군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50064020",
+    "obs_name": "함평군(기산초교)",
+    "location": "전라남도 함평군",
+    "address": "전라남도 함평군",
+    "agency": "환경부",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50074010",
+    "obs_name": "영암군(도포중교)",
+    "location": "전라남도 영암군",
+    "address": "전라남도 영암군",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50074020",
+    "obs_name": "영암군(장천초교)",
+    "location": "전라남도 영암군 서호면",
+    "address": "전라남도 영암군 서호면",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "50084010",
+    "obs_name": "하구언(내)",
+    "location": "전라남도 영암군",
+    "address": "전라남도 영암군",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "51014020",
+    "obs_name": "강진군(병영면사무소)",
+    "location": "전라남도 강진군",
+    "address": "전라남도 강진군",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "51014030",
+    "obs_name": "장흥군(조양리)",
+    "location": "전라남도 장흥군",
+    "address": "전라남도 장흥군",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "51014040",
+    "obs_name": "영암군(한대리)",
+    "location": "전라남도 영암군",
+    "address": "전라남도 영암군",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "51014050",
+    "obs_name": "장흥군(운월리)",
+    "location": "전라남도 장흥군",
+    "address": "전라남도 장흥군",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "51014060",
+    "obs_name": "장흥군(장흥댐)",
+    "location": "전라남도 장흥군",
+    "address": "전라남도 장흥군",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "51014070",
+    "obs_name": "탐진댐",
+    "location": "전라남도 장흥군 부산면",
+    "address": "전라남도 장흥군 부산면",
+    "agency": "한국수자원공사",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "51014080",
+    "obs_name": "강진군(작천중교)",
+    "location": "전라남도 강진군",
+    "address": "전라남도 강진군",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "51014090",
+    "obs_name": "강진군(석교교)",
+    "location": "전라남도 강진군",
+    "address": "전라남도 강진군",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "51014100",
+    "obs_name": "장흥군(별천교)",
+    "location": "전라남도 장흥군",
+    "address": "전라남도 장흥군",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "51014150",
+    "obs_name": "병영",
+    "location": "전라남도 강진군 병영면",
+    "address": "전라남도 강진군 병영면",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "53024010",
+    "obs_name": "목포",
+    "location": "전라남도 목포시 유달동",
+    "address": "전라남도 목포시 유달동",
+    "agency": "환경부",
+    "latitude": 34,
+    "longitude": 126,
+    "data_type": "rainfall"
+  },
+  {
+    "obs_code": "99999999",
+    "obs_name": "평림댐",
+    "location": "전라남도 장성군",
+    "address": "전라남도 장성군",
+    "agency": "한국수자원공사",
+    "latitude": 35,
+    "longitude": 126,
+    "data_type": "rainfall"
+  }
+]

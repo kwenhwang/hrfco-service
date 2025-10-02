@@ -25,5 +25,10 @@
   to = "/.netlify/functions/openai-functions"
   status = 200
 
+[[redirects]]
+  from = "/api/mcp"
+  to = "/.netlify/functions/mcp"
+  status = 200
+
 [build.environment]
   NODE_VERSION = "18"

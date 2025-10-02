@@ -80,3 +80,6 @@ coverage/
 mcp_server.log
 *.sqlite
 *.db
+
+# Local Netlify folder
+.netlify

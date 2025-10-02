@@ -1,14 +1,6 @@
 {
-  "mcpServers": {
-    "hrfco-optimized": {
-      "command": "python3",
-      "args": [
-        "/home/ubuntu/hrfco-service/mcp_server.py"
-      ],
-      "env": {
-        "HRFCO_API_KEY": "",
-        "PYTHONPATH": "/home/ubuntu/hrfco-service/src"
-      }
-    }
-  }
+  "url": "https://hrfco-mcp-functions.netlify.app/.netlify/functions/mcp",
+  "label": "K-Water 수문정보",
+  "description": "한국 수자원공사 실시간 수문 데이터 조회 시스템",
+  "authentication": "none"
 }

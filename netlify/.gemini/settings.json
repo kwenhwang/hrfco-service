@@ -1,8 +1,9 @@
 {
   "mcpServers": {
     "k-water": {
-      "httpUrl": "",
-      "description": "한국 수자원 정보 시스템"
+      "httpUrl": "https://hrfco-mcp-functions.netlify.app/.netlify/functions/mcp",
+      "command": "https://hrfco-mcp-functions.netlify.app/.netlify/functions/mcp",
+      "args": []
     }
   }
 }

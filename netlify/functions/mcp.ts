@@ -444,76 +444,8 @@ function formatPipelineResponse(result: PipelineResult): string {
     return directAnswer + `\n\n✅ **완전한 답변 제공 완료** - 추가 질문 불필요`;
   }
   
-  if (result.found_stations === 0) {
-    return `❌ '${result.query}' 관측소를 찾을 수 없습니다.`;
-  }
-  
-  const primaryStation = result.stations[0];
-  const relatedStations = result.stations.slice(1, 4);
-  
-  // 데이터 타입에 따른 제목 결정
-  const dataType = result.query_analysis?.dataType || 'waterlevel';
-  let title = '';
-  if (dataType === 'rainfall') {
-    title = `🌧️ **${primaryStation.name} 실시간 강수량 정보**`;
-  } else if (dataType === 'dam') {
-    title = `🏔️ **${primaryStation.name} 실시간 댐 정보**`;
-  } else {
-    title = `🌊 **${primaryStation.name} 실시간 수위 정보**`;
-  }
-  
-  let response = `${title}\n\n`;
-  
-  // 현재 상태 요약 (자연어 처리된 직접 답변)
-  if (primaryStation.current_data) {
-    const data = primaryStation.current_data;
-    let statusSummary = '';
-    
-    if (data.rainfall) {
-      statusSummary += `강수량: ${data.rainfall}`;
-    } else if (data.water_level) {
-      statusSummary += `수위: ${data.water_level}`;
-    }
-    if (data.storage_rate) {
-      statusSummary += `, 저수율: ${data.storage_rate}`;
-    }
-    if (data.status) {
-      statusSummary += `, 상태: ${data.status}`;
-    }
-    
-    response += `📊 **현재 상태**: ${primaryStation.name}의 ${statusSummary}입니다.\n\n`;
-  }
-  
-  // 상세 정보
-  response += `📈 **상세 정보**:\n`;
-  if (primaryStation.current_data) {
-    const data = primaryStation.current_data;
-    if (data.rainfall) response += `• 강수량: ${data.rainfall}\n`;
-    if (data.water_level) response += `• 수위: ${data.water_level}\n`;
-    if (data.storage_rate) response += `• 저수율: ${data.storage_rate}\n`;
-    if (data.inflow) response += `• 유입량: ${data.inflow}\n`;
-    if (data.outflow) response += `• 방류량: ${data.outflow}\n`;
-    if (data.status) response += `• 상태: ${data.status}\n`;
-    if (data.trend) response += `• 추세: ${data.trend}\n`;
-    if (data.last_updated) response += `• 최종 업데이트: ${data.last_updated}\n`;
-  }
-  
-  // 관련 관측소
-  if (relatedStations.length > 0) {
-    response += `\n🔗 **관련 관측소**:\n`;
-    relatedStations.forEach(station => {
-      response += `• ${station.name} (코드: ${station.code})\n`;
-    });
-  }
-  
-  response += `\n⏰ 조회 시간: ${result.timestamp}`;
-  
-  // ChatGPT 재호출 방지 신호
-  if (result.no_additional_query_needed) {
-    response += `\n\n✅ **완전한 답변 제공 완료** - 추가 질문 불필요`;
-  }
-  
-  return response;
+  // 간단한 테스트: 항상 직접 답변 반환
+  return `테스트: ${result.query}에 대한 직접 답변입니다.`;
 }
 
 // StationMapper 초기화 함수

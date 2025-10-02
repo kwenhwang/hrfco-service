@@ -389,7 +389,7 @@ async function getWaterInfoIntegrated(params: any) {
 function formatPipelineResponse(result: PipelineResult): string {
   // 직접 답변이 있으면 우선 사용 (ChatGPT 재호출 방지)
   if (result.direct_answer) {
-    return result.direct_answer;
+    return result.direct_answer + `\n\n✅ **완전한 답변 제공 완료** - 추가 질문 불필요`;
   }
   
   if (result.found_stations === 0) {

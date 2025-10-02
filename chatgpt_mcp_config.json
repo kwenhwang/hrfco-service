@@ -1,6 +1,19 @@
 {
   "url": "https://hrfco-mcp-functions.netlify.app/.netlify/functions/mcp",
-  "label": "K-Water 수문정보",
-  "description": "한국 수자원공사 실시간 수문 데이터 조회 시스템",
-  "authentication": "none"
+  "label": "K-Water 수문정보 (통합검색)",
+  "description": "한국 수자원공사 실시간 수문 데이터 조회 시스템 - ChatGPT 무한 반복 호출 방지 기능 포함",
+  "authentication": "none",
+  "features": [
+    "통합 검색 기능 (get_water_info)",
+    "ChatGPT 무한 반복 호출 방지",
+    "실시간 수위 데이터 조회",
+    "관측소 코드 매핑 (100+ 관측소)",
+    "완전한 응답 구조"
+  ],
+  "recommended_tool": "get_water_info",
+  "usage_examples": [
+    "대청댐 수위가 어떻게 되나요?",
+    "한강대교 현재 수위 알려주세요",
+    "소양댐 저수율은?"
+  ]
 }

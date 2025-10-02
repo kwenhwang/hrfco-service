@@ -104,6 +104,14 @@ export async function getWaterDataByName(
     const directAnswer = generateDirectAnswer(stationName, primaryStation, detectedDataType);
     const summary = generateSummary(primaryStation, detectedDataType);
     
+    console.log('🔍 Pipeline result generation:', {
+      stationName,
+      detectedDataType,
+      primaryStation: primaryStation.name,
+      directAnswer,
+      summary
+    });
+    
     return {
       query: stationName,
       found_stations: results.length,

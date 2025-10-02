@@ -379,7 +379,20 @@ async function getWaterInfoIntegrated(params: any) {
     }
     
     // 파이프라인 결과를 통합 응답 형식으로 변환
-    return formatPipelineResponse(result);
+    const responseText = formatPipelineResponse(result);
+    
+    // ChatGPT가 추가 질문하지 않도록 완전한 응답 구조로 반환
+    return {
+      status: 'success',
+      summary: result.summary || `${result.found_stations}개 관측소 발견`,
+      direct_answer: responseText,
+      detailed_data: {
+        primary_station: result.stations[0] || {},
+        related_stations: result.stations.slice(1, 4) || []
+      },
+      timestamp: result.timestamp,
+      no_additional_query_needed: true
+    };
   } catch (error: any) {
     return createErrorResponse(`데이터 조회 중 오류가 발생했습니다: ${error.message}`);
   }

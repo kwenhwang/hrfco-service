@@ -121,24 +121,39 @@ export function generateDirectAnswer(
   stationData: any, 
   dataType: 'dam' | 'waterlevel' | 'rainfall'
 ): string {
+  console.log('🔍 generateDirectAnswer called:', {
+    query,
+    stationName: stationData.name,
+    dataType,
+    currentData: stationData.current_data
+  });
+  
   const station = stationData;
   const currentData = station.current_data;
   
   if (dataType === 'rainfall') {
     const rainfall = currentData?.rainfall || '0.0mm';
     const status = currentData?.status || '정상';
-    return `${station.name}의 현재 강수량은 ${rainfall}이며, 상태는 ${status}입니다.`;
+    const answer = `${station.name}의 현재 강수량은 ${rainfall}이며, 상태는 ${status}입니다.`;
+    console.log('✅ Generated rainfall answer:', answer);
+    return answer;
   } else if (dataType === 'waterlevel') {
     const waterLevel = currentData?.water_level || 'N/A';
     const status = currentData?.status || '정상';
-    return `${station.name}의 현재 수위는 ${waterLevel}이며, 상태는 ${status}입니다.`;
+    const answer = `${station.name}의 현재 수위는 ${waterLevel}이며, 상태는 ${status}입니다.`;
+    console.log('✅ Generated waterlevel answer:', answer);
+    return answer;
   } else if (dataType === 'dam') {
     const waterLevel = currentData?.water_level || 'N/A';
     const storageRate = currentData?.storage_rate || 'N/A';
-    return `${station.name}의 현재 수위는 ${waterLevel}이며, 저수율은 ${storageRate}입니다.`;
+    const answer = `${station.name}의 현재 수위는 ${waterLevel}이며, 저수율은 ${storageRate}입니다.`;
+    console.log('✅ Generated dam answer:', answer);
+    return answer;
   }
   
-  return `${station.name}의 현재 측정값을 조회했습니다.`;
+  const answer = `${station.name}의 현재 측정값을 조회했습니다.`;
+  console.log('✅ Generated default answer:', answer);
+  return answer;
 }
 
 /**

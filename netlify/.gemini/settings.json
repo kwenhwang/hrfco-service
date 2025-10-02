@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "k-water": {
+      "httpUrl": "",
+      "description": "한국 수자원 정보 시스템"
+    }
+  }
+}

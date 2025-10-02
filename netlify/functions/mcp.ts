@@ -387,8 +387,15 @@ async function getWaterInfoIntegrated(params: any) {
 
 // 파이프라인 응답을 통합 응답 형식으로 변환 (완전한 답변 생성)
 function formatPipelineResponse(result: PipelineResult): string {
+  console.log('🔍 formatPipelineResponse called with:', {
+    hasDirectAnswer: !!result.direct_answer,
+    directAnswer: result.direct_answer,
+    foundStations: result.found_stations
+  });
+  
   // 직접 답변이 있으면 우선 사용 (ChatGPT 재호출 방지)
   if (result.direct_answer) {
+    console.log('✅ Using direct answer:', result.direct_answer);
     return result.direct_answer + `\n\n✅ **완전한 답변 제공 완료** - 추가 질문 불필요`;
   }
   

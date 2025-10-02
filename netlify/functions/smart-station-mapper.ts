@@ -56,7 +56,6 @@ export class SmartStationMapper {
   private normalizeQuery(query: string): string {
     return query
       .replace(/댐|수위|강우량|우량|관측소|교|대교/g, '') // 불필요한 단어 제거
-      .replace(/[()]/g, '') // 괄호 제거
       .replace(/\s+/g, '') // 공백 제거
       .trim();
   }
@@ -67,29 +66,40 @@ export class SmartStationMapper {
   private calculateScore(station: StationMapping, query: string): number {
     let score = 0;
     
+    // 원본 쿼리와 정규화된 쿼리 모두 사용
+    const originalQuery = query;
+    const normalizedStationName = station.name.replace(/[()]/g, '').replace(/\s+/g, '');
+    const normalizedQuery = originalQuery.replace(/[()]/g, '').replace(/\s+/g, '');
+    
     // 1. 정확한 이름 일치 (최고 점수)
-    if (station.name === query) {
+    if (station.name === originalQuery) {
       score += 100;
     }
     
-    // 2. 이름 포함 일치
-    if (station.name.includes(query)) {
+    // 2. 정규화된 이름 일치
+    if (normalizedStationName === normalizedQuery) {
+      score += 95;
+    }
+    
+    // 3. 이름 포함 일치
+    if (station.name.includes(originalQuery) || normalizedStationName.includes(normalizedQuery)) {
       score += 80;
     }
     
-    // 3. 키워드 일치
+    // 4. 키워드 일치
     const keywordMatches = station.keywords.filter(keyword => 
-      keyword.includes(query) || query.includes(keyword)
+      keyword.includes(originalQuery) || originalQuery.includes(keyword) ||
+      keyword.includes(normalizedQuery) || normalizedQuery.includes(keyword)
     );
     score += keywordMatches.length * 20;
     
-    // 4. 지역명 일치
-    if (station.region.includes(query)) {
+    // 5. 지역명 일치
+    if (station.region.includes(originalQuery) || station.region.includes(normalizedQuery)) {
       score += 30;
     }
     
-    // 5. 부분 일치 (유사도)
-    const similarity = this.calculateSimilarity(station.name, query);
+    // 6. 부분 일치 (유사도)
+    const similarity = this.calculateSimilarity(station.name, originalQuery);
     score += similarity * 10;
     
     return Math.min(score, 100); // 최대 100점

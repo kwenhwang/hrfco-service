@@ -66,16 +66,42 @@ export class StationMapper {
       const path = require('path');
       
       const fileName = `${dataType}-stations.json`;
-      const filePath = path.join(__dirname, '..', 'data', fileName);
+      // 절대 경로 사용
+      const filePath = path.join(__dirname, 'data', fileName);
       
+      // 상대 경로도 시도
+      const relativePath = path.join(process.cwd(), 'netlify', 'functions', 'data', fileName);
+      
+      console.log(`🔍 ${dataType} 파일 경로 확인: ${filePath}`);
+      console.log(`🔍 ${dataType} 상대 경로 확인: ${relativePath}`);
+      
+      let actualPath = null;
       if (fs.existsSync(filePath)) {
-        console.log(`📁 ${dataType} 저장된 파일에서 로드: ${filePath}`);
-        const fileData = fs.readFileSync(filePath, 'utf8');
+        actualPath = filePath;
+      } else if (fs.existsSync(relativePath)) {
+        actualPath = relativePath;
+      }
+      
+      if (actualPath) {
+        console.log(`📁 ${dataType} 저장된 파일에서 로드: ${actualPath}`);
+        const fileData = fs.readFileSync(actualPath, 'utf8');
         const stations = JSON.parse(fileData);
         console.log(`✅ ${dataType} 관측소 ${stations.length}개 파일에서 로드 완료`);
+        
+        // 문경시 관련 관측소 로그 출력
+        const mungyeongStations = stations.filter((station: any) => 
+          station.obs_name && station.obs_name.includes('문경')
+        );
+        if (mungyeongStations.length > 0) {
+          console.log(`📍 문경시 관련 ${dataType} 관측소:`);
+          mungyeongStations.forEach((station: any) => {
+            console.log(`  - ${station.obs_name}: ${station.obs_code}`);
+          });
+        }
+        
         return stations;
       } else {
-        console.log(`⚠️ ${dataType} 저장된 파일이 없음: ${filePath}`);
+        console.log(`⚠️ ${dataType} 저장된 파일이 없음: ${filePath} 또는 ${relativePath}`);
         throw new Error(`저장된 ${dataType} 파일이 없습니다`);
       }
       
@@ -235,8 +261,11 @@ export class StationMapper {
       { name: '인천우량관측소', code: '1018828', river: '한강', location: '인천' },
       { name: '광주우량관측소', code: '1018829', river: '영산강', location: '광주' },
       { name: '대전우량관측소', code: '1018830', river: '금강', location: '대전' },
-      { name: '문경시(농암리)', code: '1018831', river: '낙동강', location: '문경시' },
-      { name: '문경시(화산리)', code: '1018833', river: '낙동강', location: '문경시' },
+      { name: '문경시(농암리)', code: '20054010', river: '낙동강', location: '문경시' },
+      { name: '문경시(화산리)', code: '20054080', river: '낙동강', location: '문경시' },
+      { name: '문경시(김용리)', code: '20054020', river: '낙동강', location: '문경시' },
+      { name: '문경시(진안리)', code: '20054070', river: '낙동강', location: '문경시' },
+      { name: '문경시(동로면사무소)', code: '20044030', river: '낙동강', location: '문경시' },
       { name: '가평군(가평교)', code: '1018832', river: '한강', location: '가평군' },
     ];
 

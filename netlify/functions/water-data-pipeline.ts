@@ -1,5 +1,12 @@
 // 실시간 수문 데이터 조회 파이프라인
 import { smartStationMapper, SearchResult } from './smart-station-mapper';
+import { 
+  detectDataType, 
+  extractStationName, 
+  analyzeQueryIntent, 
+  generateDirectAnswer, 
+  generateSummary 
+} from './natural-language-processor';
 
 export interface WaterData {
   water_level?: string;
@@ -29,6 +36,15 @@ export interface PipelineResult {
   found_stations: number;
   stations: StationData[];
   timestamp: string;
+  direct_answer?: string;
+  summary?: string;
+  no_additional_query_needed?: boolean;
+  query_analysis?: {
+    dataType: 'dam' | 'waterlevel' | 'rainfall';
+    stationName: string;
+    intent: 'current_value' | 'status' | 'trend' | 'general';
+    confidence: number;
+  };
 }
 
 // 데이터 캐시 (5분 TTL)
@@ -36,29 +52,37 @@ const dataCache = new Map<string, { data: WaterData; timestamp: number }>();
 const CACHE_TTL = 5 * 60 * 1000; // 5분
 
 /**
- * 관측소명으로 실시간 데이터 조회
+ * 관측소명으로 실시간 데이터 조회 (완전한 응답 생성)
  */
 export async function getWaterDataByName(
   stationName: string, 
   dataType?: 'dam' | 'waterlevel' | 'rainfall'
 ): Promise<PipelineResult> {
   try {
-    // 1단계: 이름으로 코드 찾기 (경량 매핑 테이블)
+    // 1단계: 자연어 처리로 데이터 타입 및 의도 분석
+    const queryAnalysis = analyzeQueryIntent(stationName);
+    const detectedDataType = dataType || queryAnalysis.dataType;
+    const extractedStationName = extractStationName(stationName);
+    
+    // 2단계: 이름으로 코드 찾기 (경량 매핑 테이블)
     const mapper = smartStationMapper;
-    const stations = mapper.searchByName(stationName, dataType);
+    const stations = mapper.searchByName(extractedStationName, detectedDataType);
     
     if (stations.length === 0) {
       return {
         query: stationName,
         found_stations: 0,
         stations: [],
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        direct_answer: `'${extractedStationName}' 관측소를 찾을 수 없습니다.`,
+        summary: `'${extractedStationName}' 관측소 없음`,
+        no_additional_query_needed: true
       };
     }
     
-    // 2단계: 코드로 실시간 데이터 조회 (HRFCO API)
+    // 3단계: 코드로 실시간 데이터 조회 (HRFCO API) - 병렬 처리
     const results = await Promise.all(
-      stations.slice(0, 5).map(async (station) => {
+      stations.slice(0, 3).map(async (station) => {
         try {
           const liveData = await getCachedStationData(station.code, station.type);
           
@@ -75,11 +99,20 @@ export async function getWaterDataByName(
       })
     );
     
+    // 4단계: 완전한 응답 생성
+    const primaryStation = results[0];
+    const directAnswer = generateDirectAnswer(stationName, primaryStation, detectedDataType);
+    const summary = generateSummary(primaryStation, detectedDataType);
+    
     return {
       query: stationName,
       found_stations: results.length,
       stations: results,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      direct_answer: directAnswer,
+      summary: summary,
+      no_additional_query_needed: true,
+      query_analysis: queryAnalysis
     };
     
   } catch (error) {
@@ -87,7 +120,10 @@ export async function getWaterDataByName(
       query: stationName,
       found_stations: 0,
       stations: [],
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      direct_answer: `'${stationName}' 조회 중 오류가 발생했습니다.`,
+      summary: `'${stationName}' 조회 실패`,
+      no_additional_query_needed: true
     };
   }
 }

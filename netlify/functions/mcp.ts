@@ -385,8 +385,13 @@ async function getWaterInfoIntegrated(params: any) {
   }
 }
 
-// 파이프라인 응답을 통합 응답 형식으로 변환
+// 파이프라인 응답을 통합 응답 형식으로 변환 (완전한 답변 생성)
 function formatPipelineResponse(result: PipelineResult): string {
+  // 직접 답변이 있으면 우선 사용 (ChatGPT 재호출 방지)
+  if (result.direct_answer) {
+    return result.direct_answer;
+  }
+  
   if (result.found_stations === 0) {
     return `❌ '${result.query}' 관측소를 찾을 수 없습니다.`;
   }
@@ -394,14 +399,27 @@ function formatPipelineResponse(result: PipelineResult): string {
   const primaryStation = result.stations[0];
   const relatedStations = result.stations.slice(1, 4);
   
-  let response = `🌊 **${primaryStation.name} 실시간 수위 정보**\n\n`;
+  // 데이터 타입에 따른 제목 결정
+  const dataType = result.query_analysis?.dataType || 'waterlevel';
+  let title = '';
+  if (dataType === 'rainfall') {
+    title = `🌧️ **${primaryStation.name} 실시간 강수량 정보**`;
+  } else if (dataType === 'dam') {
+    title = `🏔️ **${primaryStation.name} 실시간 댐 정보**`;
+  } else {
+    title = `🌊 **${primaryStation.name} 실시간 수위 정보**`;
+  }
   
-  // 현재 상태 요약
+  let response = `${title}\n\n`;
+  
+  // 현재 상태 요약 (자연어 처리된 직접 답변)
   if (primaryStation.current_data) {
     const data = primaryStation.current_data;
     let statusSummary = '';
     
-    if (data.water_level) {
+    if (data.rainfall) {
+      statusSummary += `강수량: ${data.rainfall}`;
+    } else if (data.water_level) {
       statusSummary += `수위: ${data.water_level}`;
     }
     if (data.storage_rate) {
@@ -418,11 +436,11 @@ function formatPipelineResponse(result: PipelineResult): string {
   response += `📈 **상세 정보**:\n`;
   if (primaryStation.current_data) {
     const data = primaryStation.current_data;
+    if (data.rainfall) response += `• 강수량: ${data.rainfall}\n`;
     if (data.water_level) response += `• 수위: ${data.water_level}\n`;
     if (data.storage_rate) response += `• 저수율: ${data.storage_rate}\n`;
     if (data.inflow) response += `• 유입량: ${data.inflow}\n`;
     if (data.outflow) response += `• 방류량: ${data.outflow}\n`;
-    if (data.rainfall) response += `• 강수량: ${data.rainfall}\n`;
     if (data.status) response += `• 상태: ${data.status}\n`;
     if (data.trend) response += `• 추세: ${data.trend}\n`;
     if (data.last_updated) response += `• 최종 업데이트: ${data.last_updated}\n`;
@@ -437,6 +455,11 @@ function formatPipelineResponse(result: PipelineResult): string {
   }
   
   response += `\n⏰ 조회 시간: ${result.timestamp}`;
+  
+  // ChatGPT 재호출 방지 신호
+  if (result.no_additional_query_needed) {
+    response += `\n\n✅ **완전한 답변 제공 완료** - 추가 질문 불필요`;
+  }
   
   return response;
 }

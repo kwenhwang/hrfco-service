@@ -55,32 +55,46 @@ const CACHE_TTL = 5 * 60 * 1000; // 5분
  * 관측소명으로 실시간 데이터 조회 (완전한 응답 생성)
  */
 export async function getWaterDataByName(
-  stationName: string, 
+  query: string, 
   dataType?: 'dam' | 'waterlevel' | 'rainfall'
 ): Promise<PipelineResult> {
   try {
     // 1단계: 자연어 처리로 데이터 타입 및 의도 분석
-    const queryAnalysis = analyzeQueryIntent(stationName);
+    const queryAnalysis = analyzeQueryIntent(query);
+
+    // 지원되지 않는 쿼리 우선 처리
+    if (queryAnalysis.intent === 'unsupported') {
+      return {
+        query,
+        found_stations: 0,
+        stations: [],
+        timestamp: new Date().toISOString(),
+        direct_answer: '죄송합니다. 실시간 데이터가 아닌 시계열 비교나 추상적인 질문은 현재 지원되지 않습니다.',
+        summary: '지원되지 않는 질문 유형',
+        no_additional_query_needed: true
+      };
+    }
+
     const detectedDataType = dataType || queryAnalysis.dataType;
-    const extractedStationName = extractStationName(stationName);
+    const extractedStationName = queryAnalysis.stationName || query; // 추출된 이름이 없으면 원본 쿼리 사용
     
-    // 2단계: 이름으로 코드 찾기 (경량 매핑 테이블)
+    // 2단계: 이름과 **타입**으로 코드 찾기 (정확도 향상)
     const mapper = smartStationMapper;
     const stations = mapper.searchByName(extractedStationName, detectedDataType);
     
     if (stations.length === 0) {
       return {
-        query: stationName,
+        query: query,
         found_stations: 0,
         stations: [],
         timestamp: new Date().toISOString(),
-        direct_answer: `'${extractedStationName}'에 해당하는 관측소를 찾을 수 없습니다. 관측소 이름을 확인해주세요.`,
+        direct_answer: `'${extractedStationName}'에 해당하는 ${detectedDataType} 관측소를 찾을 수 없습니다. 관측소 이름을 확인해주세요.`,
         summary: `'${extractedStationName}' 관측소 없음`,
         no_additional_query_needed: true
       };
     }
     
-    // 3단계: 코드로 실시간 데이터 조회 (HRFCO API) - 병렬 처리
+    // 3단계: 코드로 실시간 데이터 조회 (병렬 처리)
     const results = await Promise.all(
       stations.slice(0, 3).map(async (station) => {
         try {
@@ -101,11 +115,11 @@ export async function getWaterDataByName(
     
     // 4단계: 완전한 응답 생성
     const primaryStation = results[0];
-    const directAnswer = generateDirectAnswer(stationName, primaryStation, detectedDataType);
+    const directAnswer = generateDirectAnswer(query, primaryStation, detectedDataType);
     const summary = generateSummary(primaryStation, detectedDataType);
     
     console.log('🔍 Pipeline result generation:', {
-      stationName,
+      query,
       detectedDataType,
       primaryStation: primaryStation.name,
       directAnswer,
@@ -113,7 +127,7 @@ export async function getWaterDataByName(
     });
     
     return {
-      query: stationName,
+      query: query,
       found_stations: results.length,
       stations: results,
       timestamp: new Date().toISOString(),
@@ -125,12 +139,12 @@ export async function getWaterDataByName(
     
   } catch (error) {
     return {
-      query: stationName,
+      query: query,
       found_stations: 0,
       stations: [],
       timestamp: new Date().toISOString(),
-      direct_answer: `'${stationName}' 조회 중 오류가 발생했습니다.`,
-      summary: `'${stationName}' 조회 실패`,
+      direct_answer: `'${query}' 조회 중 오류가 발생했습니다.`,
+      summary: `'${query}' 조회 실패`,
       no_additional_query_needed: true
     };
   }

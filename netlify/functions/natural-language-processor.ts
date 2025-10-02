@@ -74,14 +74,35 @@ export function extractStationName(query: string): string {
 }
 
 /**
+ * 지원하지 않는 쿼리 타입 감지 (시계열, 추상적 질문)
+ */
+export function detectUnsupportedQuery(query: string): boolean {
+  const unsupportedKeywords = [
+    '어제', '오늘', '지난주', '작년', '비교',
+    '가뭄', '장마', '태풍', '홍수',
+    '물놀이', '낚시', '등산로', '수 있나', '가능'
+  ];
+  return unsupportedKeywords.some(k => query.includes(k));
+}
+
+/**
  * 쿼리 의도 분석
  */
 export function analyzeQueryIntent(query: string): {
   dataType: 'dam' | 'waterlevel' | 'rainfall';
   stationName: string;
-  intent: 'current_value' | 'status' | 'trend' | 'general';
+  intent: 'current_value' | 'status' | 'trend' | 'general' | 'unsupported';
   confidence: number;
 } {
+  if (detectUnsupportedQuery(query)) {
+    return {
+      dataType: 'waterlevel',
+      stationName: '',
+      intent: 'unsupported',
+      confidence: 1.0
+    };
+  }
+
   const dataType = detectDataType(query);
   const stationName = extractStationName(query);
   

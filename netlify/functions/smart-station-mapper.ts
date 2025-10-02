@@ -43,9 +43,10 @@ export class SmartStationMapper {
     
     // 점수순 정렬 (높은 점수부터)
     results.sort((a, b) => b.score - a.score);
-    
-    const finalResults = results.filter(r => r.score > 30);
-    
+
+    // 신뢰도 낮은 결과 필터링 (매우 중요)
+    const finalResults = results.filter(r => r.score > 70);
+
     // 캐시 저장
     this.mappingCache.set(cacheKey, finalResults);
     
@@ -62,55 +63,56 @@ export class SmartStationMapper {
       .trim();
   }
   
-  /**
-   * 검색 점수 계산
-   */
-  private calculateScore(station: StationMapping, query: string): number {
-    let score = 0;
-    
-    // 원본 쿼리와 정규화된 쿼리 모두 사용
-    const originalQuery = query;
-    const normalizedStationName = station.name.replace(/[()]/g, '').replace(/\s+/g, '');
-    const normalizedQuery = originalQuery.replace(/[()]/g, '').replace(/\s+/g, '');
-    
-    // 1. 정확한 이름 일치 (최고 점수)
-    if (station.name === originalQuery) {
-      score += 100;
-    }
-    
-    // 2. 정규화된 이름 일치
-    if (normalizedStationName === normalizedQuery) {
-      score += 95;
-    }
-    
-    // 3. 이름 포함 일치
-    if (station.name.includes(originalQuery) || normalizedStationName.includes(normalizedQuery)) {
-      score += 80;
-    }
-    
-    // 4. 키워드 일치
-    const keywordMatches = station.keywords.filter(keyword => 
-      keyword.includes(originalQuery) || originalQuery.includes(keyword) ||
-      keyword.includes(normalizedQuery) || normalizedQuery.includes(keyword)
-    );
-    score += keywordMatches.length * 20;
-    
-    // 5. 지역명 일치
-    if (station.region.includes(originalQuery) || station.region.includes(normalizedQuery)) {
-      score += 30;
-    }
-    
-    // 6. 부분 일치 (유사도)
-    const similarity = this.calculateSimilarity(station.name, originalQuery);
-    score += similarity * 10;
-    
-    return Math.min(score, 100); // 최대 100점
-  }
+    /**
+     * 검색 점수 계산 (더 정교한 방식)
+     */
+    private calculateScore(station: StationMapping, query: string): number {
+      let score = 0;
+      const normalizedStationName = station.name.replace(/[()]/g, '').trim();
+      const normalizedQuery = query.replace(/[()]/g, '').trim();
   
-  /**
-   * 문자열 유사도 계산 (간단한 버전)
-   */
-  private calculateSimilarity(str1: string, str2: string): number {
+      // 1. 이름 또는 키워드에 쿼리가 정확히 포함 (가장 높은 점수)
+      if (normalizedStationName === normalizedQuery || station.keywords.includes(normalizedQuery)) {
+        return 100;
+      }
+  
+      // 2. 이름에 쿼리가 포함
+      if (normalizedStationName.includes(normalizedQuery)) {
+        score += 90;
+      }
+  
+      // 3. 쿼리에 이름이 포함 (예: query='소양강' station.name='소양강댐')
+      if (normalizedQuery.includes(normalizedStationName)) {
+        score += 85;
+      }
+  
+      // 4. 키워드에 쿼리가 포함
+      if (station.keywords.some(k => normalizedQuery.includes(k))) {
+        score += 70;
+      }
+  
+      // 5. 지역명 일치 시 보너스 점수
+      if (station.region.includes(normalizedQuery)) {
+        score += 20;
+      }
+  
+      // 6. 복합 지명 처리 (공백으로 분리하여 모두 포함하는지 확인)
+      const queryParts = normalizedQuery.split(' ').filter(p => p.length > 0);
+      if (queryParts.length > 1) {
+        const allPartsMatch = queryParts.every(part => 
+          normalizedStationName.includes(part) || station.region.includes(part) || station.keywords.some(k => k.includes(part))
+        );
+        if (allPartsMatch) {
+          score = Math.max(score, 95); // 복합 지명 일치 시 높은 점수 부여
+        }
+      }
+  
+      return Math.min(score, 100);
+    }
+  
+    /**
+     * 문자열 유사도 계산 (Jaro-Winkler와 유사한 개념)
+     */  private calculateSimilarity(str1: string, str2: string): number {
     const longer = str1.length > str2.length ? str1 : str2;
     const shorter = str1.length > str2.length ? str2 : str1;
     

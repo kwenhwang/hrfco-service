@@ -67,11 +67,11 @@ export const handler: Handler = async (event) => {
       body: JSON.stringify(result)
     };
 
-  } catch (error) {
+  } catch (error: any) {
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: error.message })
+      body: JSON.stringify({ error: error?.message || 'Unknown error' })
     };
   }
 };

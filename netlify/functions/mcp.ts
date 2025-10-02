@@ -412,38 +412,6 @@ function formatPipelineResponse(result: PipelineResult): string {
     foundStations: result.found_stations
   });
   
-  // 직접 답변이 있으면 우선 사용 (ChatGPT 재호출 방지)
-  if (result.direct_answer) {
-    console.log('✅ Using direct answer:', result.direct_answer);
-    return result.direct_answer + `\n\n✅ **완전한 답변 제공 완료** - 추가 질문 불필요`;
-  }
-  
-  // 직접 답변이 없으면 강제로 생성
-  if (result.found_stations > 0) {
-    const primaryStation = result.stations[0];
-    const dataType = result.query_analysis?.dataType || 'waterlevel';
-    
-    let directAnswer = '';
-    if (dataType === 'rainfall') {
-      const rainfall = primaryStation.current_data?.rainfall || '0.0mm';
-      const status = primaryStation.current_data?.status || '정상';
-      directAnswer = `${primaryStation.name}의 현재 강수량은 ${rainfall}이며, 상태는 ${status}입니다.`;
-    } else if (dataType === 'waterlevel') {
-      const waterLevel = primaryStation.current_data?.water_level || 'N/A';
-      const status = primaryStation.current_data?.status || '정상';
-      directAnswer = `${primaryStation.name}의 현재 수위는 ${waterLevel}이며, 상태는 ${status}입니다.`;
-    } else if (dataType === 'dam') {
-      const waterLevel = primaryStation.current_data?.water_level || 'N/A';
-      const storageRate = primaryStation.current_data?.storage_rate || 'N/A';
-      directAnswer = `${primaryStation.name}의 현재 수위는 ${waterLevel}이며, 저수율은 ${storageRate}입니다.`;
-    } else {
-      directAnswer = `${primaryStation.name}의 현재 측정값을 조회했습니다.`;
-    }
-    
-    console.log('✅ Generated direct answer:', directAnswer);
-    return directAnswer + `\n\n✅ **완전한 답변 제공 완료** - 추가 질문 불필요`;
-  }
-  
   // 간단한 테스트: 항상 직접 답변 반환
   return `테스트: ${result.query}에 대한 직접 답변입니다.`;
 }

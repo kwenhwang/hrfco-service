@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "k-water": {
-      "httpUrl": "https://hrfco-mcp-functions.netlify.app/.netlify/functions/mcp",
-      "command": "https://hrfco-mcp-functions.netlify.app/.netlify/functions/mcp",
-      "args": []
-    }
-  }
-}

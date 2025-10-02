@@ -251,6 +251,9 @@ export class StationMapper {
       { name: '반포대교', code: '1018703', river: '한강', location: '서울' },
       { name: '동작대교', code: '1018704', river: '한강', location: '서울' },
       { name: '한남대교', code: '1018705', river: '한강', location: '서울' },
+      { name: '평림댐', code: '5002201', river: '영산강', location: '장성군' },
+      { name: '장성군(평림댐)', code: '5002680', river: '영산강', location: '장성군' },
+      { name: '광주광역시(평림교)', code: '5002677', river: '영산강', location: '광주광역시' },
     ];
 
     // 주요 우량관측소들
@@ -266,6 +269,8 @@ export class StationMapper {
       { name: '문경시(김용리)', code: '20054020', river: '낙동강', location: '문경시' },
       { name: '문경시(진안리)', code: '20054070', river: '낙동강', location: '문경시' },
       { name: '문경시(동로면사무소)', code: '20044030', river: '낙동강', location: '문경시' },
+      { name: '평림댐', code: '99999999', river: '영산강', location: '장성군' },
+      { name: '장성군(평림댐)', code: '50024051', river: '영산강', location: '장성군' },
       { name: '가평군(가평교)', code: '1018832', river: '한강', location: '가평군' },
     ];
 

@@ -1,6 +1,7 @@
 import { Handler } from '@netlify/functions';
 import { normalizeQuery, calculateSimilarity, fetchHRFCOData, Station, SearchResult } from './utils';
 import { stationMapper } from './station-mapper';
+import { getWaterDataByName, PipelineResult } from './water-data-pipeline';
 
 // StationMapper 초기화 상태
 let isMapperInitialized = false;
@@ -385,28 +386,74 @@ async function getWaterInfoIntegrated(params: any) {
   }
 
   try {
-    // 1. StationMapper 초기화
-    await initializeStationMapper();
+    // 새로운 파이프라인으로 데이터 조회
+    const result: PipelineResult = await getWaterDataByName(query);
     
-    // 2. 관측소 검색
-    const stationCode = findStationCode(query);
-    if (!stationCode) {
+    if (result.found_stations === 0) {
       return createErrorResponse(`'${query}' 관측소를 찾을 수 없습니다.`);
     }
-
-    // 3. 실시간 데이터 조회 (데모 데이터 사용)
-    const waterLevelData = getDemoWaterLevelData(stationCode);
-    const latestData = waterLevelData[0];
-
-    if (!latestData) {
-      return createErrorResponse(`${query}의 실시간 데이터를 가져올 수 없습니다.`);
-    }
-
-    // 4. 통합 응답 생성
-    return createIntegratedResponse(query, stationCode, latestData);
+    
+    // 파이프라인 결과를 통합 응답 형식으로 변환
+    return formatPipelineResponse(result);
   } catch (error: any) {
     return createErrorResponse(`데이터 조회 중 오류가 발생했습니다: ${error.message}`);
   }
+}
+
+// 파이프라인 응답을 통합 응답 형식으로 변환
+function formatPipelineResponse(result: PipelineResult): string {
+  if (result.found_stations === 0) {
+    return `❌ '${result.query}' 관측소를 찾을 수 없습니다.`;
+  }
+  
+  const primaryStation = result.stations[0];
+  const relatedStations = result.stations.slice(1, 4);
+  
+  let response = `🌊 **${primaryStation.name} 실시간 수위 정보**\n\n`;
+  
+  // 현재 상태 요약
+  if (primaryStation.current_data) {
+    const data = primaryStation.current_data;
+    let statusSummary = '';
+    
+    if (data.water_level) {
+      statusSummary += `수위: ${data.water_level}`;
+    }
+    if (data.storage_rate) {
+      statusSummary += `, 저수율: ${data.storage_rate}`;
+    }
+    if (data.status) {
+      statusSummary += `, 상태: ${data.status}`;
+    }
+    
+    response += `📊 **현재 상태**: ${primaryStation.name}의 ${statusSummary}입니다.\n\n`;
+  }
+  
+  // 상세 정보
+  response += `📈 **상세 정보**:\n`;
+  if (primaryStation.current_data) {
+    const data = primaryStation.current_data;
+    if (data.water_level) response += `• 수위: ${data.water_level}\n`;
+    if (data.storage_rate) response += `• 저수율: ${data.storage_rate}\n`;
+    if (data.inflow) response += `• 유입량: ${data.inflow}\n`;
+    if (data.outflow) response += `• 방류량: ${data.outflow}\n`;
+    if (data.rainfall) response += `• 강수량: ${data.rainfall}\n`;
+    if (data.status) response += `• 상태: ${data.status}\n`;
+    if (data.trend) response += `• 추세: ${data.trend}\n`;
+    if (data.last_updated) response += `• 최종 업데이트: ${data.last_updated}\n`;
+  }
+  
+  // 관련 관측소
+  if (relatedStations.length > 0) {
+    response += `\n🔗 **관련 관측소**:\n`;
+    relatedStations.forEach(station => {
+      response += `• ${station.name} (코드: ${station.code})\n`;
+    });
+  }
+  
+  response += `\n⏰ 조회 시간: ${result.timestamp}`;
+  
+  return response;
 }
 
 // StationMapper 초기화 함수

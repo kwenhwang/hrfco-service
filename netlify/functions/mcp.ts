@@ -404,16 +404,57 @@ async function getWaterInfoIntegrated(params: any) {
   }
 }
 
-// 파이프라인 응답을 통합 응답 형식으로 변환 (완전한 답변 생성)
 function formatPipelineResponse(result: PipelineResult): string {
-  console.log('🔍 formatPipelineResponse called with:', {
-    hasDirectAnswer: !!result.direct_answer,
-    directAnswer: result.direct_answer,
-    foundStations: result.found_stations
-  });
-  
-  // 간단한 테스트: 항상 직접 답변 반환
-  return `테스트: ${result.query}에 대한 직접 답변입니다.`;
+  if (!result || result.found_stations === 0 || !result.stations || result.stations.length === 0) {
+    return result.direct_answer || '관측소 정보를 찾을 수 없습니다.';
+  }
+
+  const primaryStation = result.stations[0];
+  const stationData = primaryStation.current_data || {};
+  const dataType = result.query_analysis?.dataType || 'waterlevel';
+
+  // 데이터 타입에 따라 동적 제목 생성
+  let title: string;
+  if (dataType === 'rainfall') {
+    title = `🌧️ ${primaryStation.name} 실시간 강수량 정보`;
+  } else if (dataType === 'dam') {
+    title = `댐 ${primaryStation.name} 실시간 댐 정보`;
+  } else {
+    title = `🌊 ${primaryStation.name} 실시간 수위 정보`;
+  }
+
+  let directAnswer = result.direct_answer || '데이터를 요약할 수 없습니다.';
+
+  // 상세 정보 포맷팅
+  let details = '📈 **상세 정보**:\n';
+  if (dataType === 'rainfall') {
+    details += `• 강수량: ${stationData.rainfall || 'N/A'}\n`;
+  } else if (dataType === 'waterlevel') {
+    details += `• 수위: ${stationData.water_level || 'N/A'}\n`;
+  } else if (dataType === 'dam') {
+    details += `• 수위: ${stationData.water_level || 'N/A'}\n`;
+    details += `• 저수율: ${stationData.storage_rate || 'N/A'}\n`;
+    details += `• 유입량: ${stationData.inflow || 'N/A'}\n`;
+    details += `• 방류량: ${stationData.outflow || 'N/A'}\n`;
+  }
+  details += `• 상태: ${stationData.status || '정상'}\n`;
+  if (stationData.trend) {
+    details += `• 추세: ${stationData.trend}\n`;
+  }
+  details += `• 최종 업데이트: ${stationData.last_updated ? new Date(stationData.last_updated).toLocaleString('ko-KR') : 'N/A'}\n`;
+
+  // 관련 관측소 포맷팅
+  let related = '';
+  if (result.stations.length > 1) {
+    related = '\n🔗 **관련 관측소**:\n';
+    result.stations.slice(1, 4).forEach(st => {
+      related += `• ${st.name} (코드: ${st.code})\n`;
+    });
+  }
+
+  const timestamp = `\n⏰ 조회 시간: ${new Date(result.timestamp).toLocaleString('ko-KR')}`;
+
+  return `${title}\n\n📊 **현재 상태**: ${directAnswer}\n\n${details}${related}${timestamp}`;
 }
 
 // StationMapper 초기화 함수

@@ -44,10 +44,12 @@ export class SmartStationMapper {
     // 점수순 정렬 (높은 점수부터)
     results.sort((a, b) => b.score - a.score);
     
-    // 캐시 저장
-    this.mappingCache.set(cacheKey, results);
+    const finalResults = results.filter(r => r.score > 30);
     
-    return results.slice(0, 10); // 상위 10개만 반환
+    // 캐시 저장
+    this.mappingCache.set(cacheKey, finalResults);
+    
+    return finalResults.slice(0, 10); // 상위 10개만 반환
   }
   
   /**

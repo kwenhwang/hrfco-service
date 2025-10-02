@@ -74,7 +74,7 @@ export async function getWaterDataByName(
         found_stations: 0,
         stations: [],
         timestamp: new Date().toISOString(),
-        direct_answer: `'${extractedStationName}' 관측소를 찾을 수 없습니다.`,
+        direct_answer: `'${extractedStationName}'에 해당하는 관측소를 찾을 수 없습니다. 관측소 이름을 확인해주세요.`,
         summary: `'${extractedStationName}' 관측소 없음`,
         no_additional_query_needed: true
       };

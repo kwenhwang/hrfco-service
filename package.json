@@ -1,0 +1,22 @@
+{
+  "name": "hrfco-intelligent-search",
+  "version": "1.0.0",
+  "description": "AI-friendly water data search system for Netlify",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "netlify dev",
+    "deploy": "netlify deploy --prod"
+  },
+  "dependencies": {
+    "@netlify/functions": "^2.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "netlify-cli": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

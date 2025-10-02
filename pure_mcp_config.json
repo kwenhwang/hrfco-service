@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "hrfco-pure-server": {
+      "command": "python3",
+      "args": ["/home/ubuntu/hrfco-service/pure_mcp_server.py"],
+      "env": {
+        "HRFCO_API_KEY": "${HRFCO_API_KEY}",
+        "WAMIS_API_KEY": "${WAMIS_API_KEY}",
+        "WEATHER_API_KEY": "${WEATHER_API_KEY}",
+        "PYTHONPATH": "/home/ubuntu/hrfco-service/src"
+      }
+    }
+  }
+} 

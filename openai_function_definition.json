@@ -1,0 +1,43 @@
+{
+  "functions": [
+    {
+      "name": "get_korean_water_observatories",
+      "description": "Get Korean water level, rainfall, or dam observatory information from HRFCO (Korea Water Resources Corporation). Returns limited results to prevent response overflow.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "hydro_type": {
+            "type": "string",
+            "enum": ["waterlevel", "rainfall", "dam"],
+            "description": "Type of hydrological data to retrieve",
+            "default": "waterlevel"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10,
+            "description": "Maximum number of observatories to return (prevents large responses)",
+            "default": 5
+          }
+        },
+        "required": []
+      }
+    }
+  ],
+  "api_config": {
+    "base_url": "http://localhost:8000",
+    "endpoint": "/observatories",
+    "method": "GET",
+    "timeout": 15
+  },
+  "usage_example": {
+    "function_call": {
+      "name": "get_korean_water_observatories",
+      "arguments": {
+        "hydro_type": "waterlevel",
+        "limit": 5
+      }
+    },
+    "api_request": "GET http://localhost:8000/observatories?hydro_type=waterlevel&limit=5"
+  }
+}

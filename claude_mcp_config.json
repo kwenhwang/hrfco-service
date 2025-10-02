@@ -3,12 +3,27 @@
     "hrfco-service": {
       "command": "python",
       "args": [
-        "C:\\Users\\20172483\\web\\hrfco-service\\mcp_server.py"
+        "/home/ubuntu/hrfco-service/mcp_server.py"
       ],
       "env": {
-        "PYTHONPATH": "C:\\Users\\20172483\\web\\hrfco-service\\src",
+        "PYTHONPATH": "/home/ubuntu/hrfco-service/src",
         "HRFCO_API_KEY": "your-api-key-here"
       }
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "web-search": {
+      "command": "npx", 
+      "args": ["-y", "@mnhlt/websearch-mcp"]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
     }
   }
 }

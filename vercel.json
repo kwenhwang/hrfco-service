@@ -1,0 +1,16 @@
+{
+  "functions": {
+    "api/mcp.py": {
+      "runtime": "python3.9"
+    }
+  },
+  "routes": [
+    { "src": "/mcp", "dest": "/api/mcp.py" },
+    { "src": "/health", "dest": "/api/health.py" },
+    { "src": "/(.*)", "dest": "/api/mcp.py" }
+  ],
+  "env": {
+    "HRFCO_API_KEY": "@hrfco_api_key",
+    "WEATHER_API_KEY": "@weather_api_key"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "hrfco-water-data": {
+      "command": "python3",
+      "args": [
+        "/home/ubuntu/hrfco-service/pure_mcp_server.py"
+      ],
+      "env": {
+        "HRFCO_API_KEY": "FE18B23B-A81B-4246-9674-E8D641902A42",
+        "WAMIS_API_KEY": "",
+        "WEATHER_API_KEY": "bI7VVvskaOdKJGMej%2F2zJzaxEyiCeGn8kLEidNAxHV7%2FRLiWMCAIlqMY08bwU1MqnakQ4ulEirojxHU800l%2BMA%3D%3D",
+        "PYTHONPATH": "/home/ubuntu/hrfco-service/src"
+      }
+    }
+  }
+}

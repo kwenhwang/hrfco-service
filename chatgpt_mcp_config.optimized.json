@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "hrfco-water-data-optimized": {
+      "command": "python3",
+      "args": ["/home/ubuntu/hrfco-service/mcp_server.py"],
+      "env": {
+        "HRFCO_API_KEY": "FE18B23B-A81B-4246-9674-E8D641902A42",
+        "PYTHONPATH": "/home/ubuntu/hrfco-service/src",
+        "MCP_RESPONSE_LIMIT": "10",
+        "MCP_TIMEOUT": "15"
+      },
+      "description": "한국 수문 데이터 MCP 서버 (응답 크기 최적화)"
+    }
+  }
+}

@@ -145,6 +145,39 @@ export const STATION_MAPPING: StationMapping[] = [
     "agency": "환경부"
   },
   {
+    "code": "20174030",
+    "name": "의령군(청계리)",
+    "region": "의령군",
+    "type": "rainfall",
+    "keywords": [
+      "의령",
+      "청계"
+    ],
+    "agency": "환경부"
+  },
+  {
+    "code": "2019695",
+    "name": "의령군(성산리)",
+    "region": "의령군",
+    "type": "waterlevel",
+    "keywords": [
+      "의령",
+      "성산"
+    ],
+    "agency": "환경부"
+  },
+  {
+    "code": "2017630",
+    "name": "의령군(대곡교)",
+    "region": "의령군",
+    "type": "waterlevel",
+    "keywords": [
+      "의령",
+      "대곡"
+    ],
+    "agency": "환경부"
+  },
+  {
     "code": "1018700",
     "name": "한강대교",
     "region": "서울",
@@ -170,10 +203,10 @@ export const STATION_MAPPING: StationMapping[] = [
 
 // 매핑 통계
 export const MAPPING_STATS = {
-  total: 14,
+  total: 17,
   byType: {
     dam: 3,
-    waterlevel: 5,
-    rainfall: 6
+    waterlevel: 7,
+    rainfall: 7
   }
 };

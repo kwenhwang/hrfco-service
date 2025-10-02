@@ -2,6 +2,7 @@ import { Handler } from '@netlify/functions';
 import { normalizeQuery, calculateSimilarity, fetchHRFCOData, Station, SearchResult } from './utils';
 import { stationMapper } from './station-mapper';
 import { getWaterDataByName, PipelineResult } from './water-data-pipeline';
+import { smartStationMapper, SearchResult as SmartSearchResult } from './smart-station-mapper';
 
 // StationMapper 초기화 상태
 let isMapperInitialized = false;
@@ -201,53 +202,37 @@ async function searchWaterStationByName(params: any) {
     throw new Error('location_name parameter required');
   }
 
-  const queryInfo = normalizeQuery(locationName);
-  const actualDataType = queryInfo.dataType !== 'waterlevel' ? queryInfo.dataType : dataType;
-
   try {
-    const data = await fetchHRFCOData(`${actualDataType}/info.json`);
-    const stations: Station[] = data.content || [];
-
-    const scoredStations = stations
-      .filter(station => station && station.obsnm) // null 체크 추가
-      .map(station => ({
-        station,
-        score: calculateSimilarity(station, queryInfo)
-      }))
-      .filter(item => item.score > 0.1)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, limit);
+    // SmartStationMapper를 사용하여 지능형 검색
+    const searchResults = smartStationMapper.searchByName(locationName, dataType as 'dam' | 'waterlevel' | 'rainfall');
+    
+    // 결과를 기존 형식으로 변환
+    const stations = searchResults.slice(0, limit).map(result => ({
+      code: result.code,
+      name: result.name,
+      address: result.region,
+      agency: result.agency,
+      real_code: result.code // 실제 HRFCO 코드
+    }));
 
     const result: SearchResult = {
       query: locationName,
-      data_type: actualDataType,
-      found_stations: scoredStations.length,
-      total_available: stations.length,
-      stations: scoredStations.map(({ station }) => {
-        // 실제 코드 매핑을 통해 코드 개선
-        const stationName = station.obsnm || '';
-        const mappedCode = findStationCode(stationName) || station.wlobscd || station.rfobscd || station.damcd || '';
-        
-        return {
-          code: mappedCode,
-          name: stationName,
-          address: station.addr || '',
-          agency: station.agcnm || '',
-          real_code: mappedCode !== '' ? '실제 HRFCO 코드' : 'API 코드'
-        };
-      })
+      data_type: dataType,
+      found_stations: stations.length,
+      total_available: smartStationMapper.getStats().total,
+      stations: stations
     };
 
     return result;
   } catch (error: any) {
     return {
       query: locationName,
-      data_type: actualDataType,
+      data_type: dataType,
       error: `검색 중 오류 발생: ${error.message}`,
       found_stations: 0,
       total_available: 0,
       stations: [],
-      note: "API 오류로 인해 데모 데이터를 사용합니다. 실제 코드 매핑은 여전히 작동합니다."
+      note: "SmartStationMapper 오류로 인해 검색에 실패했습니다."
     };
   }
 }

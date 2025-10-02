@@ -381,6 +381,12 @@ async function getWaterInfoIntegrated(params: any) {
     // 파이프라인 결과를 통합 응답 형식으로 변환
     const responseText = formatPipelineResponse(result);
     
+    console.log('🔍 getWaterInfoIntegrated response:', {
+      responseText,
+      hasDirectAnswer: !!result.direct_answer,
+      directAnswer: result.direct_answer
+    });
+    
     // ChatGPT가 추가 질문하지 않도록 완전한 응답 구조로 반환
     return {
       status: 'success',
